@@ -1,0 +1,848 @@
+[
+  {
+    "id": "qa_simple_3",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 3,
+    "question": "商品总共有多少条记录",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM products",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '商品数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'商品数量'指标定义"
+  },
+  {
+    "id": "qa_simple_4",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 4,
+    "question": "属性总共有多少条记录",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM product_specs",
+    "ai_sql": "SELECT COUNT(*) AS '属性数量' FROM `product_specs`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_5",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 5,
+    "question": "查一下店铺的数量",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_6",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 6,
+    "question": "店铺评分总共有多少条记录",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM store_ratings",
+    "ai_sql": "SELECT COUNT(`store_ratings`.`rating_id`) AS '店铺评分数量' FROM `store_ratings`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_7",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 7,
+    "question": "订单总共有多少条记录",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM orders",
+    "ai_sql": "",
+    "error_message": "BusinessRule.__init__() got an unexpected keyword argument 'is_active'",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: BusinessRule.__init__() got an unexpected keyword "
+  },
+  {
+    "id": "qa_simple_8",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 8,
+    "question": "订单明细总共有多少条记录",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM order_items",
+    "ai_sql": "SELECT COUNT(*) AS `订单明细数量` FROM `order_items`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_9",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 9,
+    "question": "查一下流水的数量",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM payments",
+    "ai_sql": "SELECT COUNT(`payment_no`) AS '支付流水数量' FROM `payments`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_10",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 10,
+    "question": "查一下优惠券的数量",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM coupons",
+    "ai_sql": "SELECT SUM(`total_count`) AS '优惠券发放数量' FROM `coupons`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "错误使用SUM聚合"
+  },
+  {
+    "id": "qa_simple_11",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 11,
+    "question": "查一下活动的数量",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM campaigns",
+    "ai_sql": "SELECT COUNT(*) AS `活动数量` FROM `campaigns`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_12",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 12,
+    "question": "用户券总共有多少条记录",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM user_coupons",
+    "ai_sql": "SELECT COUNT(`id`) AS '用户券数量' FROM `user_coupons`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_13",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 13,
+    "question": "查一下快递的数量",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM shipments",
+    "ai_sql": "SELECT COUNT(`shipment_id`) AS `物流单数量` FROM `shipments`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_14",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 14,
+    "question": "快递跟踪总共有多少条记录",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM shipment_tracks",
+    "ai_sql": "SELECT COUNT(`track_id`) AS `总记录数` FROM `shipment_tracks`",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_15",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 15,
+    "question": "有多少用户的性别是男",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'M'",
+    "ai_sql": "SELECT COUNT(`users`.`user_id`) AS '用户数量' FROM `users` WHERE `users`.`gender` = 'M'",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_16",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 16,
+    "question": "客户中性别为女的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'F'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '用户数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'用户数量'指标定义"
+  },
+  {
+    "id": "qa_simple_17",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 17,
+    "question": "客户中性别为未知的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'U'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '用户数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'用户数量'指标定义"
+  },
+  {
+    "id": "qa_simple_18",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 18,
+    "question": "有多少客户的状态是正常",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'active'",
+    "ai_sql": "SELECT COUNT(*) AS `用户数量` FROM `users` WHERE `users`.`status` = 'active'",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_19",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 19,
+    "question": "有多少用户的账号状态是正常",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'active'",
+    "ai_sql": "SELECT COUNT(`user_id`) AS `正常用户数` FROM `users` WHERE `status` = 'active'",
+    "error_message": null,
+    "failure_type": "sql不匹配",
+    "failure_reason": "SQL语义差异"
+  },
+  {
+    "id": "qa_simple_20",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 20,
+    "question": "买家中账号状态为未激活的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'inactive'",
+    "ai_sql": "",
+    "error_message": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: 无法理解您的问题，请尝试使用更标准的业务术语"
+  },
+  {
+    "id": "qa_simple_21",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 21,
+    "question": "状态为未激活的用户有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'inactive'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '用户数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'用户数量'指标定义"
+  },
+  {
+    "id": "qa_simple_22",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 22,
+    "question": "有多少客户的状态是封禁",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'banned'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '用户数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'用户数量'指标定义"
+  },
+  {
+    "id": "qa_simple_23",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 23,
+    "question": "用户中账号状态为封禁的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'banned'",
+    "ai_sql": "",
+    "error_message": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: 无法理解您的问题，请尝试使用更标准的业务术语"
+  },
+  {
+    "id": "qa_simple_24",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 24,
+    "question": "商品状态为上架的物品有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'on_sale'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '商品数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'商品数量'指标定义"
+  },
+  {
+    "id": "qa_simple_25",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 25,
+    "question": "状态为上架的商品有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'on_sale'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '商品数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'商品数量'指标定义"
+  },
+  {
+    "id": "qa_simple_26",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 26,
+    "question": "状态为下架的货品有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'off_sale'",
+    "ai_sql": "",
+    "error_message": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: 无法理解您的问题，请尝试使用更标准的业务术语"
+  },
+  {
+    "id": "qa_simple_27",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 27,
+    "question": "商品中商品状态为下架的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'off_sale'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '商品数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'商品数量'指标定义"
+  },
+  {
+    "id": "qa_simple_28",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 28,
+    "question": "有多少商品的状态是预售",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'pre_sale'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '商品数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'商品数量'指标定义"
+  },
+  {
+    "id": "qa_simple_29",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 29,
+    "question": "货品中商品状态为预售的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'pre_sale'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '商品数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 缺少'商品数量'指标定义"
+  },
+  {
+    "id": "qa_simple_30",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 30,
+    "question": "有多少商家的店铺类型是旗舰店",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'flagship'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_31",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 31,
+    "question": "有多少店铺的经营模式是旗舰店",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'flagship'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_32",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 32,
+    "question": "有多少卖家的店铺模式是专卖店",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'specialty'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_33",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 33,
+    "question": "店铺中店铺类型为专卖店的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'specialty'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_34",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 34,
+    "question": "商户中经营模式为加盟店的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'franchise'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_35",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 35,
+    "question": "店铺类型为加盟店的店铺有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'franchise'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_36",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 36,
+    "question": "店铺模式为个人店的商户有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'personal'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_37",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 37,
+    "question": "店铺类型为个人店的店铺有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'personal'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_38",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 38,
+    "question": "状态为营业中的店铺有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'open'",
+    "ai_sql": "",
+    "error_message": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: 无法理解您的问题，请尝试使用更标准的业务术语"
+  },
+  {
+    "id": "qa_simple_39",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 39,
+    "question": "营业状态为营业中的商家有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'open'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_40",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 40,
+    "question": "有多少商家的状态是关闭",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'closed'",
+    "ai_sql": "",
+    "error_message": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: 无法理解您的问题，请尝试使用更标准的业务术语"
+  },
+  {
+    "id": "qa_simple_41",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 41,
+    "question": "有多少店铺的营业状态是关闭",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'closed'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_42",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 42,
+    "question": "状态为冻结的商户有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'frozen'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_43",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 43,
+    "question": "有多少店铺的营业状态是冻结",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'frozen'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_44",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 44,
+    "question": "店铺中状态为审核中的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'reviewing'",
+    "ai_sql": "",
+    "error_message": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: 无法理解您的问题，请尝试使用更标准的业务术语"
+  },
+  {
+    "id": "qa_simple_45",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 45,
+    "question": "有多少商家的营业状态是审核中",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'reviewing'",
+    "ai_sql": "",
+    "error_message": "MQL校验失败: 指标 '店铺数量' 不存在",
+    "failure_type": "sql生成失败",
+    "failure_reason": "MQL校验失败: 指标不存在"
+  },
+  {
+    "id": "qa_simple_46",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 46,
+    "question": "交易中订单状态为待付款的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'pending'",
+    "ai_sql": "",
+    "error_message": "BusinessRule.__init__() got an unexpected keyword argument 'is_active'",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: BusinessRule.__init__() got an unexpected keyword "
+  },
+  {
+    "id": "qa_simple_47",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 47,
+    "question": "订单中状态为待付款的有多少",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'pending'",
+    "ai_sql": "",
+    "error_message": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: 无法理解您的问题，请尝试使用更标准的业务术语"
+  },
+  {
+    "id": "qa_simple_48",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 48,
+    "question": "状态为已付款的交易有多少条",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'paid'",
+    "ai_sql": "",
+    "error_message": "BusinessRule.__init__() got an unexpected keyword argument 'is_active'",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: BusinessRule.__init__() got an unexpected keyword "
+  },
+  {
+    "id": "qa_simple_49",
+    "dataset": "简单查询",
+    "dataset_key": "qa_simple",
+    "question_index": 49,
+    "question": "有多少订单的订单状态是已付款",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ],
+    "correct_sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'paid'",
+    "ai_sql": "",
+    "error_message": "BusinessRule.__init__() got an unexpected keyword argument 'is_active'",
+    "failure_type": "sql生成失败",
+    "failure_reason": "其他错误: BusinessRule.__init__() got an unexpected keyword "
+  }
+]

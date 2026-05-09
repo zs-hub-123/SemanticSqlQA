@@ -1,0 +1,6072 @@
+[
+  {
+    "question": "买家总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM users",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "查一下地址的数量",
+    "sql": "SELECT COUNT(*) AS total FROM user_addresses",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "用户域",
+    "tables": [
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "类目总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM categories",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "商品总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM products",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "属性总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM product_specs",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "查一下店铺的数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺评分总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "订单总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM orders",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单明细总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM order_items",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "查一下流水的数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下优惠券的数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下活动的数量",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "用户券总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "查一下快递的数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递跟踪总共有多少条记录",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks",
+    "difficulty": "easy",
+    "technique": "count_all",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "有多少用户的性别是男",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'M'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "客户中性别为女的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'F'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "客户中性别为未知的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'U'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "有多少客户的状态是正常",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "有多少用户的账号状态是正常",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "买家中账号状态为未激活的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'inactive'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "状态为未激活的用户有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'inactive'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "有多少客户的状态是封禁",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'banned'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "用户中账号状态为封禁的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'banned'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "商品状态为上架的物品有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'on_sale'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "状态为上架的商品有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'on_sale'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "状态为下架的货品有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'off_sale'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "商品中商品状态为下架的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'off_sale'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "有多少商品的状态是预售",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'pre_sale'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "货品中商品状态为预售的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'pre_sale'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "有多少商家的店铺类型是旗舰店",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'flagship'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "有多少店铺的经营模式是旗舰店",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'flagship'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "有多少卖家的店铺模式是专卖店",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'specialty'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺中店铺类型为专卖店的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'specialty'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商户中经营模式为加盟店的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'franchise'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺类型为加盟店的店铺有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'franchise'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺模式为个人店的商户有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'personal'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺类型为个人店的店铺有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'personal'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "状态为营业中的店铺有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'open'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "营业状态为营业中的商家有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'open'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "有多少商家的状态是关闭",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'closed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "有多少店铺的营业状态是关闭",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'closed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "状态为冻结的商户有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'frozen'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "有多少店铺的营业状态是冻结",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'frozen'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺中状态为审核中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'reviewing'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "有多少商家的营业状态是审核中",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'reviewing'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "交易中订单状态为待付款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'pending'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单中状态为待付款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'pending'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "状态为已付款的交易有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'paid'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少订单的订单状态是已付款",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'paid'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易中订单状态为已发货的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'shipped'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少订单的状态是已发货",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'shipped'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "状态为已签收的订单有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'received'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单状态为已签收的交易有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'received'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单状态为已取消的交易有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少订单的状态是已取消",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易中状态为退款中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'refunding'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单状态为退款中的订单有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'refunding'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易中状态为已退款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'refunded'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单中订单状态为已退款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'refunded'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "支付方式为支付宝的订单有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'alipay'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少交易的付款方式是支付宝",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'alipay'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少订单的付款方式是微信支付",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'wechat'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "支付方式为微信支付的交易有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'wechat'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "付款方式为银行卡的交易有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'bank_card'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单中支付方式为银行卡的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'bank_card'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "付款方式为余额的订单有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'balance'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少交易的支付方式是余额",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'balance'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少订单的付款方式是分期",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'installment'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易中支付方式为分期的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'installment'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "退款状态为未退款的订单商品有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_status = 'none'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "退款状态为申请中的购买记录有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_status = 'applied'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "退款状态为已退款的订单明细有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_status = 'approved'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "订单商品中退款状态为已拒绝的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_status = 'rejected'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "支付方式为支付宝的付款有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'alipay'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "付款方式为支付宝的支付有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'alipay'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "有多少支付的付款方式是微信支付",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'wechat'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "付款中支付方式为微信支付的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'wechat'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "有多少支付的付款方式是银行卡",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'bank_card'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "付款中支付方式为银行卡的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'bank_card'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付方式为余额的支付有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'balance'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "付款中付款方式为余额的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'balance'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付中付款方式为分期的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'installment'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付方式为分期的付款有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'installment'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "状态为成功的支付有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'success'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "有多少付款的支付状态是成功",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'success'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "有多少流水的状态是失败",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'failed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付状态为失败的支付有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'failed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "流水中支付状态为已退款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'refunded'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "状态为已退款的支付有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'refunded'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "交易类型为支付的流水有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE trade_type = 'payment'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "有多少支付的业务类型是支付",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE trade_type = 'payment'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "有多少付款的业务类型是退款",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE trade_type = 'refund'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "交易类型为退款的支付有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE trade_type = 'refund'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "券中类型为固定金额的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'fixed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中优惠方式为固定金额的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'fixed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中优惠方式为折扣的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'percent'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "类型为折扣的券有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'percent'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "类型为包邮的折扣券有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'shipping'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中优惠方式为包邮的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'shipping'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "适用范围为全场的优惠券有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'all'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "使用范围为全场的券有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'all'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中适用范围为指定分类的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'category'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券中使用范围为指定分类的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'category'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "适用范围为指定商品的券有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'product'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中使用范围为指定商品的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'product'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券中使用范围为指定店铺的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'store'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "适用范围为指定店铺的优惠券有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'store'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中券状态为草稿的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'draft'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "有多少券的状态是草稿",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'draft'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券中状态为进行中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中券状态为进行中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "有多少折扣券的券状态是已过期",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "有多少优惠券的状态是已过期",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券状态为已停用的券有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'disabled'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中状态为已停用的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'disabled'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "促销类型为秒杀的营销活动有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'flash_sale'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中类型为秒杀的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'flash_sale'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动类型为拼团的活动有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'group_buy'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少促销的类型是拼团",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'group_buy'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中类型为满减的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'full_reduction'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中活动类型为满减的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'full_reduction'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "营销活动中活动类型为赠品的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'gift'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少活动的类型是赠品",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'gift'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少活动的活动类型是抽奖",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'lottery'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中类型为抽奖的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'lottery'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动状态为计划中的活动有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'planned'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中状态为计划中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'planned'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中状态为进行中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中活动状态为进行中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少活动的活动状态是已结束",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'ended'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少促销的状态是已结束",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'ended'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中活动状态为已取消的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中状态为已取消的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少用户券的状态是未使用",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'unused'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "有多少领券记录的券状态是未使用",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'unused'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "有多少用户券的券状态是已使用",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'used'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "状态为已使用的领券记录有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'used'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "用户券中状态为已过期的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "有多少领券记录的券状态是已过期",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "快递公司为顺丰的物流有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'sf'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流商为顺丰的快递有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'sf'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递公司为韵达的包裹有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'yd'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少物流的物流商是韵达",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'yd'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递公司为中通的物流有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'zt'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少快递的物流商是中通",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'zt'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "包裹中物流商为申通的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'sto'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递公司为申通的物流有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'sto'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流中物流商为圆通的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'yt'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递公司为圆通的快递有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'yt'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少物流的物流商是EMS",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'ems'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递中快递公司为EMS的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'ems'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流商为京东的包裹有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'jd'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递公司为京东的物流有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'jd'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少物流的状态是待取件",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'pending'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流状态为待取件的快递有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'pending'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少包裹的物流状态是已揽收",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'picked_up'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流中状态为已揽收的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'picked_up'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "包裹中物流状态为运输中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'in_transit'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少物流的状态是运输中",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'in_transit'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "状态为已签收的快递有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'delivered'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流状态为已签收的物流有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'delivered'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少快递的物流状态是派送失败",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'failed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流中状态为派送失败的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'failed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流状态为已退回的物流有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'returned'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "状态为已退回的快递有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'returned'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "类型为揽收的物流轨迹有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'pickup'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "快递跟踪中轨迹类型为揽收的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'pickup'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "物流信息中轨迹类型为运输的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'transit'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "有多少物流轨迹的类型是运输",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'transit'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "有多少物流轨迹的类型是中转",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'transfer'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "有多少快递跟踪的轨迹类型是中转",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'transfer'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "轨迹类型为派送中的物流轨迹有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'delivering'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "类型为派送中的快递跟踪有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'delivering'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "类型为已签收的快递跟踪有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'signed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "轨迹类型为已签收的物流轨迹有多少条",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'signed'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "快递跟踪中类型为异常的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'exception'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "有多少物流轨迹的轨迹类型是异常",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'exception'",
+    "difficulty": "easy",
+    "technique": "count_by_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "计算用户的余额均值",
+    "sql": "SELECT AVG(balance) AS avg_value FROM users",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "计算用户的账户余额均值",
+    "sql": "SELECT AVG(balance) AS avg_value FROM users",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "计算客户的成长值均值",
+    "sql": "SELECT AVG(points) AS avg_value FROM users",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "买家的积分平均值是多少",
+    "sql": "SELECT AVG(points) AS avg_value FROM users",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "计算货品的售价均值",
+    "sql": "SELECT AVG(price) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "计算货品的价格均值",
+    "sql": "SELECT AVG(price) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "所有物品的成本价平均是多少",
+    "sql": "SELECT AVG(cost_price) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "商品的成本平均值是多少",
+    "sql": "SELECT AVG(cost_price) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "所有物品的库存量平均是多少",
+    "sql": "SELECT AVG(stock) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "商品的库存平均值是多少",
+    "sql": "SELECT AVG(stock) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "计算货品的累计销量均值",
+    "sql": "SELECT AVG(sales) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "所有商品的销量平均是多少",
+    "sql": "SELECT AVG(sales) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "计算物品的打分均值",
+    "sql": "SELECT AVG(rating_score) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "计算货品的评分均值",
+    "sql": "SELECT AVG(rating_score) AS avg_value FROM products",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "属性的规格价格平均值是多少",
+    "sql": "SELECT AVG(price) AS avg_value FROM product_specs",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "属性的SKU价格平均值是多少",
+    "sql": "SELECT AVG(price) AS avg_value FROM product_specs",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "所有规格的规格库存平均是多少",
+    "sql": "SELECT AVG(stock) AS avg_value FROM product_specs",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "计算属性的SKU库存均值",
+    "sql": "SELECT AVG(stock) AS avg_value FROM product_specs",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "商家的全店销量平均值是多少",
+    "sql": "SELECT AVG(total_sales) AS avg_value FROM stores",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商户的总销量平均值是多少",
+    "sql": "SELECT AVG(total_sales) AS avg_value FROM stores",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "所有商户的粉丝数平均是多少",
+    "sql": "SELECT AVG(total_followers) AS avg_value FROM stores",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商家的关注数平均值是多少",
+    "sql": "SELECT AVG(total_followers) AS avg_value FROM stores",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "计算店铺的抽佣比例均值",
+    "sql": "SELECT AVG(commission_rate) AS avg_value FROM stores",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "所有商家的佣金平均是多少",
+    "sql": "SELECT AVG(commission_rate) AS avg_value FROM stores",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺评价的描述相符分平均值是多少",
+    "sql": "SELECT AVG(description_score) AS avg_value FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "所有店铺评价的描述评分平均是多少",
+    "sql": "SELECT AVG(description_score) AS avg_value FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "所有店铺评价的服务评分平均是多少",
+    "sql": "SELECT AVG(service_score) AS avg_value FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "计算DSR的服务态度分均值",
+    "sql": "SELECT AVG(service_score) AS avg_value FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "店铺评价的物流评分平均值是多少",
+    "sql": "SELECT AVG(logistics_score) AS avg_value FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "计算店铺评价的物流服务分均值",
+    "sql": "SELECT AVG(logistics_score) AS avg_value FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "所有交易的订单金额平均是多少",
+    "sql": "SELECT AVG(total_amount) AS avg_value FROM orders",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单的总金额平均值是多少",
+    "sql": "SELECT AVG(total_amount) AS avg_value FROM orders",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "所有交易的减免金额平均是多少",
+    "sql": "SELECT AVG(discount_amount) AS avg_value FROM orders",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单的优惠金额平均值是多少",
+    "sql": "SELECT AVG(discount_amount) AS avg_value FROM orders",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单的实际付款平均值是多少",
+    "sql": "SELECT AVG(pay_amount) AS avg_value FROM orders",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "所有交易的实付金额平均是多少",
+    "sql": "SELECT AVG(pay_amount) AS avg_value FROM orders",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "所有交易的运费平均是多少",
+    "sql": "SELECT AVG(shipping_fee) AS avg_value FROM orders",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "所有交易的邮费平均是多少",
+    "sql": "SELECT AVG(shipping_fee) AS avg_value FROM orders",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "购买记录的成交价平均值是多少",
+    "sql": "SELECT AVG(price) AS avg_value FROM order_items",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "订单商品的单价平均值是多少",
+    "sql": "SELECT AVG(price) AS avg_value FROM order_items",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "所有订单明细的件数平均是多少",
+    "sql": "SELECT AVG(quantity) AS avg_value FROM order_items",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "订单明细的数量平均值是多少",
+    "sql": "SELECT AVG(quantity) AS avg_value FROM order_items",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "所有购买记录的金额平均是多少",
+    "sql": "SELECT AVG(subtotal) AS avg_value FROM order_items",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "计算订单商品的小计均值",
+    "sql": "SELECT AVG(subtotal) AS avg_value FROM order_items",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "所有订单商品的退款金额平均是多少",
+    "sql": "SELECT AVG(refund_amount) AS avg_value FROM order_items",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "计算订单明细的退款均值",
+    "sql": "SELECT AVG(refund_amount) AS avg_value FROM order_items",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "计算付款的金额均值",
+    "sql": "SELECT AVG(amount) AS avg_value FROM payments",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "所有支付的支付金额平均是多少",
+    "sql": "SELECT AVG(amount) AS avg_value FROM payments",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "计算折扣券的折扣值均值",
+    "sql": "SELECT AVG(discount_value) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "计算折扣券的优惠值均值",
+    "sql": "SELECT AVG(discount_value) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有折扣券的使用门槛平均是多少",
+    "sql": "SELECT AVG(min_amount) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有优惠券的起用金额平均是多少",
+    "sql": "SELECT AVG(min_amount) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "计算折扣券的优惠上限均值",
+    "sql": "SELECT AVG(max_discount) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有折扣券的最大优惠平均是多少",
+    "sql": "SELECT AVG(max_discount) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有优惠券的总发行平均是多少",
+    "sql": "SELECT AVG(total_count) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "计算券的发行量均值",
+    "sql": "SELECT AVG(total_count) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有折扣券的剩余数量平均是多少",
+    "sql": "SELECT AVG(remain_count) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有折扣券的剩余平均是多少",
+    "sql": "SELECT AVG(remain_count) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券的限领平均值是多少",
+    "sql": "SELECT AVG(per_limit) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有折扣券的每人限领平均是多少",
+    "sql": "SELECT AVG(per_limit) AS avg_value FROM coupons",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "计算促销的预算均值",
+    "sql": "SELECT AVG(budget) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "计算促销的活动预算均值",
+    "sql": "SELECT AVG(budget) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销的已消耗费用平均值是多少",
+    "sql": "SELECT AVG(cost) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "所有促销的消耗平均是多少",
+    "sql": "SELECT AVG(cost) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "计算活动的GMV目标均值",
+    "sql": "SELECT AVG(target_gmv) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "计算营销活动的目标GMV均值",
+    "sql": "SELECT AVG(target_gmv) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "所有促销的实际成交平均是多少",
+    "sql": "SELECT AVG(actual_gmv) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "所有营销活动的实际GMV平均是多少",
+    "sql": "SELECT AVG(actual_gmv) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "计算活动的流量均值",
+    "sql": "SELECT AVG(visit_count) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "营销活动的浏览量平均值是多少",
+    "sql": "SELECT AVG(visit_count) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "计算活动的订单数均值",
+    "sql": "SELECT AVG(order_count) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "计算营销活动的下单数均值",
+    "sql": "SELECT AVG(order_count) AS avg_value FROM campaigns",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "包裹的包裹重量平均值是多少",
+    "sql": "SELECT AVG(weight) AS avg_value FROM shipments",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "包裹的重量平均值是多少",
+    "sql": "SELECT AVG(weight) AS avg_value FROM shipments",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递的物流费平均值是多少",
+    "sql": "SELECT AVG(shipping_fee) AS avg_value FROM shipments",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流的快递费平均值是多少",
+    "sql": "SELECT AVG(shipping_fee) AS avg_value FROM shipments",
+    "difficulty": "easy",
+    "technique": "avg_numeric",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "所有用户的余额合计",
+    "sql": "SELECT SUM(balance) AS total_sum FROM users",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "统计用户的账户余额总额",
+    "sql": "SELECT SUM(balance) AS total_sum FROM users",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "统计客户的成长值总额",
+    "sql": "SELECT SUM(points) AS total_sum FROM users",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "统计用户的积分总额",
+    "sql": "SELECT SUM(points) AS total_sum FROM users",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "所有物品的原价合计",
+    "sql": "SELECT SUM(price) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "所有商品的价格合计",
+    "sql": "SELECT SUM(price) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "统计商品的进价总额",
+    "sql": "SELECT SUM(cost_price) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "商品的成本总和是多少",
+    "sql": "SELECT SUM(cost_price) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "货品的库存总和是多少",
+    "sql": "SELECT SUM(stock) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "统计物品的库存量总额",
+    "sql": "SELECT SUM(stock) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "统计货品的销量总额",
+    "sql": "SELECT SUM(sales) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "商品的累计销量总和是多少",
+    "sql": "SELECT SUM(sales) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "所有货品的评分合计",
+    "sql": "SELECT SUM(rating_score) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "统计物品的打分总额",
+    "sql": "SELECT SUM(rating_score) AS total_sum FROM products",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "所有属性的SKU价格合计",
+    "sql": "SELECT SUM(price) AS total_sum FROM product_specs",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "统计属性的规格价格总额",
+    "sql": "SELECT SUM(price) AS total_sum FROM product_specs",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "统计属性的SKU库存总额",
+    "sql": "SELECT SUM(stock) AS total_sum FROM product_specs",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "所有规格的规格库存合计",
+    "sql": "SELECT SUM(stock) AS total_sum FROM product_specs",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "所有卖家的全店销量合计",
+    "sql": "SELECT SUM(total_sales) AS total_sum FROM stores",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商户的总销量总和是多少",
+    "sql": "SELECT SUM(total_sales) AS total_sum FROM stores",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "卖家的收藏数总和是多少",
+    "sql": "SELECT SUM(total_followers) AS total_sum FROM stores",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "所有卖家的粉丝数合计",
+    "sql": "SELECT SUM(total_followers) AS total_sum FROM stores",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "所有店铺的佣金率合计",
+    "sql": "SELECT SUM(commission_rate) AS total_sum FROM stores",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商户的佣金总和是多少",
+    "sql": "SELECT SUM(commission_rate) AS total_sum FROM stores",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "统计店铺评分的描述评分总额",
+    "sql": "SELECT SUM(description_score) AS total_sum FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "店铺评价的描述相符分总和是多少",
+    "sql": "SELECT SUM(description_score) AS total_sum FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "所有店铺评价的服务态度分合计",
+    "sql": "SELECT SUM(service_score) AS total_sum FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "统计店铺评价的服务评分总额",
+    "sql": "SELECT SUM(service_score) AS total_sum FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "DSR的物流服务分总和是多少",
+    "sql": "SELECT SUM(logistics_score) AS total_sum FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "所有店铺评分的物流评分合计",
+    "sql": "SELECT SUM(logistics_score) AS total_sum FROM store_ratings",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "所有交易的订单总额合计",
+    "sql": "SELECT SUM(total_amount) AS total_sum FROM orders",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单的订单金额总和是多少",
+    "sql": "SELECT SUM(total_amount) AS total_sum FROM orders",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "统计交易的减免金额总额",
+    "sql": "SELECT SUM(discount_amount) AS total_sum FROM orders",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "统计订单的优惠金额总额",
+    "sql": "SELECT SUM(discount_amount) AS total_sum FROM orders",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易的实际支付总和是多少",
+    "sql": "SELECT SUM(pay_amount) AS total_sum FROM orders",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "所有交易的实付金额合计",
+    "sql": "SELECT SUM(pay_amount) AS total_sum FROM orders",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "统计交易的邮费总额",
+    "sql": "SELECT SUM(shipping_fee) AS total_sum FROM orders",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "统计订单的运费总额",
+    "sql": "SELECT SUM(shipping_fee) AS total_sum FROM orders",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "所有订单商品的单价合计",
+    "sql": "SELECT SUM(price) AS total_sum FROM order_items",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "所有订单商品的成交价合计",
+    "sql": "SELECT SUM(price) AS total_sum FROM order_items",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "所有订单明细的购买数量合计",
+    "sql": "SELECT SUM(quantity) AS total_sum FROM order_items",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "统计购买记录的数量总额",
+    "sql": "SELECT SUM(quantity) AS total_sum FROM order_items",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "所有订单商品的小计合计",
+    "sql": "SELECT SUM(subtotal) AS total_sum FROM order_items",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "购买记录的金额总和是多少",
+    "sql": "SELECT SUM(subtotal) AS total_sum FROM order_items",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "所有购买记录的退款金额合计",
+    "sql": "SELECT SUM(refund_amount) AS total_sum FROM order_items",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "统计购买记录的退款总额",
+    "sql": "SELECT SUM(refund_amount) AS total_sum FROM order_items",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "流水的金额总和是多少",
+    "sql": "SELECT SUM(amount) AS total_sum FROM payments",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "统计付款的支付金额总额",
+    "sql": "SELECT SUM(amount) AS total_sum FROM payments",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "优惠券的优惠力度总和是多少",
+    "sql": "SELECT SUM(discount_value) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券的优惠值总和是多少",
+    "sql": "SELECT SUM(discount_value) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券的最低消费总和是多少",
+    "sql": "SELECT SUM(min_amount) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有券的起用金额合计",
+    "sql": "SELECT SUM(min_amount) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有券的优惠上限合计",
+    "sql": "SELECT SUM(max_discount) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "所有券的最大优惠合计",
+    "sql": "SELECT SUM(max_discount) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券的总量总和是多少",
+    "sql": "SELECT SUM(total_count) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "统计折扣券的发行量总额",
+    "sql": "SELECT SUM(total_count) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券的剩余数量总和是多少",
+    "sql": "SELECT SUM(remain_count) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "统计优惠券的剩余总额",
+    "sql": "SELECT SUM(remain_count) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "折扣券的限领总和是多少",
+    "sql": "SELECT SUM(per_limit) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券的每人限领总和是多少",
+    "sql": "SELECT SUM(per_limit) AS total_sum FROM coupons",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "活动的预算总和是多少",
+    "sql": "SELECT SUM(budget) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销的活动预算总和是多少",
+    "sql": "SELECT SUM(budget) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "统计营销活动的消耗总额",
+    "sql": "SELECT SUM(cost) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销的花费总和是多少",
+    "sql": "SELECT SUM(cost) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "所有营销活动的GMV目标合计",
+    "sql": "SELECT SUM(target_gmv) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "营销活动的目标GMV总和是多少",
+    "sql": "SELECT SUM(target_gmv) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "营销活动的实际GMV总和是多少",
+    "sql": "SELECT SUM(actual_gmv) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "所有活动的实际成交合计",
+    "sql": "SELECT SUM(actual_gmv) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "所有营销活动的浏览量合计",
+    "sql": "SELECT SUM(visit_count) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "统计营销活动的PV总额",
+    "sql": "SELECT SUM(visit_count) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "统计促销的订单数总额",
+    "sql": "SELECT SUM(order_count) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动的下单数总和是多少",
+    "sql": "SELECT SUM(order_count) AS total_sum FROM campaigns",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "包裹的重量总和是多少",
+    "sql": "SELECT SUM(weight) AS total_sum FROM shipments",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "统计快递的包裹重量总额",
+    "sql": "SELECT SUM(weight) AS total_sum FROM shipments",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "包裹的运费总和是多少",
+    "sql": "SELECT SUM(shipping_fee) AS total_sum FROM shipments",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "统计物流的物流费总额",
+    "sql": "SELECT SUM(shipping_fee) AS total_sum FROM shipments",
+    "difficulty": "easy",
+    "technique": "sum_numeric",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "客户按可用余额排名前5的是哪些",
+    "sql": "SELECT * FROM users ORDER BY balance DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "查询余额最高的5个客户",
+    "sql": "SELECT * FROM users ORDER BY balance DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "按成长值降序排列，用户前5名是什么",
+    "sql": "SELECT * FROM users ORDER BY points DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "客户按积分排名前5的是哪些",
+    "sql": "SELECT * FROM users ORDER BY points DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "商品按原价排名前5的是哪些",
+    "sql": "SELECT * FROM products ORDER BY price DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "查询价格最高的5个货品",
+    "sql": "SELECT * FROM products ORDER BY price DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "物品按成本排名前5的是哪些",
+    "sql": "SELECT * FROM products ORDER BY cost_price DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "按成本价降序排列，物品前5名是什么",
+    "sql": "SELECT * FROM products ORDER BY cost_price DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "物品按库存数排名前5的是哪些",
+    "sql": "SELECT * FROM products ORDER BY stock DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "查询库存最高的5个物品",
+    "sql": "SELECT * FROM products ORDER BY stock DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "货品按售卖量排名前5的是哪些",
+    "sql": "SELECT * FROM products ORDER BY sales DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "查询销量最高的5个物品",
+    "sql": "SELECT * FROM products ORDER BY sales DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "按打分降序排列，货品前5名是什么",
+    "sql": "SELECT * FROM products ORDER BY rating_score DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "按评分降序排列，货品前5名是什么",
+    "sql": "SELECT * FROM products ORDER BY rating_score DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "SKU按规格价格排名前5的是哪些",
+    "sql": "SELECT * FROM product_specs ORDER BY price DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "查询SKU价格最高的5个属性",
+    "sql": "SELECT * FROM product_specs ORDER BY price DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "属性按SKU库存排名前5的是哪些",
+    "sql": "SELECT * FROM product_specs ORDER BY stock DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "按规格库存降序排列，SKU前5名是什么",
+    "sql": "SELECT * FROM product_specs ORDER BY stock DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "商户按总销量排名前5的是哪些",
+    "sql": "SELECT * FROM stores ORDER BY total_sales DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "按全店销量降序排列，商户前5名是什么",
+    "sql": "SELECT * FROM stores ORDER BY total_sales DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商户按关注数排名前5的是哪些",
+    "sql": "SELECT * FROM stores ORDER BY total_followers DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查询粉丝数最高的5个商户",
+    "sql": "SELECT * FROM stores ORDER BY total_followers DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "按佣金率降序排列，店铺前5名是什么",
+    "sql": "SELECT * FROM stores ORDER BY commission_rate DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "按佣金降序排列，商家前5名是什么",
+    "sql": "SELECT * FROM stores ORDER BY commission_rate DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "DSR按描述评分排名前5的是哪些",
+    "sql": "SELECT * FROM store_ratings ORDER BY description_score DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "查询描述相符分最高的5个店铺评价",
+    "sql": "SELECT * FROM store_ratings ORDER BY description_score DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "查询服务评分最高的5个DSR",
+    "sql": "SELECT * FROM store_ratings ORDER BY service_score DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "查询服务态度分最高的5个店铺评分",
+    "sql": "SELECT * FROM store_ratings ORDER BY service_score DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "按物流服务分降序排列，店铺评分前5名是什么",
+    "sql": "SELECT * FROM store_ratings ORDER BY logistics_score DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "店铺评价按物流评分排名前5的是哪些",
+    "sql": "SELECT * FROM store_ratings ORDER BY logistics_score DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "交易按总金额排名前5的是哪些",
+    "sql": "SELECT * FROM orders ORDER BY total_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查询订单金额最高的5个交易",
+    "sql": "SELECT * FROM orders ORDER BY total_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查询折扣金额最高的5个交易",
+    "sql": "SELECT * FROM orders ORDER BY discount_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易按优惠金额排名前5的是哪些",
+    "sql": "SELECT * FROM orders ORDER BY discount_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查询实际支付最高的5个交易",
+    "sql": "SELECT * FROM orders ORDER BY pay_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易按实付金额排名前5的是哪些",
+    "sql": "SELECT * FROM orders ORDER BY pay_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "按邮费降序排列，交易前5名是什么",
+    "sql": "SELECT * FROM orders ORDER BY shipping_fee DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "按运费降序排列，订单前5名是什么",
+    "sql": "SELECT * FROM orders ORDER BY shipping_fee DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查询单价最高的5个订单商品",
+    "sql": "SELECT * FROM order_items ORDER BY price DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "查询成交价最高的5个购买记录",
+    "sql": "SELECT * FROM order_items ORDER BY price DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "按数量降序排列，订单明细前5名是什么",
+    "sql": "SELECT * FROM order_items ORDER BY quantity DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "查询购买数量最高的5个订单商品",
+    "sql": "SELECT * FROM order_items ORDER BY quantity DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "按金额降序排列，订单商品前5名是什么",
+    "sql": "SELECT * FROM order_items ORDER BY subtotal DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "按小计降序排列，订单商品前5名是什么",
+    "sql": "SELECT * FROM order_items ORDER BY subtotal DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "按退款降序排列，订单明细前5名是什么",
+    "sql": "SELECT * FROM order_items ORDER BY refund_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "订单明细按退款金额排名前5的是哪些",
+    "sql": "SELECT * FROM order_items ORDER BY refund_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "流水按金额排名前5的是哪些",
+    "sql": "SELECT * FROM payments ORDER BY amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "按支付金额降序排列，支付前5名是什么",
+    "sql": "SELECT * FROM payments ORDER BY amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查询优惠力度最高的5个折扣券",
+    "sql": "SELECT * FROM coupons ORDER BY discount_value DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "按优惠值降序排列，折扣券前5名是什么",
+    "sql": "SELECT * FROM coupons ORDER BY discount_value DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "按起用金额降序排列，券前5名是什么",
+    "sql": "SELECT * FROM coupons ORDER BY min_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查询使用门槛最高的5个券",
+    "sql": "SELECT * FROM coupons ORDER BY min_amount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券按优惠上限排名前5的是哪些",
+    "sql": "SELECT * FROM coupons ORDER BY max_discount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券按最大优惠排名前5的是哪些",
+    "sql": "SELECT * FROM coupons ORDER BY max_discount DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券按总量排名前5的是哪些",
+    "sql": "SELECT * FROM coupons ORDER BY total_count DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "按发行量降序排列，优惠券前5名是什么",
+    "sql": "SELECT * FROM coupons ORDER BY total_count DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "按剩余数量降序排列，券前5名是什么",
+    "sql": "SELECT * FROM coupons ORDER BY remain_count DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查询剩余最高的5个折扣券",
+    "sql": "SELECT * FROM coupons ORDER BY remain_count DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "按限领降序排列，折扣券前5名是什么",
+    "sql": "SELECT * FROM coupons ORDER BY per_limit DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "按每人限领降序排列，折扣券前5名是什么",
+    "sql": "SELECT * FROM coupons ORDER BY per_limit DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "按预算降序排列，促销前5名是什么",
+    "sql": "SELECT * FROM campaigns ORDER BY budget DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "按活动预算降序排列，营销活动前5名是什么",
+    "sql": "SELECT * FROM campaigns ORDER BY budget DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "查询已消耗费用最高的5个促销",
+    "sql": "SELECT * FROM campaigns ORDER BY cost DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "查询消耗最高的5个活动",
+    "sql": "SELECT * FROM campaigns ORDER BY cost DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "营销活动按GMV目标排名前5的是哪些",
+    "sql": "SELECT * FROM campaigns ORDER BY target_gmv DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销按目标GMV排名前5的是哪些",
+    "sql": "SELECT * FROM campaigns ORDER BY target_gmv DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "营销活动按实际成交排名前5的是哪些",
+    "sql": "SELECT * FROM campaigns ORDER BY actual_gmv DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "查询实际GMV最高的5个营销活动",
+    "sql": "SELECT * FROM campaigns ORDER BY actual_gmv DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "按浏览量降序排列，活动前5名是什么",
+    "sql": "SELECT * FROM campaigns ORDER BY visit_count DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "查询PV最高的5个活动",
+    "sql": "SELECT * FROM campaigns ORDER BY visit_count DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "按下单数降序排列，促销前5名是什么",
+    "sql": "SELECT * FROM campaigns ORDER BY order_count DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "按订单数降序排列，活动前5名是什么",
+    "sql": "SELECT * FROM campaigns ORDER BY order_count DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "按重量降序排列，包裹前5名是什么",
+    "sql": "SELECT * FROM shipments ORDER BY weight DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "按包裹重量降序排列，快递前5名是什么",
+    "sql": "SELECT * FROM shipments ORDER BY weight DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查询运费最高的5个快递",
+    "sql": "SELECT * FROM shipments ORDER BY shipping_fee DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递按物流费排名前5的是哪些",
+    "sql": "SELECT * FROM shipments ORDER BY shipping_fee DESC LIMIT 5",
+    "difficulty": "easy",
+    "technique": "top_n",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少用户的余额在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE balance BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "有多少买家的成长值在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE points BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "有多少商品的售价在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE price BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "物品中进价在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE cost_price BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "货品中库存在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE stock BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "有多少物品的累计销量在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE sales BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "商品中评分在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE rating_score BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "有多少规格的SKU价格在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM product_specs WHERE price BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "有多少SKU的规格库存在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM product_specs WHERE stock BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "有多少商户的全店销量在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE total_sales BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "卖家中关注数在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE total_followers BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "有多少店铺的抽佣比例在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE commission_rate BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "DSR中描述评分在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM store_ratings WHERE description_score BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "店铺评价中服务态度分在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM store_ratings WHERE service_score BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "DSR中物流评分在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM store_ratings WHERE logistics_score BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "有多少订单的订单总额在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE total_amount BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少交易的优惠金额在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE discount_amount BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少交易的实付金额在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE pay_amount BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "有多少交易的邮费在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE shipping_fee BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单商品中单价在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE price BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "有多少订单商品的购买数量在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE quantity BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "订单商品中金额在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE subtotal BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "有多少订单商品的退款金额在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_amount BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "付款中支付金额在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE amount BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "券中折扣值在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE discount_value BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "有多少折扣券的门槛在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE min_amount BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "有多少优惠券的最大优惠在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE max_discount BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "有多少折扣券的总量在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE total_count BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "有多少优惠券的剩余在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE remain_count BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "有多少折扣券的限领在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE per_limit BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "促销中活动预算在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE budget BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中已消耗费用在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE cost BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少营销活动的目标GMV在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE target_gmv BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少营销活动的实际GMV在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE actual_gmv BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中PV在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE visit_count BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中下单数在10和100之间的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE order_count BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "有多少快递的包裹重量在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE weight BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "有多少快递的快递费在10到100范围内",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE shipping_fee BETWEEN 10 AND 100",
+    "difficulty": "easy",
+    "technique": "between_range",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "用户中性别等于男的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'M'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "客户中性别等于女的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'F'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "查一下性别为未知的用户数量",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE gender = 'U'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "客户中账号状态等于正常的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "查一下状态为正常的用户数量",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "查一下账号状态为未激活的买家数量",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'inactive'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "用户中状态等于未激活的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'inactive'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "查一下账号状态为封禁的客户数量",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'banned'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "查一下状态为封禁的用户数量",
+    "sql": "SELECT COUNT(*) AS total FROM users WHERE status = 'banned'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "查一下商品状态为上架的物品数量",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'on_sale'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "查一下状态为上架的商品数量",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'on_sale'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "查一下状态为下架的商品数量",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'off_sale'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "货品中商品状态等于下架的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'off_sale'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "查一下状态为预售的货品数量",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'pre_sale'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "查一下商品状态为预售的商品数量",
+    "sql": "SELECT COUNT(*) AS total FROM products WHERE status = 'pre_sale'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "卖家中经营模式等于旗舰店的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'flagship'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下店铺类型为旗舰店的店铺数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'flagship'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下店铺类型为专卖店的店铺数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'specialty'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商家中经营模式等于专卖店的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'specialty'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下店铺类型为加盟店的卖家数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'franchise'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺中经营模式等于加盟店的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'franchise'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商家中经营模式等于个人店的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'personal'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺中店铺类型等于个人店的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE store_type = 'personal'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下营业状态为营业中的卖家数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'open'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下状态为营业中的店铺数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'open'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下营业状态为关闭的店铺数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'closed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下状态为关闭的商家数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'closed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "卖家中状态等于冻结的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'frozen'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "店铺中营业状态等于冻结的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'frozen'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "商户中状态等于审核中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'reviewing'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下营业状态为审核中的店铺数量",
+    "sql": "SELECT COUNT(*) AS total FROM stores WHERE status = 'reviewing'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "查一下状态为待付款的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'pending'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易中订单状态等于待付款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'pending'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易中状态等于已付款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'paid'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下订单状态为已付款的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'paid'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下订单状态为已发货的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'shipped'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下状态为已发货的交易数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'shipped'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易中状态等于已签收的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'received'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下订单状态为已签收的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'received'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单中状态等于已取消的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "交易中订单状态等于已取消的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下状态为退款中的交易数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'refunding'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单中订单状态等于退款中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'refunding'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下订单状态为已退款的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'refunded'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下状态为已退款的交易数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE order_status = 'refunded'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下支付方式为支付宝的交易数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'alipay'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下付款方式为支付宝的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'alipay'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下支付方式为微信支付的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'wechat'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下付款方式为微信支付的交易数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'wechat'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下付款方式为银行卡的交易数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'bank_card'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下支付方式为银行卡的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'bank_card'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下支付方式为余额的交易数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'balance'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下付款方式为余额的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'balance'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下支付方式为分期的订单数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'installment'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下付款方式为分期的交易数量",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE payment_method = 'installment'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "查一下退款状态为未退款的购买记录数量",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_status = 'none'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "查一下退款状态为申请中的订单明细数量",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_status = 'applied'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "查一下退款状态为已退款的订单明细数量",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_status = 'approved'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "查一下退款状态为已拒绝的订单商品数量",
+    "sql": "SELECT COUNT(*) AS total FROM order_items WHERE refund_status = 'rejected'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "查一下支付方式为支付宝的支付数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'alipay'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "付款中付款方式等于支付宝的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'alipay'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "流水中支付方式等于微信支付的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'wechat'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下付款方式为微信支付的支付数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'wechat'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下支付方式为银行卡的付款数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'bank_card'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付中付款方式等于银行卡的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'bank_card'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下付款方式为余额的支付数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'balance'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下支付方式为余额的付款数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'balance'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付中支付方式等于分期的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'installment'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下付款方式为分期的付款数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_method = 'installment'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "流水中支付状态等于成功的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'success'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下状态为成功的支付数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'success'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下支付状态为失败的付款数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'failed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付中状态等于失败的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'failed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "付款中状态等于已退款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'refunded'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付中支付状态等于已退款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE payment_status = 'refunded'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下业务类型为支付的流水数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE trade_type = 'payment'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付中交易类型等于支付的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE trade_type = 'payment'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下交易类型为退款的付款数量",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE trade_type = 'refund'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "支付中业务类型等于退款的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM payments WHERE trade_type = 'refund'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "查一下优惠方式为固定金额的券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'fixed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下类型为固定金额的优惠券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'fixed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "折扣券中优惠方式等于折扣的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'percent'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中类型等于折扣的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'percent'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下类型为包邮的券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'shipping'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中优惠方式等于包邮的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE coupon_type = 'shipping'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下适用范围为全场的折扣券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'all'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下使用范围为全场的优惠券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'all'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "折扣券中使用范围等于指定分类的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'category'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中适用范围等于指定分类的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'category'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下适用范围为指定商品的优惠券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'product'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下使用范围为指定商品的券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'product'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中适用范围等于指定店铺的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'store'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "券中使用范围等于指定店铺的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE scope_type = 'store'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下券状态为草稿的券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'draft'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下状态为草稿的优惠券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'draft'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下状态为进行中的折扣券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中券状态等于进行中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下券状态为已过期的券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "优惠券中状态等于已过期的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "折扣券中券状态等于已停用的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'disabled'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下状态为已停用的优惠券数量",
+    "sql": "SELECT COUNT(*) AS total FROM coupons WHERE status = 'disabled'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "查一下类型为秒杀的促销数量",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'flash_sale'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中活动类型等于秒杀的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'flash_sale'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "查一下活动类型为拼团的营销活动数量",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'group_buy'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中类型等于拼团的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'group_buy'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中活动类型等于满减的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'full_reduction'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中类型等于满减的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'full_reduction'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中类型等于赠品的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'gift'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中活动类型等于赠品的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'gift'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中活动类型等于抽奖的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'lottery'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中类型等于抽奖的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE campaign_type = 'lottery'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "营销活动中状态等于计划中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'planned'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中活动状态等于计划中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'planned'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "营销活动中状态等于进行中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "查一下活动状态为进行中的活动数量",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "查一下状态为已结束的活动数量",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'ended'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中活动状态等于已结束的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'ended'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "活动中活动状态等于已取消的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "促销中状态等于已取消的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM campaigns WHERE status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "领券记录中状态等于未使用的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'unused'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "查一下券状态为未使用的用户券数量",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'unused'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "领券记录中券状态等于已使用的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'used'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "用户券中状态等于已使用的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'used'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "用户券中状态等于已过期的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "查一下券状态为已过期的领券记录数量",
+    "sql": "SELECT COUNT(*) AS total FROM user_coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "包裹中快递公司等于顺丰的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'sf'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下物流商为顺丰的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'sf'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递中承运商等于韵达的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'yd'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下快递公司为韵达的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'yd'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "包裹中物流商等于中通的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'zt'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下快递公司为中通的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'zt'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递中快递公司等于申通的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'sto'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下物流商为申通的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'sto'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递中快递等于圆通的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'yt'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下快递公司为圆通的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'yt'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "包裹中快递等于EMS的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'ems'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流中快递公司等于EMS的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'ems'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递中物流商等于京东的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'jd'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流中快递公司等于京东的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE carrier = 'jd'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下物流状态为待取件的快递数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'pending'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下状态为待取件的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'pending'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递中物流状态等于已揽收的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'picked_up'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流中状态等于已揽收的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'picked_up'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下状态为运输中的包裹数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'in_transit'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下物流状态为运输中的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'in_transit'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下物流状态为已签收的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'delivered'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下状态为已签收的快递数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'delivered'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递中物流状态等于派送失败的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'failed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下状态为派送失败的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'failed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下物流状态为已退回的快递数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'returned'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "查一下状态为已退回的物流数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipments WHERE status = 'returned'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "物流轨迹中轨迹类型等于揽收的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'pickup'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "快递跟踪中类型等于揽收的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'pickup'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "查一下类型为运输的物流轨迹数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'transit'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "快递跟踪中轨迹类型等于运输的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'transit'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "物流信息中轨迹类型等于中转的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'transfer'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "物流轨迹中类型等于中转的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'transfer'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "物流信息中轨迹类型等于派送中的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'delivering'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "查一下类型为派送中的物流轨迹数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'delivering'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "快递跟踪中轨迹类型等于已签收的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'signed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "查一下类型为已签收的物流轨迹数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'signed'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "查一下轨迹类型为异常的物流信息数量",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'exception'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "物流轨迹中类型等于异常的有多少",
+    "sql": "SELECT COUNT(*) AS total FROM shipment_tracks WHERE track_type = 'exception'",
+    "difficulty": "easy",
+    "technique": "filter_by_column",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  }
+]

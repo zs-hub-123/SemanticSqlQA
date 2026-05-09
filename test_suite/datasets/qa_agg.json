@@ -1,0 +1,698 @@
+[
+  {
+    "question": "每个店铺的订单数量和总金额",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个店铺的交易数量和总金额",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个商家的订单数量和总金额",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个商家的交易数量和总金额",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个商户的订单数量和总金额",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个商户的交易数量和总金额",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个卖家的订单数量和总金额",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个卖家的交易数量和总金额",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各店铺的订单统计信息",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各商家的订单统计信息",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各商户的订单统计信息",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各卖家的订单统计信息",
+    "sql": "SELECT store_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_revenue FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY total_revenue DESC",
+    "difficulty": "medium",
+    "technique": "aggregation_having",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "评分高于全站平均水平的店铺有哪些",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_score FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > (SELECT AVG(description_score) FROM store_ratings)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "评分高于全站平均水平的商家有哪些",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_score FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > (SELECT AVG(description_score) FROM store_ratings)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "评分高于全站平均水平的商户有哪些",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_score FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > (SELECT AVG(description_score) FROM store_ratings)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "评分高于全站平均水平的卖家有哪些",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_score FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > (SELECT AVG(description_score) FROM store_ratings)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "比平均评分高的店铺",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_score FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > (SELECT AVG(description_score) FROM store_ratings)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "比平均评分高的商家",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_score FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > (SELECT AVG(description_score) FROM store_ratings)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "比平均评分高的商户",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_score FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > (SELECT AVG(description_score) FROM store_ratings)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "比平均评分高的卖家",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_score FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > (SELECT AVG(description_score) FROM store_ratings)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "每个用户的消费金额排名",
+    "sql": "SELECT user_id, total_spent, RANK() OVER (ORDER BY total_spent DESC) AS spend_rank FROM (SELECT user_id, SUM(pay_amount) AS total_spent FROM orders WHERE order_status != 'cancelled' GROUP BY user_id) t",
+    "difficulty": "hard",
+    "technique": "derived_table",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个客户的消费金额排名",
+    "sql": "SELECT user_id, total_spent, RANK() OVER (ORDER BY total_spent DESC) AS spend_rank FROM (SELECT user_id, SUM(pay_amount) AS total_spent FROM orders WHERE order_status != 'cancelled' GROUP BY user_id) t",
+    "difficulty": "hard",
+    "technique": "derived_table",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个买家的消费金额排名",
+    "sql": "SELECT user_id, total_spent, RANK() OVER (ORDER BY total_spent DESC) AS spend_rank FROM (SELECT user_id, SUM(pay_amount) AS total_spent FROM orders WHERE order_status != 'cancelled' GROUP BY user_id) t",
+    "difficulty": "hard",
+    "technique": "derived_table",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "用户消费排行榜",
+    "sql": "SELECT user_id, total_spent, RANK() OVER (ORDER BY total_spent DESC) AS spend_rank FROM (SELECT user_id, SUM(pay_amount) AS total_spent FROM orders WHERE order_status != 'cancelled' GROUP BY user_id) t",
+    "difficulty": "hard",
+    "technique": "derived_table",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "客户消费排行榜",
+    "sql": "SELECT user_id, total_spent, RANK() OVER (ORDER BY total_spent DESC) AS spend_rank FROM (SELECT user_id, SUM(pay_amount) AS total_spent FROM orders WHERE order_status != 'cancelled' GROUP BY user_id) t",
+    "difficulty": "hard",
+    "technique": "derived_table",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "买家消费排行榜",
+    "sql": "SELECT user_id, total_spent, RANK() OVER (ORDER BY total_spent DESC) AS spend_rank FROM (SELECT user_id, SUM(pay_amount) AS total_spent FROM orders WHERE order_status != 'cancelled' GROUP BY user_id) t",
+    "difficulty": "hard",
+    "technique": "derived_table",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "从未下过单的用户有哪些",
+    "sql": "SELECT user_id, username FROM users WHERE user_id NOT IN (SELECT DISTINCT user_id FROM orders WHERE order_status != 'cancelled')",
+    "difficulty": "hard",
+    "technique": "subquery_where_in",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders"
+    ]
+  },
+  {
+    "question": "从未下过单的客户有哪些",
+    "sql": "SELECT user_id, username FROM users WHERE user_id NOT IN (SELECT DISTINCT user_id FROM orders WHERE order_status != 'cancelled')",
+    "difficulty": "hard",
+    "technique": "subquery_where_in",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders"
+    ]
+  },
+  {
+    "question": "从未下过单的买家有哪些",
+    "sql": "SELECT user_id, username FROM users WHERE user_id NOT IN (SELECT DISTINCT user_id FROM orders WHERE order_status != 'cancelled')",
+    "difficulty": "hard",
+    "technique": "subquery_where_in",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders"
+    ]
+  },
+  {
+    "question": "没有购买记录的用户",
+    "sql": "SELECT user_id, username FROM users WHERE user_id NOT IN (SELECT DISTINCT user_id FROM orders WHERE order_status != 'cancelled')",
+    "difficulty": "hard",
+    "technique": "subquery_where_in",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders"
+    ]
+  },
+  {
+    "question": "没有购买记录的客户",
+    "sql": "SELECT user_id, username FROM users WHERE user_id NOT IN (SELECT DISTINCT user_id FROM orders WHERE order_status != 'cancelled')",
+    "difficulty": "hard",
+    "technique": "subquery_where_in",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders"
+    ]
+  },
+  {
+    "question": "没有购买记录的买家",
+    "sql": "SELECT user_id, username FROM users WHERE user_id NOT IN (SELECT DISTINCT user_id FROM orders WHERE order_status != 'cancelled')",
+    "difficulty": "hard",
+    "technique": "subquery_where_in",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders"
+    ]
+  },
+  {
+    "question": "退款率高于平均水平的商品有哪些",
+    "sql": "SELECT product_id, SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) AS refund_rate FROM order_items GROUP BY product_id HAVING SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) > (SELECT SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) FROM order_items)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "退款率比平均高的商品",
+    "sql": "SELECT product_id, SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) AS refund_rate FROM order_items GROUP BY product_id HAVING SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) > (SELECT SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) FROM order_items)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "退款率比平均高的货品",
+    "sql": "SELECT product_id, SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) AS refund_rate FROM order_items GROUP BY product_id HAVING SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) > (SELECT SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) FROM order_items)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "退款率比平均高的物品",
+    "sql": "SELECT product_id, SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) AS refund_rate FROM order_items GROUP BY product_id HAVING SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) > (SELECT SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) FROM order_items)",
+    "difficulty": "hard",
+    "technique": "subquery_scalar",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "各月份的订单数量变化趋势",
+    "sql": "SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, COUNT(*) AS order_count FROM orders GROUP BY DATE_FORMAT(create_time, '%Y-%m') ORDER BY month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各月份的交易数量变化趋势",
+    "sql": "SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, COUNT(*) AS order_count FROM orders GROUP BY DATE_FORMAT(create_time, '%Y-%m') ORDER BY month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每月下单数量统计",
+    "sql": "SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, COUNT(*) AS order_count FROM orders GROUP BY DATE_FORMAT(create_time, '%Y-%m') ORDER BY month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各店铺每月的GMV是多少",
+    "sql": "SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m') ORDER BY store_id, month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各商家每月的GMV是多少",
+    "sql": "SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m') ORDER BY store_id, month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各商户每月的GMV是多少",
+    "sql": "SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m') ORDER BY store_id, month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各卖家每月的GMV是多少",
+    "sql": "SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m') ORDER BY store_id, month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "按月统计每个店铺的成交总额",
+    "sql": "SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m') ORDER BY store_id, month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "按月统计每个商家的成交总额",
+    "sql": "SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m') ORDER BY store_id, month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "按月统计每个商户的成交总额",
+    "sql": "SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m') ORDER BY store_id, month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "按月统计每个卖家的成交总额",
+    "sql": "SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m') ORDER BY store_id, month",
+    "difficulty": "medium",
+    "technique": "aggregation_group",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各月的GMV趋势",
+    "sql": "SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS gmv FROM orders GROUP BY DATE_FORMAT(create_time, '%Y-%m') ORDER BY month",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "全平台的总GMV是多少",
+    "sql": "SELECT SUM(total_amount) AS total_gmv FROM orders",
+    "difficulty": "easy",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各店铺的GMV排名",
+    "sql": "SELECT store_id, SUM(total_amount) AS store_gmv FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY store_gmv DESC",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "全平台的客单价是多少",
+    "sql": "SELECT SUM(pay_amount) / COUNT(DISTINCT user_id) AS avg_order_value FROM orders WHERE order_status != 'cancelled'",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各店铺的客单价",
+    "sql": "SELECT store_id, SUM(pay_amount) / COUNT(DISTINCT user_id) AS avg_order_value FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY avg_order_value DESC",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "订单转化率是多少",
+    "sql": "SELECT COUNT(pay_time) / COUNT(*) AS conversion_rate FROM orders",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各店铺的转化率",
+    "sql": "SELECT store_id, COUNT(pay_time) / COUNT(*) AS conversion_rate FROM orders GROUP BY store_id ORDER BY conversion_rate DESC",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "整体退款率是多少",
+    "sql": "SELECT SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) AS refund_rate FROM order_items",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "各商品的退款率",
+    "sql": "SELECT product_id, SUM(CASE WHEN refund_status = 'approved' THEN 1 ELSE 0 END) / COUNT(*) AS refund_rate FROM order_items GROUP BY product_id ORDER BY refund_rate DESC",
+    "difficulty": "hard",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "order_items"
+    ]
+  },
+  {
+    "question": "用户复购率是多少",
+    "sql": "SELECT SUM(CASE WHEN order_count >= 2 THEN 1 ELSE 0 END) / COUNT(*) AS repurchase_rate FROM (SELECT user_id, COUNT(*) AS order_count FROM orders WHERE order_status != 'cancelled' GROUP BY user_id) t",
+    "difficulty": "hard",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各店铺的复购率",
+    "sql": "SELECT store_id, SUM(CASE WHEN order_count >= 2 THEN 1 ELSE 0 END) / COUNT(*) AS repurchase_rate FROM (SELECT store_id, user_id, COUNT(*) AS order_count FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, user_id) t GROUP BY store_id ORDER BY repurchase_rate DESC",
+    "difficulty": "hard",
+    "technique": "business_term",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "DSR三项均分都高于4.5的店铺有哪些",
+    "sql": "SELECT store_id, AVG(description_score) AS avg_desc, AVG(service_score) AS avg_serv, AVG(logistics_score) AS avg_logi FROM store_ratings GROUP BY store_id HAVING AVG(description_score) > 4.5 AND AVG(service_score) > 4.5 AND AVG(logistics_score) > 4.5",
+    "difficulty": "hard",
+    "technique": "business_term",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "各店铺的好评率",
+    "sql": "SELECT store_id, SUM(CASE WHEN description_score >= 4 THEN 1 ELSE 0 END) / COUNT(*) AS good_rate FROM store_ratings GROUP BY store_id ORDER BY good_rate DESC",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "各优惠券的核销率",
+    "sql": "SELECT coupon_id, SUM(CASE WHEN status = 'used' THEN 1 ELSE 0 END) / COUNT(*) AS redeem_rate FROM user_coupons GROUP BY coupon_id ORDER BY redeem_rate DESC",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "核销率超过60%的优惠券有哪些",
+    "sql": "SELECT coupon_id, SUM(CASE WHEN status = 'used' THEN 1 ELSE 0 END) / COUNT(*) AS redeem_rate FROM user_coupons GROUP BY coupon_id HAVING SUM(CASE WHEN status = 'used' THEN 1 ELSE 0 END) / COUNT(*) > 0.6",
+    "difficulty": "hard",
+    "technique": "business_term",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "ROI最高的活动是哪个",
+    "sql": "SELECT campaign_id, campaign_name, actual_gmv / cost AS roi FROM campaigns WHERE cost > 0 ORDER BY roi DESC LIMIT 1",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "各活动的ROI排名",
+    "sql": "SELECT campaign_id, campaign_name, actual_gmv / cost AS roi FROM campaigns WHERE cost > 0 ORDER BY roi DESC",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "目标完成率超过100%的活动有哪些",
+    "sql": "SELECT campaign_id, campaign_name, actual_gmv / target_gmv AS completion_rate FROM campaigns WHERE target_gmv > 0 AND actual_gmv / target_gmv > 1.0",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "各快递公司的签收率",
+    "sql": "SELECT carrier, SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) / COUNT(*) AS delivery_rate FROM shipments GROUP BY carrier ORDER BY delivery_rate DESC",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "妥投率最高的快递公司是哪个",
+    "sql": "SELECT carrier, SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) / COUNT(*) AS delivery_rate FROM shipments GROUP BY carrier ORDER BY delivery_rate DESC LIMIT 1",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "各快递公司的平均送达时间",
+    "sql": "SELECT carrier, AVG(TIMESTAMPDIFF(HOUR, ship_time, deliver_time)) AS avg_hours FROM shipments WHERE deliver_time IS NOT NULL GROUP BY carrier ORDER BY avg_hours",
+    "difficulty": "hard",
+    "technique": "business_term",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "平均物流耗时是多少小时",
+    "sql": "SELECT AVG(TIMESTAMPDIFF(HOUR, ship_time, deliver_time)) AS avg_hours FROM shipments WHERE deliver_time IS NOT NULL",
+    "difficulty": "medium",
+    "technique": "business_term",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  }
+]

@@ -1,0 +1,146 @@
+{
+  "validation_time": "2026-04-25T16:05:42.154683",
+  "database": "ecommerce@192.168.99.158:65123",
+  "summary": {
+    "total": 441,
+    "pass": 441,
+    "fix_applied": 0,
+    "fail_empty": 0,
+    "fail_syntax": 0,
+    "pass_rate": 100.0
+  },
+  "by_difficulty": {
+    "easy": {
+      "pass": 328,
+      "fail": 0
+    },
+    "medium": {
+      "pass": 60,
+      "fail": 0
+    },
+    "hard": {
+      "pass": 46,
+      "fail": 0
+    },
+    "extra": {
+      "pass": 7,
+      "fail": 0
+    }
+  },
+  "by_technique": {
+    "count_all": {
+      "pass": 15,
+      "fail": 0
+    },
+    "count_by_enum": {
+      "pass": 85,
+      "fail": 0
+    },
+    "avg_numeric": {
+      "pass": 38,
+      "fail": 0
+    },
+    "sum_numeric": {
+      "pass": 38,
+      "fail": 0
+    },
+    "top_n": {
+      "pass": 38,
+      "fail": 0
+    },
+    "between_range": {
+      "pass": 38,
+      "fail": 0
+    },
+    "two_table_join": {
+      "pass": 21,
+      "fail": 0
+    },
+    "left_join": {
+      "pass": 4,
+      "fail": 0
+    },
+    "self_join": {
+      "pass": 3,
+      "fail": 0
+    },
+    "three_table_join": {
+      "pass": 4,
+      "fail": 0
+    },
+    "four_table_join": {
+      "pass": 8,
+      "fail": 0
+    },
+    "aggregation_having": {
+      "pass": 1,
+      "fail": 0
+    },
+    "subquery_scalar": {
+      "pass": 2,
+      "fail": 0
+    },
+    "derived_table": {
+      "pass": 1,
+      "fail": 0
+    },
+    "subquery_where_in": {
+      "pass": 1,
+      "fail": 0
+    },
+    "aggregation_group": {
+      "pass": 5,
+      "fail": 0
+    },
+    "business_term": {
+      "pass": 22,
+      "fail": 0
+    },
+    "null_semantics": {
+      "pass": 3,
+      "fail": 0
+    },
+    "date_function": {
+      "pass": 2,
+      "fail": 0
+    },
+    "window_function": {
+      "pass": 15,
+      "fail": 0
+    },
+    "case_expression": {
+      "pass": 1,
+      "fail": 0
+    },
+    "cte": {
+      "pass": 6,
+      "fail": 0
+    },
+    "pivot_row_to_col": {
+      "pass": 4,
+      "fail": 0
+    },
+    "unpivot_col_to_row": {
+      "pass": 4,
+      "fail": 0
+    },
+    "synonym_alias": {
+      "pass": 38,
+      "fail": 0
+    },
+    "synonym_biz": {
+      "pass": 8,
+      "fail": 0
+    },
+    "synonym_enum": {
+      "pass": 25,
+      "fail": 0
+    },
+    "synonym_reference": {
+      "pass": 11,
+      "fail": 0
+    }
+  },
+  "failures": [],
+  "fixes": []
+}

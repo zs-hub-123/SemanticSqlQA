@@ -1,0 +1,1100 @@
+[
+  {
+    "question": "每个省份有多少用户？",
+    "sql": "SELECT a.province, COUNT(DISTINCT u.user_id) AS user_count FROM users u INNER JOIN user_addresses a ON u.user_id = a.user_id GROUP BY a.province ORDER BY user_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "每个省份有多少客户？",
+    "sql": "SELECT a.province, COUNT(DISTINCT u.user_id) AS user_count FROM users u INNER JOIN user_addresses a ON u.user_id = a.user_id GROUP BY a.province ORDER BY user_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "有多个收货地址的用户有多少？",
+    "sql": "SELECT COUNT(*) AS multi_addr_users FROM (  SELECT u.user_id   FROM users u   INNER JOIN user_addresses a ON u.user_id = a.user_id   GROUP BY u.user_id   HAVING COUNT(a.address_id) > 1) t",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "有多个收货地址的客户有多少？",
+    "sql": "SELECT COUNT(*) AS multi_addr_users FROM (  SELECT u.user_id   FROM users u   INNER JOIN user_addresses a ON u.user_id = a.user_id   GROUP BY u.user_id   HAVING COUNT(a.address_id) > 1) t",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "没有设置默认地址的用户有哪些？",
+    "sql": "SELECT u.user_id, u.username FROM users u LEFT JOIN user_addresses a ON u.user_id = a.user_id AND a.is_default = 1 WHERE a.address_id IS NULL",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "没有设置默认地址的客户有哪些？",
+    "sql": "SELECT u.user_id, u.username FROM users u LEFT JOIN user_addresses a ON u.user_id = a.user_id AND a.is_default = 1 WHERE a.address_id IS NULL",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "查出所有一级分类及其下属的二级分类",
+    "sql": "SELECT p.category_name AS parent_category, c.category_name AS child_category FROM categories p INNER JOIN categories c ON p.category_id = c.parent_id WHERE p.level = 1 ORDER BY p.category_name, c.category_name",
+    "difficulty": "medium",
+    "technique": "self_join",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "列出所有一级类目和它们的二级子分类",
+    "sql": "SELECT p.category_name AS parent_category, c.category_name AS child_category FROM categories p INNER JOIN categories c ON p.category_id = c.parent_id WHERE p.level = 1 ORDER BY p.category_name, c.category_name",
+    "difficulty": "medium",
+    "technique": "self_join",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "每个一级分类下有多少个子分类？",
+    "sql": "SELECT p.category_name AS parent_category, COUNT(c.category_id) AS child_count FROM categories p LEFT JOIN categories c ON p.category_id = c.parent_id WHERE p.level = 1 GROUP BY p.category_id, p.category_name ORDER BY child_count DESC",
+    "difficulty": "medium",
+    "technique": "self_join",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "各一级类目分别包含多少个二级分类？",
+    "sql": "SELECT p.category_name AS parent_category, COUNT(c.category_id) AS child_count FROM categories p LEFT JOIN categories c ON p.category_id = c.parent_id WHERE p.level = 1 GROUP BY p.category_id, p.category_name ORDER BY child_count DESC",
+    "difficulty": "medium",
+    "technique": "self_join",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "统计每个一级品类的子分类数量",
+    "sql": "SELECT p.category_name AS parent_category, COUNT(c.category_id) AS child_count FROM categories p LEFT JOIN categories c ON p.category_id = c.parent_id WHERE p.level = 1 GROUP BY p.category_id, p.category_name ORDER BY child_count DESC",
+    "difficulty": "medium",
+    "technique": "self_join",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "包含'手机'关键字的分类及其所有子分类",
+    "sql": "SELECT p.category_name AS parent_category, c.category_name AS child_category FROM categories p LEFT JOIN categories c ON p.category_id = c.parent_id WHERE p.category_name LIKE '%手机%'",
+    "difficulty": "medium",
+    "technique": "self_join",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "名称中含有'手机'的分类和它的下级分类",
+    "sql": "SELECT p.category_name AS parent_category, c.category_name AS child_category FROM categories p LEFT JOIN categories c ON p.category_id = c.parent_id WHERE p.category_name LIKE '%手机%'",
+    "difficulty": "medium",
+    "technique": "self_join",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "每个分类的销售额是多少？",
+    "sql": "SELECT p.category_id, SUM(oi.subtotal) AS total_sales FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY p.category_id ORDER BY total_sales DESC",
+    "difficulty": "hard",
+    "technique": "three_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "每个类目的销售额是多少？",
+    "sql": "SELECT p.category_id, SUM(oi.subtotal) AS total_sales FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY p.category_id ORDER BY total_sales DESC",
+    "difficulty": "hard",
+    "technique": "three_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "销售额最高的前10个商品是什么？",
+    "sql": "SELECT p.product_name, SUM(oi.subtotal) AS total_sales FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_id ORDER BY total_sales DESC LIMIT 10",
+    "difficulty": "hard",
+    "technique": "three_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "按销售额排名，前10名商品有哪些？",
+    "sql": "SELECT p.product_name, SUM(oi.subtotal) AS total_sales FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_id ORDER BY total_sales DESC LIMIT 10",
+    "difficulty": "hard",
+    "technique": "three_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "各品牌的总销量是多少？",
+    "sql": "SELECT p.brand, SUM(oi.quantity) AS total_quantity FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY p.brand ORDER BY total_quantity DESC",
+    "difficulty": "hard",
+    "technique": "three_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "各牌子的总销量是多少？",
+    "sql": "SELECT p.brand, SUM(oi.quantity) AS total_quantity FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY p.brand ORDER BY total_quantity DESC",
+    "difficulty": "hard",
+    "technique": "three_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "哪些商品被购买的数量最多？",
+    "sql": "SELECT p.product_name, SUM(oi.quantity) AS total_quantity FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_id ORDER BY total_quantity DESC LIMIT 10",
+    "difficulty": "hard",
+    "technique": "three_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买数量最多的商品排名",
+    "sql": "SELECT p.product_name, SUM(oi.quantity) AS total_quantity FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_id ORDER BY total_quantity DESC LIMIT 10",
+    "difficulty": "hard",
+    "technique": "three_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "DSR三项均分都高于4.5的店铺有哪些？",
+    "sql": "SELECT s.store_id, s.store_name, AVG(r.description_score) AS avg_desc, AVG(r.service_score) AS avg_service, AVG(r.logistics_score) AS avg_logistics FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id HAVING avg_desc > 4.5 AND avg_service > 4.5 AND avg_logistics > 4.5",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "DSR三项均分都高于4.5的商家有哪些？",
+    "sql": "SELECT s.store_id, s.store_name, AVG(r.description_score) AS avg_desc, AVG(r.service_score) AS avg_service, AVG(r.logistics_score) AS avg_logistics FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id HAVING avg_desc > 4.5 AND avg_service > 4.5 AND avg_logistics > 4.5",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "DSR三项均分都高于4.5的商户有哪些？",
+    "sql": "SELECT s.store_id, s.store_name, AVG(r.description_score) AS avg_desc, AVG(r.service_score) AS avg_service, AVG(r.logistics_score) AS avg_logistics FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id HAVING avg_desc > 4.5 AND avg_service > 4.5 AND avg_logistics > 4.5",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "有图评价占比最高的店铺是哪个？",
+    "sql": "SELECT s.store_id, s.store_name, SUM(r.has_image) / COUNT(*) AS image_ratio FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id ORDER BY image_ratio DESC LIMIT 1",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "有图评价占比最高的商家是哪个？",
+    "sql": "SELECT s.store_id, s.store_name, SUM(r.has_image) / COUNT(*) AS image_ratio FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id ORDER BY image_ratio DESC LIMIT 1",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "评价数量最多的前5个店铺",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(*) AS rating_count FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id ORDER BY rating_count DESC LIMIT 5",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "评价数量最多的前5个商家",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(*) AS rating_count FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id ORDER BY rating_count DESC LIMIT 5",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "评价数量最多的前5个商户",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(*) AS rating_count FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id ORDER BY rating_count DESC LIMIT 5",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "店铺的平均服务评分排名",
+    "sql": "SELECT s.store_id, s.store_name, AVG(r.service_score) AS avg_service FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id ORDER BY avg_service DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "商家的平均服务评分排名",
+    "sql": "SELECT s.store_id, s.store_name, AVG(r.service_score) AS avg_service FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id ORDER BY avg_service DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "商户的平均服务评分排名",
+    "sql": "SELECT s.store_id, s.store_name, AVG(r.service_score) AS avg_service FROM stores s INNER JOIN store_ratings r ON s.store_id = r.store_id GROUP BY s.store_id ORDER BY avg_service DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "店铺域",
+    "tables": [
+      "stores",
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "各支付方式的支付笔数和总金额",
+    "sql": "SELECT p.payment_method, COUNT(*) AS payment_count, SUM(p.amount) AS total_amount FROM orders o INNER JOIN payments p ON o.order_id = p.order_id GROUP BY p.payment_method ORDER BY total_amount DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "各支付方式的付款笔数和总金额",
+    "sql": "SELECT p.payment_method, COUNT(*) AS payment_count, SUM(p.amount) AS total_amount FROM orders o INNER JOIN payments p ON o.order_id = p.order_id GROUP BY p.payment_method ORDER BY total_amount DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "各支付方式的流水笔数和总金额",
+    "sql": "SELECT p.payment_method, COUNT(*) AS payment_count, SUM(p.amount) AS total_amount FROM orders o INNER JOIN payments p ON o.order_id = p.order_id GROUP BY p.payment_method ORDER BY total_amount DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "支付成功的订单金额总和",
+    "sql": "SELECT SUM(p.amount) AS total_paid FROM orders o INNER JOIN payments p ON o.order_id = p.order_id WHERE p.payment_status = 'success'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "已成功支付的订单总金额是多少？",
+    "sql": "SELECT SUM(p.amount) AS total_paid FROM orders o INNER JOIN payments p ON o.order_id = p.order_id WHERE p.payment_status = 'success'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "支付状态为成功的交易合计金额",
+    "sql": "SELECT SUM(p.amount) AS total_paid FROM orders o INNER JOIN payments p ON o.order_id = p.order_id WHERE p.payment_status = 'success'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "使用微信支付的订单有多少？",
+    "sql": "SELECT COUNT(*) AS wechat_order_count FROM orders o INNER JOIN payments p ON o.order_id = p.order_id WHERE p.payment_method = 'wechat'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "使用微信支付的交易有多少？",
+    "sql": "SELECT COUNT(*) AS wechat_order_count FROM orders o INNER JOIN payments p ON o.order_id = p.order_id WHERE p.payment_method = 'wechat'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "通过微信付款的交易数量是多少",
+    "sql": "SELECT COUNT(*) AS wechat_order_count FROM orders o INNER JOIN payments p ON o.order_id = p.order_id WHERE p.payment_method = 'wechat'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "payments"
+    ]
+  },
+  {
+    "question": "每个用户购买过的品类有哪些？",
+    "sql": "SELECT u.user_id, u.username, COUNT(DISTINCT p.category_id) AS category_count FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY u.user_id ORDER BY category_count DESC",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "每个客户购买过的分类有哪些？",
+    "sql": "SELECT u.user_id, u.username, COUNT(DISTINCT p.category_id) AS category_count FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY u.user_id ORDER BY category_count DESC",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "每个买家购买过的类目有哪些？",
+    "sql": "SELECT u.user_id, u.username, COUNT(DISTINCT p.category_id) AS category_count FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id GROUP BY u.user_id ORDER BY category_count DESC",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了品牌名品牌商品的用户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = '华为'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了品牌品牌商品的客户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = '华为'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了牌子品牌商品的用户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = '小米'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了品牌品牌商品的客户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = '小米'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了品牌名品牌商品的用户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = '苹果'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了牌子品牌商品的客户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = '苹果'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了牌子品牌商品的用户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = 'OPPO'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了品牌名品牌商品的客户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = 'OPPO'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了品牌品牌商品的用户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = 'vivo'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买了品牌名品牌商品的客户有哪些？",
+    "sql": "SELECT DISTINCT u.user_id, u.username FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id WHERE p.brand = 'vivo'",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买金额最高的前10个用户",
+    "sql": "SELECT u.user_id, u.username, SUM(oi.subtotal) AS total_spent FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id GROUP BY u.user_id ORDER BY total_spent DESC LIMIT 10",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "购买金额最高的前10个客户",
+    "sql": "SELECT u.user_id, u.username, SUM(oi.subtotal) AS total_spent FROM users u INNER JOIN orders o ON u.user_id = o.user_id INNER JOIN order_items oi ON o.order_id = oi.order_id GROUP BY u.user_id ORDER BY total_spent DESC LIMIT 10",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "用户域",
+    "tables": [
+      "users",
+      "orders",
+      "order_items",
+      "products"
+    ]
+  },
+  {
+    "question": "各快递公司承运的订单数量",
+    "sql": "SELECT s.carrier, COUNT(*) AS order_count FROM orders o INNER JOIN shipments s ON o.order_id = s.order_id GROUP BY s.carrier ORDER BY order_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "shipments"
+    ]
+  },
+  {
+    "question": "按快递公司统计承运的交易数量",
+    "sql": "SELECT s.carrier, COUNT(*) AS order_count FROM orders o INNER JOIN shipments s ON o.order_id = s.order_id GROUP BY s.carrier ORDER BY order_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "shipments"
+    ]
+  },
+  {
+    "question": "已经发货但未签收的订单有哪些？",
+    "sql": "SELECT o.order_id, o.order_no, s.carrier, s.status AS shipment_status FROM orders o INNER JOIN shipments s ON o.order_id = s.order_id WHERE s.status IN ('in_transit', 'picked_up')",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "shipments"
+    ]
+  },
+  {
+    "question": "哪些订单已发货但还没被签收？",
+    "sql": "SELECT o.order_id, o.order_no, s.carrier, s.status AS shipment_status FROM orders o INNER JOIN shipments s ON o.order_id = s.order_id WHERE s.status IN ('in_transit', 'picked_up')",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "shipments"
+    ]
+  },
+  {
+    "question": "处于运输中的交易列表",
+    "sql": "SELECT o.order_id, o.order_no, s.carrier, s.status AS shipment_status FROM orders o INNER JOIN shipments s ON o.order_id = s.order_id WHERE s.status IN ('in_transit', 'picked_up')",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "shipments"
+    ]
+  },
+  {
+    "question": "使用顺丰配送的订单有多少？",
+    "sql": "SELECT COUNT(*) AS sf_order_count FROM orders o INNER JOIN shipments s ON o.order_id = s.order_id WHERE s.carrier = 'sf'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "shipments"
+    ]
+  },
+  {
+    "question": "使用顺丰配送的交易有多少？",
+    "sql": "SELECT COUNT(*) AS sf_order_count FROM orders o INNER JOIN shipments s ON o.order_id = s.order_id WHERE s.carrier = 'sf'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "shipments"
+    ]
+  },
+  {
+    "question": "各店铺举办了多少场营销活动？",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(c.campaign_id) AS campaign_count FROM stores s LEFT JOIN campaigns c ON s.store_id = c.store_id GROUP BY s.store_id ORDER BY campaign_count DESC",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns",
+      "stores"
+    ]
+  },
+  {
+    "question": "各商家举办了多少场营销活动？",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(c.campaign_id) AS campaign_count FROM stores s LEFT JOIN campaigns c ON s.store_id = c.store_id GROUP BY s.store_id ORDER BY campaign_count DESC",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns",
+      "stores"
+    ]
+  },
+  {
+    "question": "各商户举办了多少场促销？",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(c.campaign_id) AS campaign_count FROM stores s LEFT JOIN campaigns c ON s.store_id = c.store_id GROUP BY s.store_id ORDER BY campaign_count DESC",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns",
+      "stores"
+    ]
+  },
+  {
+    "question": "平台级的活动有哪些？",
+    "sql": "SELECT campaign_id, campaign_name, campaign_type FROM campaigns WHERE store_id IS NULL",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "平台级的促销有哪些？",
+    "sql": "SELECT campaign_id, campaign_name, campaign_type FROM campaigns WHERE store_id IS NULL",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "平台级的营销活动有哪些？",
+    "sql": "SELECT campaign_id, campaign_name, campaign_type FROM campaigns WHERE store_id IS NULL",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "正在进行中的活动有多少？",
+    "sql": "SELECT COUNT(*) AS active_count FROM campaigns WHERE status = 'active'",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "正在进行中的促销有多少？",
+    "sql": "SELECT COUNT(*) AS active_count FROM campaigns WHERE status = 'active'",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "正在进行中的营销活动有多少？",
+    "sql": "SELECT COUNT(*) AS active_count FROM campaigns WHERE status = 'active'",
+    "difficulty": "medium",
+    "technique": "left_join",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "各类优惠券的领取数量",
+    "sql": "SELECT c.coupon_type, COUNT(uc.id) AS claim_count FROM coupons c INNER JOIN user_coupons uc ON c.coupon_id = uc.coupon_id GROUP BY c.coupon_type ORDER BY claim_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "营销域",
+    "tables": [
+      "coupons",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "按优惠类型统计领券数量",
+    "sql": "SELECT c.coupon_type, COUNT(uc.id) AS claim_count FROM coupons c INNER JOIN user_coupons uc ON c.coupon_id = uc.coupon_id GROUP BY c.coupon_type ORDER BY claim_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "营销域",
+    "tables": [
+      "coupons",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "各类型优惠券分别被领取了多少张",
+    "sql": "SELECT c.coupon_type, COUNT(uc.id) AS claim_count FROM coupons c INNER JOIN user_coupons uc ON c.coupon_id = uc.coupon_id GROUP BY c.coupon_type ORDER BY claim_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "营销域",
+    "tables": [
+      "coupons",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "核销率最高的是哪个优惠券？",
+    "sql": "SELECT c.coupon_id, c.coupon_name, SUM(CASE WHEN uc.status = 'used' THEN 1 ELSE 0 END) / COUNT(*) AS use_rate FROM coupons c INNER JOIN user_coupons uc ON c.coupon_id = uc.coupon_id GROUP BY c.coupon_id ORDER BY use_rate DESC LIMIT 1",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "营销域",
+    "tables": [
+      "coupons",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "哪张优惠券的使用率最高？",
+    "sql": "SELECT c.coupon_id, c.coupon_name, SUM(CASE WHEN uc.status = 'used' THEN 1 ELSE 0 END) / COUNT(*) AS use_rate FROM coupons c INNER JOIN user_coupons uc ON c.coupon_id = uc.coupon_id GROUP BY c.coupon_id ORDER BY use_rate DESC LIMIT 1",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "营销域",
+    "tables": [
+      "coupons",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "被使用比例最高的优惠券是哪张",
+    "sql": "SELECT c.coupon_id, c.coupon_name, SUM(CASE WHEN uc.status = 'used' THEN 1 ELSE 0 END) / COUNT(*) AS use_rate FROM coupons c INNER JOIN user_coupons uc ON c.coupon_id = uc.coupon_id GROUP BY c.coupon_id ORDER BY use_rate DESC LIMIT 1",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "营销域",
+    "tables": [
+      "coupons",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "还有剩余数量的优惠券有哪些？",
+    "sql": "SELECT coupon_id, coupon_name, remain_count FROM coupons WHERE remain_count > 0 ORDER BY remain_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "营销域",
+    "tables": [
+      "coupons",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "哪些优惠券还有库存？",
+    "sql": "SELECT coupon_id, coupon_name, remain_count FROM coupons WHERE remain_count > 0 ORDER BY remain_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "营销域",
+    "tables": [
+      "coupons",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "使用了优惠券的订单平均优惠金额是多少？",
+    "sql": "SELECT AVG(o.discount_amount) AS avg_discount FROM orders o INNER JOIN user_coupons uc ON o.order_id = uc.order_id WHERE o.coupon_id IS NOT NULL",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "使用了优惠券的交易平均优惠金额是多少？",
+    "sql": "SELECT AVG(o.discount_amount) AS avg_discount FROM orders o INNER JOIN user_coupons uc ON o.order_id = uc.order_id WHERE o.coupon_id IS NOT NULL",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "使用优惠券下单的用户有多少？",
+    "sql": "SELECT COUNT(DISTINCT o.user_id) AS coupon_user_count FROM orders o INNER JOIN user_coupons uc ON o.order_id = uc.order_id WHERE o.coupon_id IS NOT NULL",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "使用优惠券下单的客户有多少？",
+    "sql": "SELECT COUNT(DISTINCT o.user_id) AS coupon_user_count FROM orders o INNER JOIN user_coupons uc ON o.order_id = uc.order_id WHERE o.coupon_id IS NOT NULL",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "每个订单包含多少件商品？",
+    "sql": "SELECT o.order_id, o.order_no, SUM(oi.quantity) AS total_items FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id GROUP BY o.order_id ORDER BY total_items DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items"
+    ]
+  },
+  {
+    "question": "每个交易包含多少件商品？",
+    "sql": "SELECT o.order_id, o.order_no, SUM(oi.quantity) AS total_items FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id GROUP BY o.order_id ORDER BY total_items DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items"
+    ]
+  },
+  {
+    "question": "退款状态为已退款的订单明细有哪些？",
+    "sql": "SELECT o.order_id, o.order_no, oi.product_name, oi.refund_status, oi.refund_amount FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id WHERE oi.refund_status = 'approved'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items"
+    ]
+  },
+  {
+    "question": "退款状态为已退款的交易明细有哪些？",
+    "sql": "SELECT o.order_id, o.order_no, oi.product_name, oi.refund_status, oi.refund_amount FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id WHERE oi.refund_status = 'approved'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items"
+    ]
+  },
+  {
+    "question": "哪些交易中存在已退款的商品？",
+    "sql": "SELECT o.order_id, o.order_no, oi.product_name, oi.refund_status, oi.refund_amount FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id WHERE oi.refund_status = 'approved'",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items"
+    ]
+  },
+  {
+    "question": "每个店铺有多少个上架商品？",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(p.product_id) AS product_count FROM stores s INNER JOIN products p ON s.store_id = p.store_id WHERE p.status = 'on_sale' GROUP BY s.store_id ORDER BY product_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "商品域",
+    "tables": [
+      "products",
+      "stores"
+    ]
+  },
+  {
+    "question": "每个商家有多少个上架商品？",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(p.product_id) AS product_count FROM stores s INNER JOIN products p ON s.store_id = p.store_id WHERE p.status = 'on_sale' GROUP BY s.store_id ORDER BY product_count DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "商品域",
+    "tables": [
+      "products",
+      "stores"
+    ]
+  },
+  {
+    "question": "各店铺的交易数量和总金额是多少？",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(o.order_id) AS order_count, SUM(o.total_amount) AS total_gmv FROM stores s INNER JOIN orders o ON s.store_id = o.store_id GROUP BY s.store_id ORDER BY total_gmv DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "stores"
+    ]
+  },
+  {
+    "question": "各商家的交易数量和总金额是多少？",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(o.order_id) AS order_count, SUM(o.total_amount) AS total_gmv FROM stores s INNER JOIN orders o ON s.store_id = o.store_id GROUP BY s.store_id ORDER BY total_gmv DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "stores"
+    ]
+  },
+  {
+    "question": "各商户的订单数量和总金额是多少？",
+    "sql": "SELECT s.store_id, s.store_name, COUNT(o.order_id) AS order_count, SUM(o.total_amount) AS total_gmv FROM stores s INNER JOIN orders o ON s.store_id = o.store_id GROUP BY s.store_id ORDER BY total_gmv DESC",
+    "difficulty": "medium",
+    "technique": "two_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "stores"
+    ]
+  },
+  {
+    "question": "各一级分类的订单数和销售额是多少？",
+    "sql": "SELECT pc.category_name AS top_category, COUNT(DISTINCT o.order_id) AS order_count, SUM(oi.subtotal) AS total_sales FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id INNER JOIN categories c ON p.category_id = c.category_id INNER JOIN categories pc ON c.parent_id = pc.category_id GROUP BY pc.category_id ORDER BY total_sales DESC",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products",
+      "categories"
+    ]
+  },
+  {
+    "question": "各一级类目的订单数和销售额是多少？",
+    "sql": "SELECT pc.category_name AS top_category, COUNT(DISTINCT o.order_id) AS order_count, SUM(oi.subtotal) AS total_sales FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id INNER JOIN categories c ON p.category_id = c.category_id INNER JOIN categories pc ON c.parent_id = pc.category_id GROUP BY pc.category_id ORDER BY total_sales DESC",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products",
+      "categories"
+    ]
+  },
+  {
+    "question": "各一级品类的订单数和销售额是多少？",
+    "sql": "SELECT pc.category_name AS top_category, COUNT(DISTINCT o.order_id) AS order_count, SUM(oi.subtotal) AS total_sales FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id INNER JOIN products p ON oi.product_id = p.product_id INNER JOIN categories c ON p.category_id = c.category_id INNER JOIN categories pc ON c.parent_id = pc.category_id GROUP BY pc.category_id ORDER BY total_sales DESC",
+    "difficulty": "hard",
+    "technique": "four_table_join",
+    "domain": "交易域",
+    "tables": [
+      "orders",
+      "order_items",
+      "products",
+      "categories"
+    ]
+  }
+]

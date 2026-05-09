@@ -1,0 +1,388 @@
+[
+    {
+        "question": "各订单状态的订单数量统计",
+        "sql": "SELECT order_status, COUNT(*) AS count FROM orders GROUP BY order_status ORDER BY count DESC",
+        "difficulty": "easy",
+        "technique": "aggregation_group",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "哪些活动是平台级的（全平台活动）",
+        "sql": "SELECT campaign_id, campaign_name, campaign_type, start_time, end_time, actual_gmv FROM campaigns WHERE store_id IS NULL",
+        "difficulty": "easy",
+        "technique": "null_semantics",
+        "domain": "营销域",
+        "tables": [
+            "campaigns"
+        ]
+    },
+    {
+        "question": "尚未使用的优惠券有多少张",
+        "sql": "SELECT COUNT(*) AS unused_count FROM user_coupons WHERE status = 'unused'",
+        "difficulty": "easy",
+        "technique": "null_semantics",
+        "domain": "营销域",
+        "tables": [
+            "user_coupons"
+        ]
+    },
+    {
+        "question": "有图评价和没图评价的评分差异",
+        "sql": "SELECT has_image, AVG(description_score) AS avg_desc, AVG(service_score) AS avg_serv, AVG(logistics_score) AS avg_logi, COUNT(*) AS count FROM store_ratings GROUP BY has_image",
+        "difficulty": "medium",
+        "technique": "aggregation_group",
+        "domain": "店铺域",
+        "tables": [
+            "store_ratings"
+        ]
+    },
+    {
+        "question": "各商户类型（旗舰店、专卖店等）的平均评分",
+        "sql": "SELECT s.store_type, AVG(sr.description_score) AS avg_desc, AVG(sr.service_score) AS avg_serv, AVG(sr.logistics_score) AS avg_logi FROM stores s INNER JOIN store_ratings sr ON s.store_id = sr.store_id GROUP BY s.store_type ORDER BY avg_desc DESC",
+        "difficulty": "medium",
+        "technique": "aggregation_group",
+        "domain": "店铺域",
+        "tables": [
+            "stores",
+            "store_ratings"
+        ]
+    },
+    {
+        "question": "即将在7天内过期的未使用折扣券",
+        "sql": "SELECT id, user_id, coupon_id, expire_time FROM user_coupons WHERE status = 'unused' AND expire_time BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY) ORDER BY expire_time",
+        "difficulty": "medium",
+        "technique": "date_function",
+        "domain": "营销域",
+        "tables": [
+            "user_coupons"
+        ]
+    },
+    {
+        "question": "每个订单从下单到支付的平均耗时",
+        "sql": "SELECT AVG(TIMESTAMPDIFF(MINUTE, create_time, pay_time)) AS avg_minutes FROM orders WHERE pay_time IS NOT NULL AND order_status != 'cancelled'",
+        "difficulty": "medium",
+        "technique": "date_function",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "按销量排名前10的热门货品有哪些",
+        "sql": "SELECT product_id, product_name, sales, ROW_NUMBER() OVER(ORDER BY sales DESC) AS sales_rank FROM products WHERE status = 'on_sale' LIMIT 10",
+        "difficulty": "medium",
+        "technique": "window_function",
+        "domain": "商品域",
+        "tables": [
+            "products"
+        ]
+    },
+    {
+        "question": "各年龄段（18-25, 26-35, 36-45, 45+）的客户消费情况",
+        "sql": "SELECT CASE WHEN TIMESTAMPDIFF(YEAR, u.birth_date, CURDATE()) BETWEEN 18 AND 25 THEN '18-25' WHEN TIMESTAMPDIFF(YEAR, u.birth_date, CURDATE()) BETWEEN 26 AND 35 THEN '26-35' WHEN TIMESTAMPDIFF(YEAR, u.birth_date, CURDATE()) BETWEEN 36 AND 45 THEN '36-45' WHEN TIMESTAMPDIFF(YEAR, u.birth_date, CURDATE()) > 45 THEN '45+' ELSE '未知' END AS age_group, COUNT(DISTINCT u.user_id) AS user_count, COALESCE(SUM(o.pay_amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.user_id = o.user_id AND o.order_status != 'cancelled' GROUP BY age_group ORDER BY age_group",
+        "difficulty": "hard",
+        "technique": "case_expression",
+        "domain": "用户域",
+        "tables": [
+            "users",
+            "orders"
+        ]
+    },
+    {
+        "question": "每个用户的客单价是多少",
+        "sql": "WITH user_order_stats AS (SELECT user_id, COUNT(*) AS order_count, SUM(pay_amount) AS total_paid FROM orders WHERE order_status != 'cancelled' GROUP BY user_id) SELECT user_id, order_count, total_paid, ROUND(total_paid / order_count, 2) AS avg_order_amount FROM user_order_stats ORDER BY avg_order_amount DESC",
+        "difficulty": "hard",
+        "technique": "cte",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "注册超过1年但从未下单的买家",
+        "sql": "SELECT u.user_id, u.username, u.register_time FROM users u LEFT JOIN orders o ON u.user_id = o.user_id AND o.order_status != 'cancelled' WHERE o.order_id IS NULL AND u.register_time < DATE_SUB(CURDATE(), INTERVAL 1 YEAR)",
+        "difficulty": "hard",
+        "technique": "null_semantics",
+        "domain": "用户域",
+        "tables": [
+            "users",
+            "orders"
+        ]
+    },
+    {
+        "question": "列出每个商品的颜色和内存规格",
+        "sql": "SELECT product_id, MAX(CASE WHEN spec_name = '颜色' THEN spec_value END) AS color, MAX(CASE WHEN spec_name = '内存' THEN spec_value END) AS memory FROM product_specs GROUP BY product_id",
+        "difficulty": "hard",
+        "technique": "pivot_row_to_col",
+        "domain": "商品域",
+        "tables": [
+            "product_specs"
+        ]
+    },
+    {
+        "question": "各快递公司不同状态类型的物流单数量，以状态为列展示",
+        "sql": "SELECT carrier, SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered, SUM(CASE WHEN status = 'in_transit' THEN 1 ELSE 0 END) AS in_transit, SUM(CASE WHEN status = 'failed' THEN 1 ELSE 0 END) AS failed, SUM(CASE WHEN status = 'returned' THEN 1 ELSE 0 END) AS returned FROM shipments GROUP BY carrier",
+        "difficulty": "hard",
+        "technique": "pivot_row_to_col",
+        "domain": "物流域",
+        "tables": [
+            "shipments"
+        ]
+    },
+    {
+        "question": "各订单状态的订单数量按月行转列展示",
+        "sql": "SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(CASE WHEN order_status = 'pending' THEN 1 ELSE 0 END) AS pending, SUM(CASE WHEN order_status = 'paid' THEN 1 ELSE 0 END) AS paid, SUM(CASE WHEN order_status = 'shipped' THEN 1 ELSE 0 END) AS shipped, SUM(CASE WHEN order_status = 'received' THEN 1 ELSE 0 END) AS received, SUM(CASE WHEN order_status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled FROM orders GROUP BY DATE_FORMAT(create_time, '%Y-%m') ORDER BY month",
+        "difficulty": "hard",
+        "technique": "pivot_row_to_col",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "将DSR三项评分从列转为行展示",
+        "sql": "SELECT store_id, '描述相符' AS score_type, description_score AS score FROM store_ratings UNION ALL SELECT store_id, '服务态度' AS score_type, service_score AS score FROM store_ratings UNION ALL SELECT store_id, '物流服务' AS score_type, logistics_score AS score FROM store_ratings ORDER BY store_id, score_type",
+        "difficulty": "hard",
+        "technique": "unpivot_col_to_row",
+        "domain": "店铺域",
+        "tables": [
+            "store_ratings"
+        ]
+    },
+    {
+        "question": "各支付方式成功和失败的笔数，以行展示",
+        "sql": "SELECT payment_method, '成功' AS status_label, SUM(CASE WHEN payment_status = 'success' THEN 1 ELSE 0 END) AS count FROM payments GROUP BY payment_method UNION ALL SELECT payment_method, '失败' AS status_label, SUM(CASE WHEN payment_status = 'failed' THEN 1 ELSE 0 END) AS count FROM payments GROUP BY payment_method ORDER BY payment_method, status_label",
+        "difficulty": "hard",
+        "technique": "unpivot_col_to_row",
+        "domain": "交易域",
+        "tables": [
+            "payments"
+        ]
+    },
+    {
+        "question": "各营销活动类型的数量分布，从列展示为行",
+        "sql": "SELECT '秒杀' AS campaign_type_label, SUM(CASE WHEN campaign_type = 'flash_sale' THEN 1 ELSE 0 END) AS count FROM campaigns UNION ALL SELECT '拼团' AS campaign_type_label, SUM(CASE WHEN campaign_type = 'group_buy' THEN 1 ELSE 0 END) AS count FROM campaigns UNION ALL SELECT '满减' AS campaign_type_label, SUM(CASE WHEN campaign_type = 'full_reduction' THEN 1 ELSE 0 END) AS count FROM campaigns UNION ALL SELECT '赠品' AS campaign_type_label, SUM(CASE WHEN campaign_type = 'gift' THEN 1 ELSE 0 END) AS count FROM campaigns UNION ALL SELECT '抽奖' AS campaign_type_label, SUM(CASE WHEN campaign_type = 'lottery' THEN 1 ELSE 0 END) AS count FROM campaigns ORDER BY count DESC",
+        "difficulty": "hard",
+        "technique": "unpivot_col_to_row",
+        "domain": "营销域",
+        "tables": [
+            "campaigns"
+        ]
+    },
+    {
+        "question": "各类目下销量前3的商品分别是什么",
+        "sql": "SELECT * FROM (SELECT product_id, product_name, category_id, sales, ROW_NUMBER() OVER(PARTITION BY category_id ORDER BY sales DESC) AS rn FROM products WHERE status = 'on_sale') ranked WHERE rn <= 3",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "商品域",
+        "tables": [
+            "products"
+        ]
+    },
+    {
+        "question": "每个店铺销量最高的物品是什么",
+        "sql": "SELECT * FROM (SELECT p.product_id, p.product_name, p.store_id, p.sales, ROW_NUMBER() OVER(PARTITION BY p.store_id ORDER BY p.sales DESC) AS rn FROM products p WHERE p.status = 'on_sale') ranked WHERE rn = 1",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "商品域",
+        "tables": [
+            "products"
+        ]
+    },
+    {
+        "question": "查询每个物流单的最新一条轨迹信息",
+        "sql": "SELECT * FROM (SELECT track_id, shipment_id, location, description, track_time, track_type, ROW_NUMBER() OVER(PARTITION BY shipment_id ORDER BY track_time DESC) AS rn FROM shipment_tracks) ranked WHERE rn = 1",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "物流域",
+        "tables": [
+            "shipment_tracks"
+        ]
+    },
+    {
+        "question": "每个买家消费金额排名前3的交易",
+        "sql": "SELECT * FROM (SELECT order_id, user_id, pay_amount, ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY pay_amount DESC) AS rn FROM orders WHERE order_status != 'cancelled') ranked WHERE rn <= 3",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "每个卖家评分最高的商品是什么",
+        "sql": "SELECT * FROM (SELECT product_id, product_name, store_id, rating_score, ROW_NUMBER() OVER(PARTITION BY store_id ORDER BY rating_score DESC) AS rn FROM products WHERE status = 'on_sale' AND rating_score IS NOT NULL) ranked WHERE rn = 1",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "商品域",
+        "tables": [
+            "products"
+        ]
+    },
+    {
+        "question": "各店铺按GMV从高到低排名，考虑并列情况",
+        "sql": "SELECT store_id, SUM(pay_amount) AS total_gmv, RANK() OVER(ORDER BY SUM(pay_amount) DESC) AS gmv_rank FROM orders WHERE order_status != 'cancelled' GROUP BY store_id ORDER BY gmv_rank",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "各品类的商品数量排名（含并列）",
+        "sql": "SELECT category_id, COUNT(*) AS product_count, DENSE_RANK() OVER(ORDER BY COUNT(*) DESC) AS density_rank FROM products WHERE status = 'on_sale' GROUP BY category_id ORDER BY density_rank",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "商品域",
+        "tables": [
+            "products"
+        ]
+    },
+    {
+        "question": "每个月的累计GMV趋势是怎样的",
+        "sql": "SELECT month, monthly_gmv, SUM(monthly_gmv) OVER(ORDER BY month) AS cumulative_gmv FROM (SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders GROUP BY DATE_FORMAT(create_time, '%Y-%m')) t ORDER BY month",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "每个商家的累计销售额",
+        "sql": "SELECT store_id, month, monthly_sales, SUM(monthly_sales) OVER(PARTITION BY store_id ORDER BY month) AS cumulative_sales FROM (SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(pay_amount) AS monthly_sales FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m')) t ORDER BY store_id, month",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "各商户的累计订单数量趋势",
+        "sql": "SELECT store_id, month, monthly_orders, SUM(monthly_orders) OVER(PARTITION BY store_id ORDER BY month) AS cumulative_orders FROM (SELECT store_id, DATE_FORMAT(create_time, '%Y-%m') AS month, COUNT(*) AS monthly_orders FROM orders WHERE order_status != 'cancelled' GROUP BY store_id, DATE_FORMAT(create_time, '%Y-%m')) t ORDER BY store_id, month",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "各月GMV的环比增长率是多少",
+        "sql": "SELECT month, monthly_gmv, LAG(monthly_gmv) OVER(ORDER BY month) AS prev_gmv, ROUND((monthly_gmv - LAG(monthly_gmv) OVER(ORDER BY month)) / LAG(monthly_gmv) OVER(ORDER BY month) * 100, 2) AS growth_rate FROM (SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(total_amount) AS monthly_gmv FROM orders GROUP BY DATE_FORMAT(create_time, '%Y-%m')) t ORDER BY month",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "各月订单数量的环比变化",
+        "sql": "SELECT month, order_count, LAG(order_count) OVER(ORDER BY month) AS prev_count, order_count - LAG(order_count) OVER(ORDER BY month) AS diff FROM (SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, COUNT(*) AS order_count FROM orders GROUP BY DATE_FORMAT(create_time, '%Y-%m')) t ORDER BY month",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "每个客户两次领券的间隔天数",
+        "sql": "SELECT id, user_id, coupon_id, receive_time, LAG(receive_time) OVER(PARTITION BY user_id ORDER BY receive_time) AS prev_receive, DATEDIFF(receive_time, LAG(receive_time) OVER(PARTITION BY user_id ORDER BY receive_time)) AS days_gap FROM user_coupons WHERE status != 'expired' ORDER BY user_id, receive_time",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "营销域",
+        "tables": [
+            "user_coupons"
+        ]
+    },
+    {
+        "question": "各月新增客户数与上月对比",
+        "sql": "SELECT month, new_users, LAG(new_users) OVER(ORDER BY month) AS prev_new_users, new_users - LAG(new_users) OVER(ORDER BY month) AS diff FROM (SELECT DATE_FORMAT(register_time, '%Y-%m') AS month, COUNT(*) AS new_users FROM users GROUP BY DATE_FORMAT(register_time, '%Y-%m')) t ORDER BY month",
+        "difficulty": "hard",
+        "technique": "window_function",
+        "domain": "用户域",
+        "tables": [
+            "users"
+        ]
+    },
+    {
+        "question": "找出购买了与指定客户相同商品的其他客户",
+        "sql": "WITH user_products AS (SELECT DISTINCT oi.product_id FROM order_items oi INNER JOIN orders o ON oi.order_id = o.order_id WHERE o.user_id = 1 AND o.order_status != 'cancelled') SELECT DISTINCT o.user_id FROM orders o INNER JOIN order_items oi ON o.order_id = oi.order_id WHERE oi.product_id IN (SELECT product_id FROM user_products) AND o.user_id != 1 AND o.order_status != 'cancelled'",
+        "difficulty": "extra",
+        "technique": "cte",
+        "domain": "交易域",
+        "tables": [
+            "orders",
+            "order_items"
+        ]
+    },
+    {
+        "question": "连续3个月都有下单的买家有哪些",
+        "sql": "WITH monthly_orders AS (SELECT DISTINCT user_id, DATE_FORMAT(create_time, '%Y-%m') AS month FROM orders WHERE order_status != 'cancelled'), ranked AS (SELECT user_id, month, ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY month) AS rn FROM monthly_orders) SELECT DISTINCT r1.user_id FROM ranked r1 INNER JOIN ranked r3 ON r1.user_id = r3.user_id AND r3.rn = r1.rn + 2 WHERE r1.month < DATE_FORMAT(DATE_SUB(STR_TO_DATE(CONCAT(r3.month, '-01'), '%Y-%m-%d'), INTERVAL 2 MONTH), '%Y-%m')",
+        "difficulty": "extra",
+        "technique": "cte",
+        "domain": "交易域",
+        "tables": [
+            "orders"
+        ]
+    },
+    {
+        "question": "各店铺中每个品类的销售额占比是多少",
+        "sql": "WITH category_sales AS (SELECT p.store_id, p.category_id, SUM(oi.subtotal) AS cat_sales FROM order_items oi INNER JOIN products p ON oi.product_id = p.product_id INNER JOIN orders o ON oi.order_id = o.order_id WHERE o.order_status != 'cancelled' GROUP BY p.store_id, p.category_id), store_total AS (SELECT store_id, SUM(cat_sales) AS total_sales FROM category_sales GROUP BY store_id) SELECT cs.store_id, cs.category_id, cs.cat_sales, ROUND(cs.cat_sales / st.total_sales * 100, 2) AS sales_pct FROM category_sales cs INNER JOIN store_total st ON cs.store_id = st.store_id ORDER BY cs.store_id, cs.cat_sales DESC",
+        "difficulty": "extra",
+        "technique": "cte",
+        "domain": "交易域",
+        "tables": [
+            "orders",
+            "order_items",
+            "products"
+        ]
+    },
+    {
+        "question": "各商户的ROI（投入产出比）排名",
+        "sql": "WITH store_campaign_roi AS (SELECT store_id, SUM(cost) AS total_cost, SUM(actual_gmv) AS total_gmv, ROUND(SUM(actual_gmv) / NULLIF(SUM(cost), 0), 2) AS roi FROM campaigns WHERE store_id IS NOT NULL AND status = 'ended' GROUP BY store_id) SELECT store_id, total_cost, total_gmv, roi FROM store_campaign_roi ORDER BY roi DESC",
+        "difficulty": "extra",
+        "technique": "cte",
+        "domain": "营销域",
+        "tables": [
+            "campaigns"
+        ]
+    },
+    {
+        "question": "各店铺的转化率（下单数/访问量）排名",
+        "sql": "WITH store_conversion AS (SELECT store_id, SUM(visit_count) AS total_visits, SUM(order_count) AS total_orders, ROUND(SUM(order_count) / NULLIF(SUM(visit_count), 0) * 100, 2) AS conversion_rate FROM campaigns WHERE store_id IS NOT NULL GROUP BY store_id) SELECT store_id, total_visits, total_orders, conversion_rate FROM store_conversion ORDER BY conversion_rate DESC",
+        "difficulty": "extra",
+        "technique": "cte",
+        "domain": "营销域",
+        "tables": [
+            "campaigns"
+        ]
+    },
+    {
+        "question": "每个货品有哪些不同的SKU维度",
+        "sql": "SELECT product_id, MAX(CASE WHEN spec_name = '颜色' THEN spec_value END) AS color, MAX(CASE WHEN spec_name = '内存' THEN spec_value END) AS memory_size, MAX(CASE WHEN spec_name = '尺寸' THEN spec_value END) AS screen_size, MAX(CASE WHEN spec_name = '存储' THEN spec_value END) AS storage FROM product_specs GROUP BY product_id",
+        "difficulty": "extra",
+        "technique": "pivot_row_to_col",
+        "domain": "商品域",
+        "tables": [
+            "product_specs"
+        ]
+    },
+    {
+        "question": "统计每个标签下有多少物品",
+        "sql": "SELECT TRIM(tag) AS tag, COUNT(*) AS product_count FROM products, JSON_TABLE(CONCAT('[\\\"', REPLACE(tags, ',', '\\\",\\\"'), '\\\"]'), '$[*]' COLUMNS (tag VARCHAR(50) PATH '$')) AS jt WHERE tags IS NOT NULL AND tags != '' GROUP BY TRIM(tag) ORDER BY product_count DESC",
+        "difficulty": "extra",
+        "technique": "unpivot_col_to_row",
+        "domain": "商品域",
+        "tables": [
+            "products"
+        ]
+    }
+]

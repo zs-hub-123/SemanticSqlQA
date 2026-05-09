@@ -1,0 +1,2214 @@
+{
+  "0": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          200.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778303959.2126095,
+    "updated_at": 1778303984.4392133,
+    "ai_generated_sql": "SELECT COUNT(DISTINCT `user_id`) AS '买家数量' FROM `orders`",
+    "ai_explanation": "通过orders表统计所有购买过商品的独立用户数量，使用COUNT(DISTINCT user_id)确保每个用户只计算一次",
+    "ai_error": null,
+    "ai_elapsed": 25.186578273773193,
+    "ai_generated_at": 1778303984.4329197,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "买家数量"
+      ],
+      "rows": [
+        [
+          196.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778303984.4384518,
+    "result_match": "not_matched"
+  },
+  "1": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          300.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304014.44162,
+    "updated_at": 1778304033.9509096,
+    "ai_generated_sql": "SELECT COUNT(*) AS `地址数量` FROM `user_addresses`",
+    "ai_explanation": "统计user_addresses表中的地址总数，使用COUNT(*)函数计算所有记录数量，并设置中文别名为'地址数量'",
+    "ai_error": null,
+    "ai_elapsed": 19.5039165019989,
+    "ai_generated_at": 1778304033.947744,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "地址数量"
+      ],
+      "rows": [
+        [
+          300.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304033.9501183,
+    "result_match": "matched"
+  },
+  "2": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          40.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304063.9950922,
+    "updated_at": 1778304084.518597,
+    "ai_generated_sql": "SELECT COUNT(*) AS `总类目数量` FROM `categories`",
+    "ai_explanation": "统计categories表中的总记录数，即类目数量",
+    "ai_error": null,
+    "ai_elapsed": 20.516054153442383,
+    "ai_generated_at": 1778304084.5145583,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "总类目数量"
+      ],
+      "rows": [
+        [
+          40.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304084.517401,
+    "result_match": "matched"
+  },
+  "3": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          300.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304114.5214384,
+    "updated_at": 1778304135.912329,
+    "ai_generated_sql": "SELECT COUNT(`product_id`) AS `商品数量` FROM `products`",
+    "ai_explanation": "统计products表中的商品总记录数，使用product_id字段进行计数，结果集使用中文别名'商品数量'",
+    "ai_error": null,
+    "ai_elapsed": 21.3817400932312,
+    "ai_generated_at": 1778304135.908862,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "商品数量"
+      ],
+      "rows": [
+        [
+          300.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304135.9112086,
+    "result_match": "matched"
+  },
+  "4": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          1000.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304165.9156845,
+    "updated_at": 1778304180.8429382,
+    "ai_generated_sql": "SELECT COUNT(`spec_id`) AS `属性数量` FROM `product_specs`",
+    "ai_explanation": "统计product_specs表中所有规格记录的总数，对应属性数量指标",
+    "ai_error": null,
+    "ai_elapsed": 14.92081332206726,
+    "ai_generated_at": 1778304180.8395553,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "属性数量"
+      ],
+      "rows": [
+        [
+          1000.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304180.8420744,
+    "result_match": "matched"
+  },
+  "5": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          40.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304210.9102871,
+    "updated_at": 1778304226.7176843,
+    "ai_generated_sql": "SELECT COUNT(`store_id`) AS '店铺数量' FROM `stores`",
+    "ai_explanation": "直接统计stores表中的店铺ID数量，无筛选条件",
+    "ai_error": null,
+    "ai_elapsed": 15.795247077941895,
+    "ai_generated_at": 1778304226.7115364,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          40.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304226.7164128,
+    "result_match": "matched"
+  },
+  "6": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          800.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304256.772602,
+    "updated_at": 1778304284.652828,
+    "ai_generated_sql": "SELECT COUNT(*) AS `店铺评分数量` FROM `store_ratings`",
+    "ai_explanation": "统计store_ratings表中的总记录数，直接使用COUNT(*)函数获取店铺评分的总条数",
+    "ai_error": null,
+    "ai_elapsed": 27.872522115707397,
+    "ai_generated_at": 1778304284.648257,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺评分数量"
+      ],
+      "rows": [
+        [
+          800.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304284.6516116,
+    "result_match": "matched"
+  },
+  "7": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          800.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304314.6572654,
+    "updated_at": 1778305791.1413715,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 11.494853258132935,
+    "ai_generated_at": 1778305791.140619,
+    "sql_match": "not_matched",
+    "ai_tables_used": []
+  },
+  "8": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          1500.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304352.0586195,
+    "updated_at": 1778304371.1518826,
+    "ai_generated_sql": "SELECT COUNT(`item_id`) AS `订单明细数量` FROM `order_items`",
+    "ai_explanation": "统计order_items表中的明细ID总数，直接使用COUNT(item_id)计算订单明细行数，符合目标指标要求",
+    "ai_error": null,
+    "ai_elapsed": 19.08637762069702,
+    "ai_generated_at": 1778304371.1483047,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "订单明细数量"
+      ],
+      "rows": [
+        [
+          1500.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304371.150935,
+    "result_match": "matched"
+  },
+  "9": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          700.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304401.1667736,
+    "updated_at": 1778304417.9431603,
+    "ai_generated_sql": "SELECT COUNT(`payment_id`) AS '支付流水数量' FROM `payments`",
+    "ai_explanation": "统计payments表中的所有支付流水记录数量，直接使用payment_id字段进行计数",
+    "ai_error": null,
+    "ai_elapsed": 16.76824927330017,
+    "ai_generated_at": 1778304417.9392776,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "支付流水数量"
+      ],
+      "rows": [
+        [
+          700.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304417.9422135,
+    "result_match": "matched"
+  },
+  "10": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          20.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304447.9520845,
+    "updated_at": 1778304467.2696538,
+    "ai_generated_sql": "SELECT COUNT(*) AS `优惠券发放数量` FROM `user_coupons`",
+    "ai_explanation": "统计用户优惠券表中的总记录数，即优惠券发放总数",
+    "ai_error": null,
+    "ai_elapsed": 19.3046236038208,
+    "ai_generated_at": 1778304467.2613177,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "优惠券发放数量"
+      ],
+      "rows": [
+        [
+          400.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304467.267499,
+    "result_match": "not_matched"
+  },
+  "11": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          15.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304497.2807298,
+    "updated_at": 1778304516.8527806,
+    "ai_generated_sql": "SELECT COUNT(`campaign_id`) AS `活动数量` FROM `campaigns`",
+    "ai_explanation": "统计campaigns表中的活动记录总数，直接使用campaign_id字段进行计数",
+    "ai_error": null,
+    "ai_elapsed": 19.563571453094482,
+    "ai_generated_at": 1778304516.8481734,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "活动数量"
+      ],
+      "rows": [
+        [
+          15.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304516.8517325,
+    "result_match": "matched"
+  },
+  "12": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          400.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304546.860062,
+    "updated_at": 1778304562.1598358,
+    "ai_generated_sql": "SELECT COUNT(`id`) AS `用户券总记录数` FROM `user_coupons`",
+    "ai_explanation": "统计user_coupons表中的总记录数，即用户领取的所有优惠券数量",
+    "ai_error": null,
+    "ai_elapsed": 15.283926486968994,
+    "ai_generated_at": 1778304562.1480026,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户券总记录数"
+      ],
+      "rows": [
+        [
+          400.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304562.1580305,
+    "result_match": "matched"
+  },
+  "13": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          600.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304592.1812587,
+    "updated_at": 1778304610.500927,
+    "ai_generated_sql": "SELECT COUNT(`shipment_id`) AS '物流单数量' FROM `shipments`",
+    "ai_explanation": "统计shipments表中的物流单总数，直接使用COUNT函数计算shipment_id字段的行数",
+    "ai_error": null,
+    "ai_elapsed": 18.305033683776855,
+    "ai_generated_at": 1778304610.4949687,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "物流单数量"
+      ],
+      "rows": [
+        [
+          600.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304610.4996393,
+    "result_match": "matched"
+  },
+  "14": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          4000.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304640.521267,
+    "updated_at": 1778304653.7732499,
+    "ai_generated_sql": "SELECT COUNT(`track_id`) AS '物流轨迹数量' FROM `shipment_tracks`",
+    "ai_explanation": "统计shipment_tracks表中所有轨迹记录的总数，直接使用track_id字段进行计数",
+    "ai_error": null,
+    "ai_elapsed": 13.241399765014648,
+    "ai_generated_at": 1778304653.7679076,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "物流轨迹数量"
+      ],
+      "rows": [
+        [
+          4000.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304653.771752,
+    "result_match": "matched"
+  },
+  "15": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          77.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304683.776227,
+    "updated_at": 1778304705.7063591,
+    "ai_generated_sql": "SELECT COUNT(`users`.`user_id`) AS `男性用户数量` FROM `users` WHERE `users`.`gender` = 'M';",
+    "ai_explanation": "统计性别为男的用户总数，直接从users表中筛选gender字段为'M'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 21.91915535926819,
+    "ai_generated_at": 1778304705.7009647,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "男性用户数量"
+      ],
+      "rows": [
+        [
+          77.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304705.7046125,
+    "result_match": "matched"
+  },
+  "16": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          82.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304735.7103121,
+    "updated_at": 1778304743.7309046,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 8.015434980392456,
+    "ai_generated_at": 1778304743.7303524,
+    "sql_match": "not_matched"
+  },
+  "17": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          41.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304773.7344542,
+    "updated_at": 1778304792.4984484,
+    "ai_generated_sql": "SELECT COUNT(*) AS '未知性别用户数量' FROM `users` WHERE `gender` = 'U'",
+    "ai_explanation": "从users表中统计性别为'U'(未知)的用户数量，符合MQL约束条件中性别=未知性别的过滤要求",
+    "ai_error": null,
+    "ai_elapsed": 18.73846459388733,
+    "ai_generated_at": 1778304792.4773042,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "未知性别用户数量"
+      ],
+      "rows": [
+        [
+          41.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304792.4911053,
+    "result_match": "matched"
+  },
+  "18": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          169.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304822.5030801,
+    "updated_at": 1778304839.265603,
+    "ai_generated_sql": "SELECT COUNT(`user_id`) AS `用户数量` FROM `users` WHERE `status` = 'active'",
+    "ai_explanation": "从users表中统计状态为'active'（正常）的用户数量",
+    "ai_error": null,
+    "ai_elapsed": 16.741699934005737,
+    "ai_generated_at": 1778304839.2500014,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户数量"
+      ],
+      "rows": [
+        [
+          169.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304839.2599244,
+    "result_match": "matched"
+  },
+  "19": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          169.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304869.2699664,
+    "updated_at": 1778304889.1641698,
+    "ai_generated_sql": "SELECT COUNT(`users`.`user_id`) AS '用户数量' FROM `users` WHERE `users`.`status` = 'active'",
+    "ai_explanation": "统计用户表中状态为'active'（正常）的用户数量，符合约束条件要求的WHERE过滤",
+    "ai_error": null,
+    "ai_elapsed": 19.878955364227295,
+    "ai_generated_at": 1778304889.1529074,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户数量"
+      ],
+      "rows": [
+        [
+          169.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304889.1621115,
+    "result_match": "matched"
+  },
+  "20": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          22.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304919.1679375,
+    "updated_at": 1778304935.5140347,
+    "ai_generated_sql": "SELECT COUNT(DISTINCT `users`.`user_id`) AS `未激活买家数量` FROM `users` INNER JOIN `orders` ON `users`.`user_id` = `orders`.`user_id` WHERE `users`.`status` = 'inactive'",
+    "ai_explanation": "通过INNER JOIN连接users和orders表确保用户有购买记录，筛选users表中状态为'inactive'的用户，并统计去重后的用户ID数量",
+    "ai_error": null,
+    "ai_elapsed": 16.33489465713501,
+    "ai_generated_at": 1778304935.5071034,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "未激活买家数量"
+      ],
+      "rows": [
+        [
+          22.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304935.512089,
+    "result_match": "matched"
+  },
+  "21": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          22.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778304965.5227098,
+    "updated_at": 1778304979.0708585,
+    "ai_generated_sql": "SELECT COUNT(`users`.`user_id`) AS '用户数量' FROM `users` WHERE `users`.`status` = 'inactive'",
+    "ai_explanation": "统计用户表中状态为未激活(inactive)的用户数量，符合MQL约束条件要求的过滤和指标计算",
+    "ai_error": null,
+    "ai_elapsed": 13.53750991821289,
+    "ai_generated_at": 1778304979.0651467,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户数量"
+      ],
+      "rows": [
+        [
+          22.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778304979.0694964,
+    "result_match": "matched"
+  },
+  "22": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          9.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305009.0746174,
+    "updated_at": 1778305023.6137292,
+    "ai_generated_sql": "SELECT COUNT(`users`.`user_id`) AS '封禁用户数量' FROM `users` WHERE `users`.`status` = 'banned'",
+    "ai_explanation": "从users表中统计状态为'banned'（封禁）的用户数量，结果集使用中文别名展示",
+    "ai_error": null,
+    "ai_elapsed": 14.52939486503601,
+    "ai_generated_at": 1778305023.608564,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "封禁用户数量"
+      ],
+      "rows": [
+        [
+          9.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305023.612129,
+    "result_match": "matched"
+  },
+  "23": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          9.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305053.6205876,
+    "updated_at": 1778305067.4663744,
+    "ai_generated_sql": "SELECT COUNT(*) AS '用户数量' FROM `users` WHERE `status` = 'banned';",
+    "ai_explanation": "统计用户表中状态为'banned'（封禁）的用户数量，直接使用users表的status字段进行过滤，符合要求的筛选条件和指标计算",
+    "ai_error": null,
+    "ai_elapsed": 13.834527730941772,
+    "ai_generated_at": 1778305067.4604316,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户数量"
+      ],
+      "rows": [
+        [
+          9.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305067.4647527,
+    "result_match": "matched"
+  },
+  "24": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          250.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305097.470002,
+    "updated_at": 1778305113.0343432,
+    "ai_generated_sql": "SELECT COUNT(`product_id`) AS `商品数量` FROM `products` WHERE `status` = 'on_sale'",
+    "ai_explanation": "统计商品状态为'上架'的商品数量，直接从products表中筛选status='on_sale'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 15.552143812179565,
+    "ai_generated_at": 1778305113.026605,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "商品数量"
+      ],
+      "rows": [
+        [
+          250.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305113.0324671,
+    "result_match": "matched"
+  },
+  "25": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          250.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305143.0379422,
+    "updated_at": 1778305158.9252875,
+    "ai_generated_sql": "SELECT COUNT(*) AS `商品数量` FROM `products` WHERE `status` = 'on_sale'",
+    "ai_explanation": "统计状态为'上架'的商品总数，直接从products表中筛选status字段值为'on_sale'的记录进行计数",
+    "ai_error": null,
+    "ai_elapsed": 15.850913047790527,
+    "ai_generated_at": 1778305158.8934748,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "商品数量"
+      ],
+      "rows": [
+        [
+          250.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305158.9238744,
+    "result_match": "matched"
+  },
+  "26": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          30.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305188.930007,
+    "updated_at": 1778305208.8679476,
+    "ai_generated_sql": "SELECT COUNT(*) AS `商品数量` FROM `products` WHERE `status` = 'off_sale'",
+    "ai_explanation": "统计商品状态为下架的商品总数，使用products表的status字段进行过滤，符合MQL约束条件中的强制过滤要求",
+    "ai_error": null,
+    "ai_elapsed": 19.927725315093994,
+    "ai_generated_at": 1778305208.862314,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "商品数量"
+      ],
+      "rows": [
+        [
+          30.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305208.8663838,
+    "result_match": "matched"
+  },
+  "27": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          30.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305238.872943,
+    "updated_at": 1778305262.9158218,
+    "ai_generated_sql": "SELECT COUNT(*) AS '商品数量' FROM `products` WHERE `status` = 'off_sale'",
+    "ai_explanation": "统计商品状态为下架的商品数量，直接从products表中筛选status='off_sale'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 24.031852960586548,
+    "ai_generated_at": 1778305262.910089,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "商品数量"
+      ],
+      "rows": [
+        [
+          30.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305262.9143846,
+    "result_match": "matched"
+  },
+  "28": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          20.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305292.9198844,
+    "updated_at": 1778305308.564543,
+    "ai_generated_sql": "SELECT COUNT(*) AS '商品数量' FROM `products` WHERE `status` = 'pre_sale'",
+    "ai_explanation": "统计商品状态为预售的商品数量，直接从products表中筛选status字段值为'pre_sale'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 15.628917217254639,
+    "ai_generated_at": 1778305308.5572317,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "商品数量"
+      ],
+      "rows": [
+        [
+          20.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305308.5621023,
+    "result_match": "matched"
+  },
+  "29": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          20.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305338.5706244,
+    "updated_at": 1778305363.3363023,
+    "ai_generated_sql": "SELECT COUNT(*) AS `商品数量` FROM `products` WHERE `status` = 'pre_sale'",
+    "ai_explanation": "统计商品状态为预售的商品数量，直接从products表中筛选status='pre_sale'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 24.754127025604248,
+    "ai_generated_at": 1778305363.329723,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "商品数量"
+      ],
+      "rows": [
+        [
+          20.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305363.3349438,
+    "result_match": "matched"
+  },
+  "30": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305393.341214,
+    "updated_at": 1778305426.6496663,
+    "ai_generated_sql": "SELECT COUNT(`store_id`) AS '店铺数量' FROM `stores` WHERE `store_type` = 'flagship'",
+    "ai_explanation": "统计店铺类型为旗舰店的店铺数量，直接从stores表中筛选store_type='flagship'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 33.29801821708679,
+    "ai_generated_at": 1778305426.6439996,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305426.6482816,
+    "result_match": "matched"
+  },
+  "31": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305456.6537325,
+    "updated_at": 1778305474.481043,
+    "ai_generated_sql": "SELECT COUNT(`store_id`) AS `店铺数量` FROM `stores` WHERE `store_type` = 'flagship'",
+    "ai_explanation": "从stores表中筛选店铺类型为旗舰店的记录，统计符合条件的店铺数量",
+    "ai_error": null,
+    "ai_elapsed": 17.812023401260376,
+    "ai_generated_at": 1778305474.4745245,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305474.4787617,
+    "result_match": "matched"
+  },
+  "32": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305504.4899719,
+    "updated_at": 1778305520.35257,
+    "ai_generated_sql": "SELECT COUNT(`store_id`) AS `店铺数量` FROM `stores` WHERE `store_type` = 'specialty'",
+    "ai_explanation": "统计店铺类型为专卖店的店铺数量，直接从stores表中筛选store_type为'specialty'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 15.8515784740448,
+    "ai_generated_at": 1778305520.3466053,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305520.3510866,
+    "result_match": "matched"
+  },
+  "33": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305550.3586338,
+    "updated_at": 1778305570.9444535,
+    "ai_generated_sql": "SELECT COUNT(DISTINCT `store_id`) AS `店铺数量` FROM `stores` WHERE `store_type` = 'specialty'",
+    "ai_explanation": "统计店铺类型为专卖店（store_type='specialty'）的店铺数量，直接从stores表中筛选并计数",
+    "ai_error": null,
+    "ai_elapsed": 20.57258653640747,
+    "ai_generated_at": 1778305570.9374454,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305570.9426703,
+    "result_match": "matched"
+  },
+  "34": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305600.9519436,
+    "updated_at": 1778305623.9397037,
+    "ai_generated_sql": "SELECT COUNT(*) AS '店铺数量' FROM `stores` WHERE `store_type` = 'franchise'",
+    "ai_explanation": "统计所有店铺类型为加盟店（franchise）的店铺数量，直接从stores表中筛选符合条件的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 22.97320294380188,
+    "ai_generated_at": 1778305623.932735,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305623.9379184,
+    "result_match": "matched"
+  },
+  "35": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305653.9442647,
+    "updated_at": 1778305669.8224974,
+    "ai_generated_sql": "SELECT COUNT(*) AS `店铺数量` FROM `stores` WHERE `store_type` = 'franchise'",
+    "ai_explanation": "统计店铺类型为加盟店的店铺数量，直接从stores表中筛选store_type为'franchise'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 15.856589794158936,
+    "ai_generated_at": 1778305669.8060777,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305669.8155804,
+    "result_match": "matched"
+  },
+  "36": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305699.8281517,
+    "updated_at": 1778305719.4263053,
+    "ai_generated_sql": "SELECT COUNT(`store_id`) AS `店铺数量` FROM `stores` WHERE `store_type` = 'personal'",
+    "ai_explanation": "从stores表中筛选店铺类型为'personal'（个人店）的记录，统计符合条件的店铺数量",
+    "ai_error": null,
+    "ai_elapsed": 19.585604667663574,
+    "ai_generated_at": 1778305719.419584,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305719.4246213,
+    "result_match": "matched"
+  },
+  "37": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305845.4977407,
+    "updated_at": 1778305864.1133661,
+    "ai_generated_sql": "SELECT COUNT(DISTINCT `store_id`) AS '店铺数量' FROM `stores` WHERE `store_type` = 'personal'",
+    "ai_explanation": "统计店铺类型为个人店的店铺数量。使用stores表的store_type字段进行过滤，通过COUNT(DISTINCT store_id)确保每个店铺仅计数一次。",
+    "ai_error": null,
+    "ai_elapsed": 18.600272178649902,
+    "ai_generated_at": 1778305864.1036782,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          10.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305864.111202,
+    "result_match": "matched"
+  },
+  "38": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          27.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305894.140089,
+    "updated_at": 1778305911.7029455,
+    "ai_generated_sql": "SELECT COUNT(`stores`.`store_id`) AS '店铺数量' FROM `stores` WHERE `stores`.`status` = 'open';",
+    "ai_explanation": "从stores表中筛选状态为'open'（营业中）的店铺，统计店铺数量并返回中文别名",
+    "ai_error": null,
+    "ai_elapsed": 17.55001974105835,
+    "ai_generated_at": 1778305911.6959162,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          27.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778305911.7013214,
+    "result_match": "matched"
+  },
+  "39": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          27.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305941.707929,
+    "updated_at": 1778305948.6045384,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 6.890029191970825,
+    "ai_generated_at": 1778305948.6038184,
+    "sql_match": "not_matched"
+  },
+  "40": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          2.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778305978.60985,
+    "updated_at": 1778306002.1052477,
+    "ai_generated_sql": "SELECT COUNT(*) AS '店铺数量' FROM `stores` WHERE `status` = 'closed'",
+    "ai_explanation": "统计状态为'关闭'的店铺数量，直接从stores表中筛选status='closed'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 23.470032691955566,
+    "ai_generated_at": 1778306002.0857532,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          2.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778306002.1035905,
+    "result_match": "matched"
+  },
+  "41": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          2.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306032.1105254,
+    "updated_at": 1778306058.6122818,
+    "ai_generated_sql": "SELECT COUNT(`stores`.`store_id`) AS `店铺数量` FROM `stores` WHERE `stores`.`status` = 'closed'",
+    "ai_explanation": "统计所有状态为关闭的店铺数量，直接从店铺表中筛选status字段为'closed'的记录进行计数",
+    "ai_error": null,
+    "ai_elapsed": 26.48750615119934,
+    "ai_generated_at": 1778306058.6053836,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          2.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778306058.6106617,
+    "result_match": "matched"
+  },
+  "42": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          2.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306088.6175952,
+    "updated_at": 1778306102.4320521,
+    "ai_generated_sql": "SELECT COUNT(*) AS `店铺数量` FROM `stores` WHERE `status` = 'frozen'",
+    "ai_explanation": "从stores表中筛选状态为'frozen'的店铺记录，统计符合条件的店铺数量",
+    "ai_error": null,
+    "ai_elapsed": 13.79809832572937,
+    "ai_generated_at": 1778306102.4219875,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          2.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778306102.4297414,
+    "result_match": "matched"
+  },
+  "43": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          2.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306132.4368377,
+    "updated_at": 1778306161.5109332,
+    "ai_generated_sql": "SELECT COUNT(*) AS `店铺数量` FROM `stores` WHERE `status` = 'frozen'",
+    "ai_explanation": "统计状态为冻结的店铺数量，直接从stores表中筛选status字段为'frozen'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 29.060630083084106,
+    "ai_generated_at": 1778306161.5038395,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          2.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778306161.5089927,
+    "result_match": "matched"
+  },
+  "44": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          9.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306191.5166678,
+    "updated_at": 1778306198.631614,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 7.10797119140625,
+    "ai_generated_at": 1778306198.630607,
+    "sql_match": "not_matched"
+  },
+  "45": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          9.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306228.636895,
+    "updated_at": 1778306247.894597,
+    "ai_generated_sql": "SELECT COUNT(`store_id`) AS '店铺数量' FROM `stores` WHERE `status` = 'reviewing'",
+    "ai_explanation": "从stores表中筛选状态为'reviewing'（审核中）的店铺，统计符合条件的店铺数量",
+    "ai_error": null,
+    "ai_elapsed": 19.243678331375122,
+    "ai_generated_at": 1778306247.8866217,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "店铺数量"
+      ],
+      "rows": [
+        [
+          9.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778306247.892803,
+    "result_match": "matched"
+  },
+  "46": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          50.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306277.9461327,
+    "updated_at": 1778306285.4464629,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 7.492902040481567,
+    "ai_generated_at": 1778306285.4456105,
+    "sql_match": "not_matched"
+  },
+  "47": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          50.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306315.4522202,
+    "updated_at": 1778306322.175421,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 6.715371370315552,
+    "ai_generated_at": 1778306322.1745415,
+    "sql_match": "not_matched"
+  },
+  "48": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          100.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306352.1840513,
+    "updated_at": 1778306358.465362,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 6.273905992507935,
+    "ai_generated_at": 1778306358.4644227,
+    "sql_match": "not_matched"
+  },
+  "49": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          100.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306388.471499,
+    "updated_at": 1778306394.7279491,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 6.24963903427124,
+    "ai_generated_at": 1778306394.7271554,
+    "sql_match": "not_matched"
+  },
+  "50": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          100.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306424.7337897,
+    "updated_at": 1778306432.4882967,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 7.7463579177856445,
+    "ai_generated_at": 1778306432.487253,
+    "sql_match": "not_matched"
+  },
+  "51": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          100.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306462.493909,
+    "updated_at": 1778306466.9233387,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 4.4217846393585205,
+    "ai_generated_at": 1778306466.922501,
+    "sql_match": "not_matched"
+  },
+  "52": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          400.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306496.9286237,
+    "updated_at": 1778306504.0619862,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 7.124382972717285,
+    "ai_generated_at": 1778306504.0609586,
+    "sql_match": "not_matched"
+  },
+  "53": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          400.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306534.0682433,
+    "updated_at": 1778306543.8088932,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 9.732436180114746,
+    "ai_generated_at": 1778306543.80757,
+    "sql_match": "not_matched"
+  },
+  "54": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          80.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306573.8146374,
+    "updated_at": 1778306582.4129953,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 8.590628862380981,
+    "ai_generated_at": 1778306582.4121673,
+    "sql_match": "not_matched"
+  },
+  "55": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          80.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306612.4198642,
+    "updated_at": 1778306616.8266575,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 4.39818263053894,
+    "ai_generated_at": 1778306616.825483,
+    "sql_match": "not_matched"
+  },
+  "56": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          30.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306646.8318028,
+    "updated_at": 1778306655.2794695,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 8.440250158309937,
+    "ai_generated_at": 1778306655.2784667,
+    "sql_match": "not_matched"
+  },
+  "57": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          30.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306685.2852864,
+    "updated_at": 1778306694.186638,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 8.894056558609009,
+    "ai_generated_at": 1778306694.185742,
+    "sql_match": "not_matched"
+  },
+  "58": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          40.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306724.192244,
+    "updated_at": 1778306733.1953483,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 8.995133638381958,
+    "ai_generated_at": 1778306733.1941516,
+    "sql_match": "not_matched"
+  },
+  "59": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          40.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306763.2016478,
+    "updated_at": 1778306771.4994712,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 8.287700653076172,
+    "ai_generated_at": 1778306771.4972513,
+    "sql_match": "not_matched"
+  },
+  "60": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          317.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306801.5302308,
+    "updated_at": 1778306806.8241832,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 5.28627610206604,
+    "ai_generated_at": 1778306806.8232594,
+    "sql_match": "not_matched"
+  },
+  "61": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          317.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306836.8301976,
+    "updated_at": 1778306854.7794385,
+    "ai_generated_sql": "SELECT COUNT(*) AS `支付笔数` FROM `payments` WHERE `payment_method` = 'alipay'",
+    "ai_explanation": "统计支付方式为支付宝的支付记录总数，直接从payments表中筛选payment_method字段值为'alipay'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 17.929797410964966,
+    "ai_generated_at": 1778306854.7676852,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "支付笔数"
+      ],
+      "rows": [
+        [
+          291.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778306854.7764888,
+    "result_match": "not_matched"
+  },
+  "62": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          206.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306884.7866547,
+    "updated_at": 1778306892.1814475,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 7.38650107383728,
+    "ai_generated_at": 1778306892.1802506,
+    "sql_match": "not_matched"
+  },
+  "63": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          206.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306922.1876771,
+    "updated_at": 1778306932.0547056,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 9.858174562454224,
+    "ai_generated_at": 1778306932.0537844,
+    "sql_match": "not_matched"
+  },
+  "64": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          68.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778306962.0618372,
+    "updated_at": 1778307001.02458,
+    "ai_generated_sql": "SELECT COUNT(*) AS `支付笔数` FROM `payments` WHERE `payment_method` = 'bank_card' AND `status` = 'success'",
+    "ai_explanation": "统计支付方式为银行卡且支付状态为成功的支付记录总数",
+    "ai_error": null,
+    "ai_elapsed": 38.9482946395874,
+    "ai_generated_at": 1778307001.0175734,
+    "sql_match": "not_matched",
+    "ai_sql_result": null,
+    "ai_execute_error": "1054 (42S22): Unknown column 'status' in 'where clause'",
+    "result_match": "not_matched",
+    "ai_executed_at": 1778307001.0235643
+  },
+  "65": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          68.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307031.0303876,
+    "updated_at": 1778307035.7456803,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 4.7064127922058105,
+    "ai_generated_at": 1778307035.7445545,
+    "sql_match": "not_matched"
+  },
+  "66": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          47.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307065.7535954,
+    "updated_at": 1778307074.4664128,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 8.704774856567383,
+    "ai_generated_at": 1778307074.4652307,
+    "sql_match": "not_matched"
+  },
+  "67": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          47.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307104.4719367,
+    "updated_at": 1778307113.5610769,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 9.081161260604858,
+    "ai_generated_at": 1778307113.5601125,
+    "sql_match": "not_matched"
+  },
+  "68": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          32.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307143.567268,
+    "updated_at": 1778307155.1092308,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 11.533629417419434,
+    "ai_generated_at": 1778307155.1083014,
+    "sql_match": "not_matched"
+  },
+  "69": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          32.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307185.114884,
+    "updated_at": 1778307204.3235736,
+    "ai_generated_sql": "SELECT COUNT(*) AS '支付笔数' FROM `payments` WHERE `payment_method` = 'installment'",
+    "ai_explanation": "统计支付方式为分期（installment）的支付记录总数，直接从payments表中筛选符合条件的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 19.192222356796265,
+    "ai_generated_at": 1778307204.3148851,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "支付笔数"
+      ],
+      "rows": [
+        [
+          37.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778307204.3213544,
+    "result_match": "not_matched"
+  },
+  "70": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          1200.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307234.3473547,
+    "updated_at": 1778307285.159239,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "未能生成有效的SQL",
+    "ai_elapsed": 50.80220413208008,
+    "ai_generated_at": 1778307285.1579983,
+    "sql_match": "not_matched"
+  },
+  "71": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          100.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307315.166,
+    "updated_at": 1778307320.592313,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "BusinessRule.__init__() got an unexpected keyword argument 'created_at'",
+    "ai_elapsed": 5.417570352554321,
+    "ai_generated_at": 1778307320.5911744,
+    "sql_match": "not_matched"
+  },
+  "72": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          100.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307350.5989344,
+    "updated_at": 1778307363.3553054,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "无法理解您的问题，请尝试使用更标准的业务术语",
+    "ai_elapsed": 12.746211767196655,
+    "ai_generated_at": 1778307363.3543167,
+    "sql_match": "not_matched"
+  },
+  "73": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          100.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307393.361646,
+    "updated_at": 1778307409.0503407,
+    "ai_generated_sql": "SELECT COUNT(*) AS `退款商品数量` FROM `order_items` WHERE `refund_status` = 'rejected'",
+    "ai_explanation": "统计order_items表中退款状态为已拒绝（rejected）的商品数量",
+    "ai_error": null,
+    "ai_elapsed": 15.65665578842163,
+    "ai_generated_at": 1778307409.0274436,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "退款商品数量"
+      ],
+      "rows": [
+        [
+          100.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778307409.0475397,
+    "result_match": "matched"
+  },
+  "74": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          291.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307439.0570912,
+    "updated_at": 1778307459.8731787,
+    "ai_generated_sql": "SELECT COUNT(`payment_id`) AS '支付流水数量' FROM `payments` WHERE `payment_method` = 'alipay'",
+    "ai_explanation": "统计支付方式为支付宝的支付记录总数，直接从payments表中筛选payment_method为'alipay'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 20.797596216201782,
+    "ai_generated_at": 1778307459.8625252,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "支付流水数量"
+      ],
+      "rows": [
+        [
+          291.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778307459.8709812,
+    "result_match": "matched"
+  },
+  "75": {
+    "correct_sql_result": {
+      "columns": [
+        "total"
+      ],
+      "rows": [
+        [
+          291.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778307489.8796878,
+    "updated_at": 1778307510.840827,
+    "ai_generated_sql": "SELECT COUNT(*) AS '支付流水数量' FROM `payments` WHERE `payment_method` = 'alipay'",
+    "ai_explanation": "统计支付方式为支付宝的支付记录总数，直接从payments表中筛选payment_method字段值为'alipay'的记录并计数",
+    "ai_error": null,
+    "ai_elapsed": 20.942973613739014,
+    "ai_generated_at": 1778307510.8311915,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "支付流水数量"
+      ],
+      "rows": [
+        [
+          291.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778307510.8386915,
+    "result_match": "matched"
+  }
+}

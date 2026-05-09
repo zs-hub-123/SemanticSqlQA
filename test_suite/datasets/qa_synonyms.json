@@ -1,0 +1,825 @@
+[
+  {
+    "question": "姓张的客户有哪些",
+    "sql": "SELECT user_id, username, nickname FROM users WHERE nickname LIKE '张%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "花名里带\"大\"的客户有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM users WHERE nickname LIKE '%大%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "有多少用户绑定了邮箱",
+    "sql": "SELECT COUNT(*) AS cnt FROM users WHERE email IS NOT NULL AND email != ''",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "电子邮件以qq.com结尾的买家有哪些",
+    "sql": "SELECT user_id, username, email FROM users WHERE email LIKE '%@qq.com'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "VIP等级为5的会员有多少人",
+    "sql": "SELECT COUNT(*) AS cnt FROM users WHERE user_level = 5",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "等级最高的前10名客户是谁",
+    "sql": "SELECT user_id, username, user_level FROM users ORDER BY user_level DESC LIMIT 10",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "注册日期在2024年1月的买家有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM users WHERE DATE_FORMAT(register_time, '%Y-%m') = '2024-01'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "可用余额超过1000元的客户有哪些",
+    "sql": "SELECT user_id, username, balance FROM users WHERE balance > 1000 ORDER BY balance DESC",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "城市为上海的用户有多少个收货地址",
+    "sql": "SELECT COUNT(*) AS cnt FROM user_addresses WHERE city = '上海'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "各区县分别有多少个收货地址",
+    "sql": "SELECT district, COUNT(*) AS cnt FROM user_addresses WHERE district IS NOT NULL GROUP BY district ORDER BY cnt DESC",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "收件人叫\"张三\"的地址有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM user_addresses WHERE receiver_name = '张三'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "具体地址中包含\"小区\"的有多少条",
+    "sql": "SELECT COUNT(*) AS cnt FROM user_addresses WHERE detail_address LIKE '%小区%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "有多少用户设置了默认地址",
+    "sql": "SELECT COUNT(*) AS cnt FROM user_addresses WHERE is_default = 1",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "各级行政区划分别有多少地址",
+    "sql": "SELECT province, COUNT(*) AS cnt FROM user_addresses GROUP BY province ORDER BY cnt DESC",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "用户域",
+    "tables": [
+      "user_addresses"
+    ]
+  },
+  {
+    "question": "类目名叫\"手机通讯\"的分类信息",
+    "sql": "SELECT category_id, category_name, parent_id FROM categories WHERE category_name = '手机通讯'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "包含\"数码\"关键字的品类名有哪些",
+    "sql": "SELECT category_id, category_name FROM categories WHERE category_name LIKE '%数码%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "上级分类为空的顶级类目有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM categories WHERE parent_id IS NULL",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "第一层级和第二层级的分类各有多少个",
+    "sql": "SELECT level, COUNT(*) AS cnt FROM categories GROUP BY level",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "商品域",
+    "tables": [
+      "categories"
+    ]
+  },
+  {
+    "question": "产品名中包含\"蓝牙耳机\"的货品有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM products WHERE product_name LIKE '%蓝牙耳机%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "商品名以\"OPPO\"开头的有哪些",
+    "sql": "SELECT product_id, product_name, price FROM products WHERE product_name LIKE 'OPPO%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "属性名为\"颜色\"的规格有多少条",
+    "sql": "SELECT COUNT(*) AS cnt FROM product_specs WHERE spec_name = '颜色'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "参数值为\"黑色\"的规格涉及哪些商品",
+    "sql": "SELECT DISTINCT product_id FROM product_specs WHERE spec_value = '黑色'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "商品域",
+    "tables": [
+      "product_specs"
+    ]
+  },
+  {
+    "question": "店名包含\"旗舰\"的店铺有哪些",
+    "sql": "SELECT store_id, store_name, store_type FROM stores WHERE store_name LIKE '%旗舰%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "每个店主的店铺数量是多少",
+    "sql": "SELECT owner_id, COUNT(*) AS store_count FROM stores GROUP BY owner_id ORDER BY store_count DESC",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "评价内容包含\"好评\"的有几条",
+    "sql": "SELECT COUNT(*) AS cnt FROM store_ratings WHERE content LIKE '%好评%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "订单号以\"2024\"开头的交易有多少笔",
+    "sql": "SELECT COUNT(*) AS cnt FROM orders WHERE order_no LIKE '2024%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "备注不为空的订单有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM orders WHERE remark IS NOT NULL AND remark != ''",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "付款时间在2024年6月的订单总金额是多少",
+    "sql": "SELECT SUM(pay_amount) AS total FROM orders WHERE DATE_FORMAT(pay_time, '%Y-%m') = '2024-06' AND order_status != 'cancelled'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "流水号以\"WX\"开头的支付记录有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM payments WHERE payment_no LIKE 'WX%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "运单号以\"SF\"开头的包裹有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM shipments WHERE shipment_no LIKE 'SF%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "快递单号以\"YT\"开头的物流信息有哪些",
+    "sql": "SELECT shipment_id, shipment_no, carrier, status FROM shipments WHERE shipment_no LIKE 'YT%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "寄件人\"张仓库\"发出了多少个包裹",
+    "sql": "SELECT COUNT(*) AS cnt FROM shipments WHERE sender_name = '张仓库'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "经过北京市的物流轨迹有多少条",
+    "sql": "SELECT COUNT(*) AS cnt FROM shipment_tracks WHERE location LIKE '%北京%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "物流域",
+    "tables": [
+      "shipment_tracks"
+    ]
+  },
+  {
+    "question": "券名包含\"满减\"的优惠券有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM coupons WHERE coupon_name LIKE '%满减%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "各券类型的优惠券数量",
+    "sql": "SELECT coupon_type, COUNT(*) AS cnt FROM coupons GROUP BY coupon_type",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "活动名称包含\"双11\"的促销有几个",
+    "sql": "SELECT campaign_id, campaign_name, campaign_type FROM campaigns WHERE campaign_name LIKE '%双11%'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "2024年1月的领券记录有多少条",
+    "sql": "SELECT COUNT(*) AS cnt FROM user_coupons WHERE DATE_FORMAT(receive_time, '%Y-%m') = '2024-01'",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "最近7天的领券记录有多少条",
+    "sql": "SELECT COUNT(*) AS cnt FROM user_coupons WHERE receive_time >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)",
+    "difficulty": "easy",
+    "technique": "synonym_alias",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "各月的成交总额是多少",
+    "sql": "SELECT DATE_FORMAT(create_time, '%Y-%m') AS month, SUM(pay_amount) AS total_gmv FROM orders WHERE order_status NOT IN ('cancelled', 'refunding') GROUP BY DATE_FORMAT(create_time, '%Y-%m') ORDER BY month",
+    "difficulty": "medium",
+    "technique": "synonym_biz",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "2024年全年的成交额是多少",
+    "sql": "SELECT SUM(pay_amount) AS total_gmv FROM orders WHERE YEAR(create_time) = 2024 AND order_status NOT IN ('cancelled', 'refunding')",
+    "difficulty": "easy",
+    "technique": "synonym_biz",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各商户的人均消费是多少",
+    "sql": "SELECT store_id, ROUND(SUM(pay_amount) / COUNT(DISTINCT user_id), 2) AS avg_per_user FROM orders WHERE order_status NOT IN ('cancelled', 'refunding') GROUP BY store_id ORDER BY avg_per_user DESC",
+    "difficulty": "medium",
+    "technique": "synonym_biz",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各店铺的回头率是多少",
+    "sql": "SELECT store_id, COUNT(DISTINCT user_id) AS total_users, SUM(CASE WHEN order_cnt >= 2 THEN 1 ELSE 0 END) AS repeat_users, ROUND(SUM(CASE WHEN order_cnt >= 2 THEN 1 ELSE 0 END) / COUNT(*), 4) AS repeat_rate FROM (SELECT store_id, user_id, COUNT(*) AS order_cnt FROM orders WHERE order_status NOT IN ('cancelled') GROUP BY store_id, user_id) t GROUP BY store_id ORDER BY repeat_rate DESC",
+    "difficulty": "hard",
+    "technique": "synonym_biz",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "各商户的动态评分平均水平是多少",
+    "sql": "SELECT store_id, ROUND(AVG(description_score), 2) AS avg_desc, ROUND(AVG(service_score), 2) AS avg_service, ROUND(AVG(logistics_score), 2) AS avg_logistics FROM store_ratings GROUP BY store_id",
+    "difficulty": "medium",
+    "technique": "synonym_biz",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "各优惠券的使用率是多少",
+    "sql": "SELECT coupon_id, COUNT(*) AS total, SUM(CASE WHEN status = 'used' THEN 1 ELSE 0 END) AS used_cnt, ROUND(SUM(CASE WHEN status = 'used' THEN 1 ELSE 0 END) / COUNT(*), 4) AS usage_rate FROM user_coupons GROUP BY coupon_id ORDER BY usage_rate DESC",
+    "difficulty": "medium",
+    "technique": "synonym_biz",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "各活动的投资回报率排名",
+    "sql": "SELECT campaign_id, campaign_name, cost, actual_gmv, ROUND(actual_gmv / NULLIF(cost, 0), 2) AS roi FROM campaigns WHERE cost > 0 ORDER BY roi DESC",
+    "difficulty": "medium",
+    "technique": "synonym_biz",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "各快递公司的投递成功率是多少",
+    "sql": "SELECT carrier, COUNT(*) AS total, SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered, ROUND(SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) / COUNT(*), 4) AS success_rate FROM shipments GROUP BY carrier ORDER BY success_rate DESC",
+    "difficulty": "medium",
+    "technique": "synonym_biz",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "收到了的订单有多少笔",
+    "sql": "SELECT COUNT(*) AS cnt FROM orders WHERE order_status = 'received'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "已收货的订单总金额是多少",
+    "sql": "SELECT SUM(pay_amount) AS total FROM orders WHERE order_status = 'received'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "还没付款的订单有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM orders WHERE order_status = 'pending'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "未付款超过3天的订单有哪些",
+    "sql": "SELECT order_id, order_no, create_time FROM orders WHERE order_status = 'pending' AND DATEDIFF(CURDATE(), DATE(create_time)) > 3",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "发货了但还没收到的订单有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM orders WHERE order_status = 'shipped'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "取消了的活动有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM campaigns WHERE status = 'cancelled'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "今年取消了多少笔订单",
+    "sql": "SELECT COUNT(*) AS cnt FROM orders WHERE order_status = 'cancelled' AND YEAR(create_time) = YEAR(CURDATE())",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "用微信付款的订单有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM payments WHERE payment_method = 'wechat' AND payment_status = 'success'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "用银行卡支付的金额是多少",
+    "sql": "SELECT SUM(amount) AS total FROM payments WHERE payment_method = 'bank_card' AND payment_status = 'success'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "选择分期付款的订单平均金额是多少",
+    "sql": "SELECT ROUND(AVG(amount), 2) AS avg_amount FROM payments WHERE payment_method = 'installment' AND payment_status = 'success'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "交易域",
+    "tables": [
+      "payments"
+    ]
+  },
+  {
+    "question": "搞限时抢购的活动有哪些",
+    "sql": "SELECT campaign_id, campaign_name, start_time, end_time FROM campaigns WHERE campaign_type = 'flash_sale'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "搞团购的促销活动有多少个",
+    "sql": "SELECT COUNT(*) AS cnt FROM campaigns WHERE campaign_type = 'group_buy'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "免邮的优惠券有几种",
+    "sql": "SELECT COUNT(*) AS cnt FROM coupons WHERE coupon_type = 'shipping'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "免运费的券还有多少没过期",
+    "sql": "SELECT COUNT(*) AS cnt FROM coupons WHERE coupon_type = 'shipping' AND end_time > CURDATE()",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "打折类型的券最低打几折",
+    "sql": "SELECT MIN(discount_value) AS min_discount FROM coupons WHERE coupon_type = 'percent'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "发顺丰速运的包裹有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM shipments WHERE carrier = 'sf'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "京东物流的签收率是多少",
+    "sql": "SELECT COUNT(*) AS total, SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered, ROUND(SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) / COUNT(*), 4) AS rate FROM shipments WHERE carrier = 'jd'",
+    "difficulty": "medium",
+    "technique": "synonym_enum",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "平台上有多少家旗舰店",
+    "sql": "SELECT COUNT(*) AS cnt FROM stores WHERE store_type = 'flagship'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "个人店铺有多少家在营业",
+    "sql": "SELECT COUNT(*) AS cnt FROM stores WHERE store_type = 'personal' AND status = 'open'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "正在预售的商品有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM products WHERE status = 'pre_sale'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "已经下架的货品有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM products WHERE status = 'off_sale'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "商品域",
+    "tables": [
+      "products"
+    ]
+  },
+  {
+    "question": "被封禁的账号有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM users WHERE status = 'banned'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "未激活的买家有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM users WHERE status = 'inactive'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "用户域",
+    "tables": [
+      "users"
+    ]
+  },
+  {
+    "question": "已经停用的券有几个",
+    "sql": "SELECT COUNT(*) AS cnt FROM coupons WHERE status = 'disabled'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "营销域",
+    "tables": [
+      "coupons"
+    ]
+  },
+  {
+    "question": "过期的用户券有多少张",
+    "sql": "SELECT COUNT(*) AS cnt FROM user_coupons WHERE status = 'expired'",
+    "difficulty": "easy",
+    "technique": "synonym_enum",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons"
+    ]
+  },
+  {
+    "question": "手机通讯类目下有哪些商品",
+    "sql": "SELECT p.product_id, p.product_name, p.price FROM products p INNER JOIN categories c ON p.category_id = c.category_id WHERE c.category_name = '手机通讯'",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "商品域",
+    "tables": [
+      "products",
+      "categories"
+    ]
+  },
+  {
+    "question": "移动设备类目的平均售价是多少",
+    "sql": "SELECT ROUND(AVG(p.price), 2) AS avg_price FROM products p INNER JOIN categories c ON p.category_id = c.category_id WHERE c.category_name = '手机' AND p.status = 'on_sale'",
+    "difficulty": "medium",
+    "technique": "synonym_reference",
+    "domain": "商品域",
+    "tables": [
+      "products",
+      "categories"
+    ]
+  },
+  {
+    "question": "顾客一共下了多少单",
+    "sql": "SELECT COUNT(*) AS total_orders FROM orders WHERE order_status != 'cancelled'",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "每个客户的首次下单时间",
+    "sql": "SELECT user_id, MIN(create_time) AS first_order_time FROM orders WHERE order_status != 'cancelled' GROUP BY user_id ORDER BY first_order_time",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  },
+  {
+    "question": "卖家数量最多的省份是哪里",
+    "sql": "SELECT province, COUNT(*) AS cnt FROM stores GROUP BY province ORDER BY cnt DESC LIMIT 1",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "店铺域",
+    "tables": [
+      "stores"
+    ]
+  },
+  {
+    "question": "最近一个月发了多少快递",
+    "sql": "SELECT COUNT(*) AS cnt FROM shipments WHERE DATE(create_time) >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "运输中的包裹有多少",
+    "sql": "SELECT COUNT(*) AS cnt FROM shipments WHERE status IN ('picked_up', 'in_transit')",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "物流域",
+    "tables": [
+      "shipments"
+    ]
+  },
+  {
+    "question": "折扣券的使用率比固定金额券高吗",
+    "sql": "SELECT coupon_type, COUNT(*) AS total, SUM(CASE WHEN uc.status = 'used' THEN 1 ELSE 0 END) AS used_cnt, ROUND(SUM(CASE WHEN uc.status = 'used' THEN 1 ELSE 0 END) / COUNT(*), 4) AS usage_rate FROM user_coupons uc INNER JOIN coupons c ON uc.coupon_id = c.coupon_id GROUP BY coupon_type ORDER BY usage_rate DESC",
+    "difficulty": "medium",
+    "technique": "synonym_reference",
+    "domain": "营销域",
+    "tables": [
+      "user_coupons",
+      "coupons"
+    ]
+  },
+  {
+    "question": "正在进行中的促销有哪些",
+    "sql": "SELECT campaign_id, campaign_name, campaign_type FROM campaigns WHERE status = 'active'",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "营销域",
+    "tables": [
+      "campaigns"
+    ]
+  },
+  {
+    "question": "每个店铺的反馈平均分是多少",
+    "sql": "SELECT store_id, ROUND(AVG(description_score), 2) AS avg_desc, ROUND(AVG(service_score), 2) AS avg_service FROM store_ratings GROUP BY store_id",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "店铺域",
+    "tables": [
+      "store_ratings"
+    ]
+  },
+  {
+    "question": "今年的交易总笔数是多少",
+    "sql": "SELECT COUNT(*) AS total FROM orders WHERE YEAR(create_time) = YEAR(CURDATE())",
+    "difficulty": "easy",
+    "technique": "synonym_reference",
+    "domain": "交易域",
+    "tables": [
+      "orders"
+    ]
+  }
+]
