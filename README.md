@@ -602,42 +602,57 @@ data: {"type": "done", "result": {...}}
 
 ### V5.2 新增功能
 
-#### 1. MQL强控制SQL生成
+#### 1. MQL强控制SQL生成（V5.3：多指标数组）
 
 ```python
 # pipeline.py 中的新方法
 def _build_mql_constraints(self, mql, validation_result) -> str:
-    """构建MQL约束文本，强制注入到SQL生成提示词"""
+    """构建MQL约束文本，强制注入到SQL生成提示词（多指标版）"""
     constraints = []
-    constraints.append(f"- **目标指标**: {mql.metric}")
+    if mql.metrics:
+        metric_names = [m['name'] for m in mql.metrics]
+        constraints.append(f"- **目标指标**: {', '.join(metric_names)}")
+        for m in mql.metrics:
+            extra = []
+            if m.get('agg'):
+                extra.append(f"聚合方式:{m['agg']}")
+            if m.get('non_additive'):
+                extra.append("去重类指标(使用COUNT(DISTINCT))")
+            if extra:
+                constraints.append(f"  - {m['name']} ({'; '.join(extra)})")
     if mql.granularity:
         constraints.append(f"- **时间粒度**: {mql.granularity}（必须按此粒度聚合）")
     if mql.filters:
         constraints.append(f"- **强制过滤条件**: ...（必须在WHERE中应用）")
     return '\n'.join(constraints)
 
-def _build_business_rules_text(self, metric_name: str) -> List[str]:
-    """构建业务规则文本列表，强制注入到SQL生成提示词"""
+def _build_business_rules_text(self, metric_names: List[str]) -> List[str]:
+    """构建业务规则文本列表，多指标支持"""
     rules = []
-    default_filter = self.semantic_layer.get_default_filter(metric_name)
-    if default_filter:
-        rules.append(f"默认过滤: {default_filter}（必须包含在WHERE中）")
+    for metric_name in metric_names:
+        default_filter = self.semantic_layer.get_default_filter(metric_name)
+        if default_filter:
+            rules.append(f"默认过滤: {default_filter}（必须包含在WHERE中）")
     return rules
 ```
 
-#### 2. 非累加指标跨粒度拦截
+#### 2. 非累加指标两步聚合策略（V5.3优化）
 
 ```python
-# mql_service.py 中的强化校验
+# mql_service.py V5.3：不再强硬拒绝，改为两步聚合提示
 def validate_mql(self, mql: MQLQuery) -> Dict[str, Any]:
     errors = []
-    
-    # V5.2强化：非累加指标跨粒度拦截
-    if metric_info.is_non_additive and mql.granularity:
-        if mql.granularity != 'daily':
-            errors.append(
-                f"❌ '{mql.metric}' 是去重类指标(如UV/支付用户数)，"
-                f"仅支持按天(daily)统计，不支持{mql.granularity}粒度聚合"
+    warnings = []
+
+    for metric_entry in mql.metrics:
+        name = metric_entry['name']
+        metric_info = self.semantic_layer.get_metric_by_name(name)
+        
+        # V5.3优化：非累加指标跨粒度->两步聚合策略提示
+        if metric_info.is_non_additive and mql.granularity and mql.granularity != 'daily':
+            warnings.append(
+                f"ℹ️ '{name}' 是去重类指标，跨粒度({mql.granularity})聚合时"
+                f"请使用两步聚合：内层按天COUNT(DISTINCT)，外层SUM"
             )
     
     return {"valid": len(errors) == 0, "errors": errors, "warnings": warnings}

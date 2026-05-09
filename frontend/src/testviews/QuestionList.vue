@@ -172,8 +172,8 @@ const autoTestTotal = ref(0)
 const autoTestCompleted = ref(0)
 const autoTestPosition = ref(0)
 const autoTestElapsed = ref(0)
-const autoTestInterval = ref(30)
-const skipExisting = ref(true)
+const autoTestInterval = ref(parseInt(localStorage.getItem('autoTestInterval') || '30', 10))
+const skipExisting = ref(localStorage.getItem('skipExisting') !== 'false')
 const autoTestErrors = ref([])
 const autoMatchRunning = ref(false)
 const autoMatchResult = ref(null)
@@ -371,6 +371,14 @@ watch(() => props.datasetName, async (name) => {
   datasetLabel.value = labels[name] || name
   loadQuestions(name, props.initialPage)
 }, { immediate: true })
+
+watch(autoTestInterval, (val) => {
+  localStorage.setItem('autoTestInterval', String(val))
+})
+
+watch(skipExisting, (val) => {
+  localStorage.setItem('skipExisting', String(val))
+})
 
 onUnmounted(() => {
   clearStatusPolling()

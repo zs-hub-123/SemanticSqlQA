@@ -223,50 +223,86 @@ class SemanticLayerService:
 
     def find_join_path(self, table1: str, table2: str, max_depth: int = 3) -> Optional[List[TableRelation]]:
         """
-        递归查找两张表之间的JOIN路径（V5.2强化：限制最大深度）
-        
-        只使用直接相邻关系，自动推导多层关联
-        默认最大深度为3层（防止性能爆炸和无效JOIN）
+        BFS加权查找两张表之间的最优JOIN路径（V5.3优化：加权路径选择）
+
+        使用BFS遍历所有路径，选择总权重最小的最优路径：
+        - 直接关系权重=1
+        - 通过中间表关系权重=2
+        - 超3层返回None（但不直接失败，提示拆解问题）
 
         Args:
             table1: 起始表
             table2: 目标表
-            max_depth: 最大递归深度（默认3层）
+            max_depth: 最大深度（默认3层）
 
         Returns:
-            JOIN路径（有序的关系列表），超深则返回None
+            最优JOIN路径（有序的关系列表）
         """
         if table1 == table2:
             return []
 
-        visited = {table1}
-        path = []
+        # BFS查找所有路径
+        from collections import deque
 
-        def _dfs(current: str, target: str, depth: int) -> bool:
-            if depth > max_depth:
-                return False
+        all_relations = self.get_all_table_relations()
 
-            relations = self.get_table_relations({current})
+        queue = deque()
+        queue.append((table1, [], set([table1]), 0))
 
-            for rel in relations:
+        best_path = None
+        best_weight = float('inf')
+
+        while queue:
+            current, path, visited, depth = queue.popleft()
+
+            if current == table2 and path:
+                # 计算权重：直接关系权重低
+                weight = sum(
+                    1 if (rel.main_table == path[i-1] and rel.related_table == path[i].related_table)
+                        or (rel.main_table == path[i].related_table and rel.related_table == path[i-1])
+                    else 2
+                    for i in range(1, len(path) + 1) if i > 0
+                )
+                if weight < best_weight:
+                    best_weight = weight
+                    best_path = path[:]
+                continue
+
+            if depth >= max_depth:
+                continue
+
+            for rel in all_relations:
                 next_table = rel.related_table if rel.main_table == current else rel.main_table
-
-                if next_table == target:
-                    path.append(rel)
-                    return True
-
                 if next_table not in visited:
-                    visited.add(next_table)
-                    if _dfs(next_table, target, depth + 1):
-                        path.append(rel)
-                        return True
+                    queue.append(
+                        (next_table, path + [rel], visited | {next_table}, depth + 1)
+                    )
 
-            return False
+        if best_path:
+            # 调整路径方向，确保main_table→related_table一致
+            ordered = []
+            current = table1
+            for rel in best_path:
+                if rel.main_table == current:
+                    ordered.append(rel)
+                    current = rel.related_table
+                elif rel.related_table == current:
+                    ordered.append(TableRelation(
+                        main_table=rel.related_table,
+                        related_table=rel.main_table,
+                        join_condition=rel.join_condition,
+                        join_type=rel.join_type
+                    ))
+                    current = rel.main_table
+            return ordered
 
-        if _dfs(table1, table2, 0):
-            path.reverse()
-            return path
         return None
+
+    def get_all_table_relations(self) -> List[TableRelation]:
+        """获取所有活跃的表关联关系（缓存友好）"""
+        sql = "SELECT main_table, related_table, join_condition, join_type FROM table_relations WHERE is_active=1"
+        rows = self.db.execute_query(sql)
+        return [TableRelation(**r) for r in rows]
 
     def get_table_metadata(self, table_name: str) -> Optional[TableMeta]:
         """获取表的元信息"""

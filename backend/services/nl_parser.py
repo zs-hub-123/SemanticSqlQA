@@ -37,6 +37,29 @@ class NLParser:
 用户可能会用以下口语表达，请务必映射到对应的标准词：
 {aliases_context}
 
+## 解析示例（Few-shot）
+以下是几个常见问题的解析示例，请参考：
+
+示例1：
+用户问：上个月GMV是多少？
+输出：{{"metrics": ["GMV成交总额"], "dimensions": [], "filters": {{}}, "time_range": {{"start": "上月1日", "end": "上月最后一日"}}, "original_question": "上个月GMV是多少？"}}
+
+示例2：
+用户问：各个店铺类型的订单数
+输出：{{"metrics": ["订单数"], "dimensions": ["店铺类型"], "filters": {{}}, "original_question": "各个店铺类型的订单数"}}
+
+示例3：
+用户问：今年每个月的下单金额和退款金额
+输出：{{"metrics": ["下单金额", "退款金额"], "dimensions": ["下单时间"], "filters": {{}}, "time_range": {{"start": "2026-01-01", "end": "2026-12-31"}}, "original_question": "今年每个月的下单金额和退款金额"}}
+
+示例4：
+用户问：广东省的男性用户有多少
+输出：{{"metrics": ["用户数"], "dimensions": [], "filters": {{"省份": "广东省", "性别": "M"}}, "original_question": "广东省的男性用户有多少"}}
+
+示例5：
+用户问：列出所有一级类目和它们的二级子分类
+输出：{{"metrics": [], "dimensions": ["一级类目", "二级类目"], "filters": {{}}, "original_question": "列出所有一级类目和它们的二级子分类"}}
+
 ## 输出要求
 严格返回JSON格式，不要输出其他内容：
 {{

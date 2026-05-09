@@ -62,10 +62,10 @@ class TableSchemaService:
 
     @staticmethod
     def _get_table_fields(table_name: str) -> List[Dict]:
-        """返回15张业务表的完整字段结构"""
+        """返回15张业务表的完整字段结构（含主键/外键标记）"""
         mock_data = {
             "users": [
-                {"name": "user_id", "type": "BIGINT", "desc": "用户ID"},
+                {"name": "user_id", "type": "BIGINT", "desc": "用户ID", "primary_key": True},
                 {"name": "username", "type": "VARCHAR(64)", "desc": "用户名"},
                 {"name": "nickname", "type": "VARCHAR(64)", "desc": "用户昵称"},
                 {"name": "gender", "type": "ENUM('M','F','U')", "desc": "性别"},
@@ -76,8 +76,8 @@ class TableSchemaService:
                 {"name": "status", "type": "ENUM('active','inactive','banned')", "desc": "账户状态"}
             ],
             "user_addresses": [
-                {"name": "address_id", "type": "BIGINT", "desc": "地址ID"},
-                {"name": "user_id", "type": "BIGINT", "desc": "用户ID"},
+                {"name": "address_id", "type": "BIGINT", "desc": "地址ID", "primary_key": True},
+                {"name": "user_id", "type": "BIGINT", "desc": "用户ID", "foreign_key": {"ref_table": "users", "ref_field": "user_id"}},
                 {"name": "province", "type": "VARCHAR(32)", "desc": "省份"},
                 {"name": "city", "type": "VARCHAR(32)", "desc": "城市"},
                 {"name": "detail_address", "type": "VARCHAR(255)", "desc": "详细地址"},
@@ -85,17 +85,17 @@ class TableSchemaService:
                 {"name": "receiver_phone", "type": "VARCHAR(20)", "desc": "收货人手机号"}
             ],
             "categories": [
-                {"name": "category_id", "type": "BIGINT", "desc": "分类ID"},
+                {"name": "category_id", "type": "BIGINT", "desc": "分类ID", "primary_key": True},
                 {"name": "category_name", "type": "VARCHAR(64)", "desc": "分类名称"},
-                {"name": "parent_id", "type": "BIGINT", "desc": "父分类ID"},
+                {"name": "parent_id", "type": "BIGINT", "desc": "父分类ID", "foreign_key": {"ref_table": "categories", "ref_field": "category_id"}},
                 {"name": "level", "type": "TINYINT", "desc": "分类层级"},
                 {"name": "is_visible", "type": "TINYINT", "desc": "是否可见"}
             ],
             "products": [
-                {"name": "product_id", "type": "BIGINT", "desc": "商品ID"},
+                {"name": "product_id", "type": "BIGINT", "desc": "商品ID", "primary_key": True},
                 {"name": "product_name", "type": "VARCHAR(128)", "desc": "商品名称"},
-                {"name": "category_id", "type": "BIGINT", "desc": "分类ID"},
-                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID"},
+                {"name": "category_id", "type": "BIGINT", "desc": "分类ID", "foreign_key": {"ref_table": "categories", "ref_field": "category_id"}},
+                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID", "foreign_key": {"ref_table": "stores", "ref_field": "store_id"}},
                 {"name": "brand", "type": "VARCHAR(64)", "desc": "品牌"},
                 {"name": "price", "type": "DECIMAL(10,2)", "desc": "售价"},
                 {"name": "stock", "type": "INT", "desc": "库存数量"},
@@ -104,8 +104,8 @@ class TableSchemaService:
                 {"name": "status", "type": "ENUM('on_sale','off_sale','pre_sale')", "desc": "商品状态"}
             ],
             "product_specs": [
-                {"name": "spec_id", "type": "BIGINT", "desc": "规格ID"},
-                {"name": "product_id", "type": "BIGINT", "desc": "商品ID"},
+                {"name": "spec_id", "type": "BIGINT", "desc": "规格ID", "primary_key": True},
+                {"name": "product_id", "type": "BIGINT", "desc": "商品ID", "foreign_key": {"ref_table": "products", "ref_field": "product_id"}},
                 {"name": "spec_name", "type": "VARCHAR(64)", "desc": "规格名称"},
                 {"name": "spec_value", "type": "VARCHAR(128)", "desc": "规格值"},
                 {"name": "sku_code", "type": "VARCHAR(64)", "desc": "SKU编码"},
@@ -113,10 +113,10 @@ class TableSchemaService:
                 {"name": "stock", "type": "INT", "desc": "SKU库存"}
             ],
             "stores": [
-                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID"},
+                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID", "primary_key": True},
                 {"name": "store_name", "type": "VARCHAR(128)", "desc": "店铺名称"},
                 {"name": "store_type", "type": "ENUM('flagship','specialty','franchise','personal')", "desc": "店铺类型"},
-                {"name": "owner_id", "type": "BIGINT", "desc": "店主用户ID"},
+                {"name": "owner_id", "type": "BIGINT", "desc": "店主用户ID", "foreign_key": {"ref_table": "users", "ref_field": "user_id"}},
                 {"name": "province", "type": "VARCHAR(32)", "desc": "省份"},
                 {"name": "city", "type": "VARCHAR(32)", "desc": "城市"},
                 {"name": "total_sales", "type": "INT", "desc": "总销量"},
@@ -124,19 +124,19 @@ class TableSchemaService:
                 {"name": "status", "type": "ENUM('open','closed','frozen','reviewing')", "desc": "店铺状态"}
             ],
             "store_ratings": [
-                {"name": "rating_id", "type": "BIGINT", "desc": "评分ID"},
-                {"name": "order_id", "type": "BIGINT", "desc": "订单ID"},
-                {"name": "user_id", "type": "BIGINT", "desc": "用户ID"},
-                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID"},
+                {"name": "rating_id", "type": "BIGINT", "desc": "评分ID", "primary_key": True},
+                {"name": "order_id", "type": "BIGINT", "desc": "订单ID", "foreign_key": {"ref_table": "orders", "ref_field": "order_id"}},
+                {"name": "user_id", "type": "BIGINT", "desc": "用户ID", "foreign_key": {"ref_table": "users", "ref_field": "user_id"}},
+                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID", "foreign_key": {"ref_table": "stores", "ref_field": "store_id"}},
                 {"name": "description_score", "type": "DECIMAL(2,1)", "desc": "描述相符评分"},
                 {"name": "service_score", "type": "DECIMAL(2,1)", "desc": "服务态度评分"},
                 {"name": "logistics_score", "type": "DECIMAL(2,1)", "desc": "物流服务评分"}
             ],
             "orders": [
-                {"name": "order_id", "type": "BIGINT", "desc": "订单ID"},
+                {"name": "order_id", "type": "BIGINT", "desc": "订单ID", "primary_key": True},
                 {"name": "order_no", "type": "VARCHAR(32)", "desc": "订单编号"},
-                {"name": "user_id", "type": "BIGINT", "desc": "下单用户ID"},
-                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID"},
+                {"name": "user_id", "type": "BIGINT", "desc": "下单用户ID", "foreign_key": {"ref_table": "users", "ref_field": "user_id"}},
+                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID", "foreign_key": {"ref_table": "stores", "ref_field": "store_id"}},
                 {"name": "total_amount", "type": "DECIMAL(12,2)", "desc": "订单总金额"},
                 {"name": "discount_amount", "type": "DECIMAL(12,2)", "desc": "优惠金额"},
                 {"name": "pay_amount", "type": "DECIMAL(12,2)", "desc": "实付金额"},
@@ -149,9 +149,9 @@ class TableSchemaService:
                 {"name": "receive_time", "type": "DATETIME", "desc": "收货时间"}
             ],
             "order_items": [
-                {"name": "item_id", "type": "BIGINT", "desc": "明细ID"},
-                {"name": "order_id", "type": "BIGINT", "desc": "订单ID"},
-                {"name": "product_id", "type": "BIGINT", "desc": "商品ID"},
+                {"name": "item_id", "type": "BIGINT", "desc": "明细ID", "primary_key": True},
+                {"name": "order_id", "type": "BIGINT", "desc": "订单ID", "foreign_key": {"ref_table": "orders", "ref_field": "order_id"}},
+                {"name": "product_id", "type": "BIGINT", "desc": "商品ID", "foreign_key": {"ref_table": "products", "ref_field": "product_id"}},
                 {"name": "product_name", "type": "VARCHAR(128)", "desc": "商品名称"},
                 {"name": "price", "type": "DECIMAL(10,2)", "desc": "单价"},
                 {"name": "quantity", "type": "INT", "desc": "数量"},
@@ -160,8 +160,8 @@ class TableSchemaService:
                 {"name": "refund_amount", "type": "DECIMAL(10,2)", "desc": "退款金额"}
             ],
             "payments": [
-                {"name": "payment_id", "type": "BIGINT", "desc": "支付ID"},
-                {"name": "order_id", "type": "BIGINT", "desc": "订单ID"},
+                {"name": "payment_id", "type": "BIGINT", "desc": "支付ID", "primary_key": True},
+                {"name": "order_id", "type": "BIGINT", "desc": "订单ID", "foreign_key": {"ref_table": "orders", "ref_field": "order_id"}},
                 {"name": "payment_no", "type": "VARCHAR(64)", "desc": "支付流水号"},
                 {"name": "payment_method", "type": "ENUM('alipay','wechat','bank_card','balance')", "desc": "支付方式"},
                 {"name": "amount", "type": "DECIMAL(12,2)", "desc": "支付金额"},
@@ -169,7 +169,7 @@ class TableSchemaService:
                 {"name": "pay_time", "type": "DATETIME", "desc": "支付时间"}
             ],
             "coupons": [
-                {"name": "coupon_id", "type": "BIGINT", "desc": "优惠券ID"},
+                {"name": "coupon_id", "type": "BIGINT", "desc": "优惠券ID", "primary_key": True},
                 {"name": "coupon_name", "type": "VARCHAR(128)", "desc": "优惠券名称"},
                 {"name": "coupon_type", "type": "ENUM('fixed','percent','shipping')", "desc": "券类型"},
                 {"name": "coupon_value", "type": "DECIMAL(10,2)", "desc": "优惠券值"},
@@ -180,28 +180,28 @@ class TableSchemaService:
                 {"name": "status", "type": "ENUM('draft','active','expired','disabled')", "desc": "券状态"}
             ],
             "campaigns": [
-                {"name": "campaign_id", "type": "BIGINT", "desc": "活动ID"},
+                {"name": "campaign_id", "type": "BIGINT", "desc": "活动ID", "primary_key": True},
                 {"name": "campaign_name", "type": "VARCHAR(128)", "desc": "活动名称"},
                 {"name": "campaign_type", "type": "ENUM('flash_sale','group_buy','full_reduction','gift','lottery')", "desc": "活动类型"},
-                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID"},
+                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID", "foreign_key": {"ref_table": "stores", "ref_field": "store_id"}},
                 {"name": "budget", "type": "DECIMAL(12,2)", "desc": "活动预算"},
                 {"name": "actual_gmv", "type": "DECIMAL(12,2)", "desc": "活动实际GMV"},
                 {"name": "cost", "type": "DECIMAL(12,2)", "desc": "活动成本"},
                 {"name": "status", "type": "ENUM('planned','active','ended','cancelled')", "desc": "活动状态"}
             ],
             "user_coupons": [
-                {"name": "id", "type": "BIGINT", "desc": "记录ID"},
-                {"name": "user_id", "type": "BIGINT", "desc": "用户ID"},
-                {"name": "coupon_id", "type": "BIGINT", "desc": "优惠券ID"},
-                {"name": "order_id", "type": "BIGINT", "desc": "使用的订单ID"},
+                {"name": "id", "type": "BIGINT", "desc": "记录ID", "primary_key": True},
+                {"name": "user_id", "type": "BIGINT", "desc": "用户ID", "foreign_key": {"ref_table": "users", "ref_field": "user_id"}},
+                {"name": "coupon_id", "type": "BIGINT", "desc": "优惠券ID", "foreign_key": {"ref_table": "coupons", "ref_field": "coupon_id"}},
+                {"name": "order_id", "type": "BIGINT", "desc": "使用的订单ID", "foreign_key": {"ref_table": "orders", "ref_field": "order_id"}},
                 {"name": "status", "type": "ENUM('unused','used','expired')", "desc": "状态"},
                 {"name": "receive_time", "type": "DATETIME", "desc": "领取时间"},
                 {"name": "use_time", "type": "DATETIME", "desc": "使用时间"}
             ],
             "shipments": [
-                {"name": "shipment_id", "type": "BIGINT", "desc": "物流单ID"},
-                {"name": "order_id", "type": "BIGINT", "desc": "订单ID"},
-                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID"},
+                {"name": "shipment_id", "type": "BIGINT", "desc": "物流单ID", "primary_key": True},
+                {"name": "order_id", "type": "BIGINT", "desc": "订单ID", "foreign_key": {"ref_table": "orders", "ref_field": "order_id"}},
+                {"name": "store_id", "type": "BIGINT", "desc": "店铺ID", "foreign_key": {"ref_table": "stores", "ref_field": "store_id"}},
                 {"name": "shipment_no", "type": "VARCHAR(64)", "desc": "物流单号"},
                 {"name": "carrier", "type": "ENUM('sf','yd','zt','sto','yt','ems','jd')", "desc": "快递公司"},
                 {"name": "status", "type": "ENUM('pending','picked_up','in_transit','delivered','failed','returned')", "desc": "物流状态"},
@@ -210,8 +210,8 @@ class TableSchemaService:
                 {"name": "weight", "type": "DECIMAL(8,2)", "desc": "包裹重量"}
             ],
             "shipment_tracks": [
-                {"name": "track_id", "type": "BIGINT", "desc": "轨迹ID"},
-                {"name": "shipment_id", "type": "BIGINT", "desc": "物流单ID"},
+                {"name": "track_id", "type": "BIGINT", "desc": "轨迹ID", "primary_key": True},
+                {"name": "shipment_id", "type": "BIGINT", "desc": "物流单ID", "foreign_key": {"ref_table": "shipments", "ref_field": "shipment_id"}},
                 {"name": "location", "type": "VARCHAR(128)", "desc": "当前位置"},
                 {"name": "status", "type": "VARCHAR(64)", "desc": "状态描述"},
                 {"name": "track_time", "type": "DATETIME", "desc": "轨迹时间"}
@@ -310,12 +310,13 @@ class SQLGenerator:
 
 ## 严格规则
 1. **只能使用上面列出的表和字段**，禁止编造任何不存在的表名或字段名
-2. 多表查询必须使用提供的JOIN条件，禁止自己猜测关联方式
+2. 多表JOIN时必须使用提供的**外键关系**进行关联，禁止自己猜测关联方式
 3. 只生成SELECT语句，禁止INSERT/UPDATE/DELETE
 4. 字段名使用反引号包裹，如 `users`.`user_id`
 5. 结果集使用中文别名，便于展示
 6. WHERE条件的枚举值必须使用英文值（如 'active' 而非 '正常'）
 7. **必须应用所有MQL约束条件和业务规则**，这是强制的
+8. 如果查询需要多步聚合（如先按天去重再按月汇总），请使用子查询或CTE实现
 
 
 ## 输出格式
@@ -364,11 +365,12 @@ class SQLGenerator:
         relations: List[Any],
         metrics_info: List[str],
         mql_constraints: str = "",
-        business_rules: List[str] = None
+        business_rules: List[str] = None,
+        reflection_notes: List[str] = None
     ) -> Dict[str, Any]:
         """
-        生成SQL（V5.2强化版）
-        
+        生成SQL（V5.3强化版）
+
         Args:
             question: 原始问题
             parsed_result: 第一步解析的结构化结果
@@ -377,14 +379,15 @@ class SQLGenerator:
             metrics_info: 涉及的指标说明
             mql_constraints: MQL约束条件文本
             business_rules: 业务规则列表
-            
+            reflection_notes: 自检反馈（重试时注入）
+
         Returns:
             {"sql": "...", "explanation": "...", "tables_used": [...]}
         """
         schemas_text = self._format_schemas(table_schemas)
         relations_text = self._format_relations(relations)
         metrics_text = '\n'.join([f"- {m}" for m in metrics_info])
-        
+
         rules_text = ""
         if business_rules:
             rules_text = "\n".join([f"- ⚠️ {r}" for r in business_rules])
@@ -398,6 +401,13 @@ class SQLGenerator:
 **识别到的指标**: {parsed_result.get('metrics', [])}
 **识别到的维度**: {parsed_result.get('dimensions', [])}
 **筛选条件**: {parsed_result.get('filters', {})}"""
+
+        # V5.3：注入Self-Reflection反馈
+        if reflection_notes:
+            user_prompt += f"""
+
+## 上一次生成的SQL存在以下问题，请修正
+{' '.join(reflection_notes)}"""
 
         messages = [
             {"role": "system", "content": self.SYSTEM_PROMPT.format(
@@ -442,14 +452,31 @@ class SQLGenerator:
 
     @staticmethod
     def _format_schemas(schemas: Dict) -> str:
-        """格式化表结构"""
+        """格式化表结构（含主键/外键标记）"""
         lines = []
+
+        foreign_key_lines = []
+
         for table_name, info in schemas.items():
             lines.append(f"\n### 表: {table_name}")
             lines.append(f"说明: {info.get('description', '')}")
             lines.append("字段:")
             for field in info.get('fields', []):
-                lines.append(f"  - `{field['name']}` ({field['type']}): {field['desc']}")
+                field_desc = f"  - `{field['name']}` ({field['type']}): {field['desc']}"
+                if field.get('primary_key'):
+                    field_desc += " [主键]"
+                if field.get('foreign_key'):
+                    fk = field['foreign_key']
+                    field_desc += f" [外键 -> {fk['ref_table']}.{fk['ref_field']}]"
+                    foreign_key_lines.append(
+                        f"- {table_name}.{field['name']} -> {fk['ref_table']}.{fk['ref_field']} (FOREIGN KEY)"
+                    )
+                lines.append(field_desc)
+
+        if foreign_key_lines:
+            lines.append("\n### 外键关系（JOIN时必须使用以下关系）")
+            lines.extend(foreign_key_lines)
+
         return '\n'.join(lines)
 
     @staticmethod
@@ -496,6 +523,12 @@ class QueryExecutor:
                 if rows:
                     columns = list(rows[0].keys()) if rows else []
                     beautified = self._beautify_columns({"columns": columns, "rows": rows})
+
+                    # V5.3：结果合理性检查
+                    validation = self._validate_results(beautified)
+                    if validation.get('warnings'):
+                        beautified['result_warnings'] = validation['warnings']
+
                     return beautified
                 else:
                     return {"success": True, "columns": [], "rows": [], "row_count": 0}
@@ -503,6 +536,43 @@ class QueryExecutor:
         except Exception as e:
             logger.error(f"SQL执行失败: {str(e)}")
             return {"success": False, "error": str(e), "columns": [], "rows": []}
+
+    def _validate_results(self, result: Dict) -> Dict[str, Any]:
+        """结果合理性检查"""
+        warnings = []
+        rows = result.get('rows', [])
+        columns = result.get('columns', [])
+
+        if not rows:
+            warnings.append("查询结果为空，请检查筛选条件是否合理")
+
+            return {"warnings": warnings, "valid": True}
+
+        row_count = len(rows)
+
+        if row_count > 1000:
+            warnings.append(f"返回行数过多({row_count}行)，建议增加过滤条件缩小范围")
+
+        for row in rows[:5]:
+            for col in columns:
+                val = row.get(col)
+                if val is None:
+                    continue
+                if isinstance(val, (int, float)):
+                    col_lower = col.lower()
+                    if '金额' in col_lower or 'gmv' in col_lower or '总额' in col_lower:
+                        if val == 0:
+                            warnings.append(f"⚠️ {col} 为0，请确认过滤条件是否正确")
+                            break
+                        if val < 0:
+                            warnings.append(f"⚠️ {col} 为负值({val})，请确认数据准确性")
+                            break
+                    if '数' in col_lower or '量' in col_lower:
+                        if val < 0:
+                            warnings.append(f"⚠️ {col} 为负值({val})，请确认数据准确性")
+                            break
+
+        return {"warnings": warnings, "valid": True}
 
     def _beautify_columns(self, result: Dict) -> Dict:
         """将英文列名替换为中文"""

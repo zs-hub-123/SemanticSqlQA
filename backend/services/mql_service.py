@@ -1,7 +1,9 @@
 # ============================================================
 # MQL中间层服务
 # 功能：定义结构化指标查询语言，实现语义解析和SQL生成的解耦
-# V5.0新增
+# V5.3优化：
+#   - 支持多指标数组（metrics list），取代单metric字段
+#   - 非累加指标跨粒度改为"两步聚合"策略（子查询），不再直接拒绝
 # ============================================================
 
 import json
@@ -17,16 +19,19 @@ class MQLQuery:
     """
     MQL (Metric Query Language) 结构化查询对象
 
-    类似于：
+    V5.3升级：支持多指标数组
     {
-        "metric": "GMV成交总额",
+        "metrics": [
+            {"name": "GMV成交总额", "agg": "SUM", "non_additive": false},
+            {"name": "订单数", "agg": "COUNT", "non_additive": false}
+        ],
         "dimensions": ["下单时间", "店铺类型"],
         "filters": {"订单状态": "已支付"},
         "time_range": {"start": "2024-01-01", "end": "2024-12-31"},
         "granularity": "month"
     }
     """
-    metric: str
+    metrics: List[Dict[str, Any]]
     dimensions: List[str]
     filters: Dict[str, Any]
     time_range: Optional[Dict[str, str]] = None
@@ -71,18 +76,37 @@ class MQLService:
         Returns:
             MQLQuery对象
         """
-        metrics = parsed_result.get('metrics', [])
+        metric_names = parsed_result.get('metrics', [])
         dimensions = parsed_result.get('dimensions', [])
         filters = parsed_result.get('filters', {})
         time_range = parsed_result.get('time_range')
 
         granularity = self._infer_granularity(question, dimensions)
 
-        if not metrics and not dimensions:
+        if not metric_names and not dimensions:
             raise ValueError("未识别到有效指标或维度")
 
+        # 构建多指标数组（丰富agg和non_additive信息）
+        metrics = []
+        for name in metric_names:
+            metric_info = self.semantic_layer.get_metric_by_name(name)
+            if metric_info:
+                metrics.append({
+                    "name": name,
+                    "agg": metric_info.aggregation_type or 'SUM',
+                    "non_additive": metric_info.is_non_additive,
+                    "physical_table": metric_info.physical_table,
+                    "physical_field": metric_info.physical_field
+                })
+            else:
+                metrics.append({
+                    "name": name,
+                    "agg": 'SUM',
+                    "non_additive": False
+                })
+
         return MQLQuery(
-            metric=metrics[0] if metrics else None,
+            metrics=metrics,
             dimensions=dimensions,
             filters=filters,
             time_range=time_range,
@@ -99,30 +123,43 @@ class MQLService:
         errors = []
         warnings = []
 
-        if not mql.metric and not mql.dimensions:
-            errors.append("MQL缺少metric和dimensions")
+        if not mql.metrics and not mql.dimensions:
+            errors.append("MQL缺少metrics和dimensions")
             return {"valid": False, "errors": errors, "warnings": warnings}
 
-        if mql.metric:
-            metric_info = self.semantic_layer.get_metric_by_name(mql.metric)
+        # 校验每个指标
+        for metric_entry in mql.metrics:
+            name = metric_entry['name']
+            metric_info = self.semantic_layer.get_metric_by_name(name)
             if not metric_info:
-                errors.append(f"指标 '{mql.metric}' 不存在")
-                return {"valid": False, "errors": errors, "warnings": warnings}
+                errors.append(f"指标 '{name}' 不存在")
+                continue
 
             if mql.granularity and metric_info.stat_period:
-                if mql.granularity not in metric_info.stat_period:
+                allowed_periods = [p.strip() for p in metric_info.stat_period.split(',')]
+                if mql.granularity not in allowed_periods:
                     warnings.append(
-                        f"⚠️ 指标 '{mql.metric}' 推荐粒度: {metric_info.stat_period}，"
+                        f"⚠️ 指标 '{name}' 推荐粒度: {metric_info.stat_period}，"
                         f"当前请求: {mql.granularity}"
                     )
 
-            if metric_info.is_non_additive and mql.granularity:
+            # V5.3优化：非累加指标跨粒度->两步聚合策略提示
+            if metric_info.is_non_additive and mql.granularity and mql.granularity != 'daily':
                 warnings.append(
-                    f"⚠️ '{mql.metric}' 是去重类指标(如UV/支付用户数)，"
-                    f"跨粒度聚合可能导致数据失真"
+                    f"ℹ️ '{name}' 是去重类指标，跨粒度({mql.granularity})聚合时"
+                    f"请使用两步聚合：内层按天COUNT(DISTINCT)，外层{self._infer_outer_agg(metric_info.aggregation_type)}"
                 )
 
         return {"valid": len(errors) == 0, "errors": errors, "warnings": warnings}
+
+    def _infer_outer_agg(self, inner_agg: Optional[str]) -> str:
+        """推断非累加指标跨粒度时的外层聚合方式"""
+        if not inner_agg:
+            return 'SUM'
+        upper = inner_agg.upper()
+        if upper in ('COUNT', 'COUNT(DISTINCT)'):
+            return 'SUM'
+        return inner_agg
 
     def apply_business_rules(self, mql: MQLQuery) -> MQLQuery:
         """
@@ -134,8 +171,10 @@ class MQLService:
         Returns:
             应用规则后的MQL
         """
-        if mql.metric:
-            default_filters = self.semantic_layer.apply_default_filters([mql.metric])
+        metric_names = [m['name'] for m in mql.metrics]
+
+        if metric_names:
+            default_filters = self.semantic_layer.apply_default_filters(metric_names)
 
             for f in default_filters:
                 if f and '=' in f:
@@ -144,17 +183,17 @@ class MQLService:
                     if field not in mql.filters:
                         mql.filters[field] = value
 
-            rules = self.semantic_layer.get_business_rules(
-                rule_type='filter',
-                target_metric=mql.metric
-            )
-
-            for rule in rules:
-                if rule.rule_content and '=' in rule.rule_content:
-                    field = rule.rule_content.split('=')[0].strip()
-                    value = rule.rule_content.split('=')[1].strip().strip("'\"")
-                    if field not in mql.filters:
-                        mql.filters[field] = value
+            for metric_name in metric_names:
+                rules = self.semantic_layer.get_business_rules(
+                    rule_type='filter',
+                    target_metric=metric_name
+                )
+                for rule in rules:
+                    if rule.rule_content and '=' in rule.rule_content:
+                        field = rule.rule_content.split('=')[0].strip()
+                        value = rule.rule_content.split('=')[1].strip().strip("'\"")
+                        if field not in mql.filters:
+                            mql.filters[field] = value
 
         return mql
 
@@ -170,17 +209,18 @@ class MQLService:
             血缘信息字典
         """
         lineage = {
-            "metric": None,
+            "metrics": [],
             "dimensions": [],
             "filters": [],
             "calculation": "",
             "sql": sql
         }
 
-        if mql.metric:
-            metric_info = self.semantic_layer.get_metric_by_name(mql.metric)
+        for metric_entry in mql.metrics:
+            name = metric_entry['name']
+            metric_info = self.semantic_layer.get_metric_by_name(name)
             if metric_info:
-                lineage["metric"] = {
+                entry = {
                     "name": metric_info.name,
                     "business_desc": metric_info.business_desc,
                     "aggregation": metric_info.aggregation_type,
@@ -190,9 +230,10 @@ class MQLService:
                     "version": metric_info.metric_version
                 }
                 if metric_info.default_filter:
-                    lineage["default_filter"] = metric_info.default_filter
+                    entry["default_filter"] = metric_info.default_filter
                 if metric_info.calculation_formula:
                     lineage["calculation"] = metric_info.calculation_formula
+                lineage["metrics"].append(entry)
 
         for dim in mql.dimensions:
             dim_info = self.semantic_layer.get_metric_by_name(dim)
