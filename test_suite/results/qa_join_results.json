@@ -1,0 +1,1655 @@
+{
+  "0": {
+    "correct_sql_result": {
+      "columns": [
+        "province",
+        "user_count"
+      ],
+      "rows": [
+        [
+          "上海",
+          24.0
+        ],
+        [
+          "四川",
+          21.0
+        ],
+        [
+          "天津",
+          21.0
+        ],
+        [
+          "广东",
+          21.0
+        ],
+        [
+          "陕西",
+          21.0
+        ],
+        [
+          "山东",
+          20.0
+        ],
+        [
+          "湖北",
+          20.0
+        ],
+        [
+          "重庆",
+          19.0
+        ],
+        [
+          "安徽",
+          18.0
+        ],
+        [
+          "河南",
+          18.0
+        ],
+        [
+          "福建",
+          18.0
+        ],
+        [
+          "湖南",
+          17.0
+        ],
+        [
+          "北京",
+          14.0
+        ],
+        [
+          "江苏",
+          14.0
+        ],
+        [
+          "浙江",
+          13.0
+        ],
+        [
+          "辽宁",
+          10.0
+        ]
+      ],
+      "row_count": 16
+    },
+    "correct_executed_at": 1778319793.4870262,
+    "updated_at": 1778319948.026832,
+    "ai_generated_sql": "SELECT `user_addresses`.`province` AS '用户省份', COUNT(DISTINCT `user_addresses`.`user_id`) AS '用户数量' FROM `user_addresses` GROUP BY `user_addresses`.`province`",
+    "ai_explanation": "通过用户地址表统计每个省份的注册用户数量，使用COUNT(DISTINCT user_id)确保同一用户多个地址不重复统计",
+    "ai_error": null,
+    "ai_elapsed": 23.390280723571777,
+    "ai_generated_at": 1778319816.8798242,
+    "sql_match": "matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户省份",
+        "用户数量"
+      ],
+      "rows": [
+        [
+          "上海",
+          24.0
+        ],
+        [
+          "北京",
+          14.0
+        ],
+        [
+          "四川",
+          21.0
+        ],
+        [
+          "天津",
+          21.0
+        ],
+        [
+          "安徽",
+          18.0
+        ],
+        [
+          "山东",
+          20.0
+        ],
+        [
+          "广东",
+          21.0
+        ],
+        [
+          "江苏",
+          14.0
+        ],
+        [
+          "河南",
+          18.0
+        ],
+        [
+          "浙江",
+          13.0
+        ],
+        [
+          "湖北",
+          20.0
+        ],
+        [
+          "湖南",
+          17.0
+        ],
+        [
+          "福建",
+          18.0
+        ],
+        [
+          "辽宁",
+          10.0
+        ],
+        [
+          "重庆",
+          19.0
+        ],
+        [
+          "陕西",
+          21.0
+        ]
+      ],
+      "row_count": 16
+    },
+    "ai_executed_at": 1778319816.8829148,
+    "result_match": "matched",
+    "result_match_manual": true,
+    "sql_match_manual": true
+  },
+  "1": {
+    "correct_sql_result": {
+      "columns": [
+        "province",
+        "user_count"
+      ],
+      "rows": [
+        [
+          "上海",
+          24.0
+        ],
+        [
+          "四川",
+          21.0
+        ],
+        [
+          "天津",
+          21.0
+        ],
+        [
+          "广东",
+          21.0
+        ],
+        [
+          "陕西",
+          21.0
+        ],
+        [
+          "山东",
+          20.0
+        ],
+        [
+          "湖北",
+          20.0
+        ],
+        [
+          "重庆",
+          19.0
+        ],
+        [
+          "安徽",
+          18.0
+        ],
+        [
+          "河南",
+          18.0
+        ],
+        [
+          "福建",
+          18.0
+        ],
+        [
+          "湖南",
+          17.0
+        ],
+        [
+          "北京",
+          14.0
+        ],
+        [
+          "江苏",
+          14.0
+        ],
+        [
+          "浙江",
+          13.0
+        ],
+        [
+          "辽宁",
+          10.0
+        ]
+      ],
+      "row_count": 16
+    },
+    "correct_executed_at": 1778319927.7123992,
+    "updated_at": 1778319994.614502,
+    "ai_generated_sql": "SELECT `user_addresses`.`province` AS `用户省份`, COUNT(DISTINCT `users`.`user_id`) AS `用户数量` FROM `users` LEFT JOIN `user_addresses` ON `users`.`user_id` = `user_addresses`.`user_id` GROUP BY `user_addresses`.`province` ORDER BY `用户数量` DESC",
+    "ai_explanation": "通过用户表和用户地址表的左连接，按省份分组统计用户数量。使用COUNT(DISTINCT)确保同一用户多个地址不会重复计数，LEFT JOIN保证无地址用户也被统计。",
+    "ai_error": null,
+    "ai_elapsed": 26.324542999267578,
+    "ai_generated_at": 1778319954.0402925,
+    "sql_match": "matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户省份",
+        "用户数量"
+      ],
+      "rows": [
+        [
+          null,
+          49.0
+        ],
+        [
+          "上海",
+          24.0
+        ],
+        [
+          "四川",
+          21.0
+        ],
+        [
+          "天津",
+          21.0
+        ],
+        [
+          "广东",
+          21.0
+        ],
+        [
+          "陕西",
+          21.0
+        ],
+        [
+          "山东",
+          20.0
+        ],
+        [
+          "湖北",
+          20.0
+        ],
+        [
+          "重庆",
+          19.0
+        ],
+        [
+          "安徽",
+          18.0
+        ],
+        [
+          "河南",
+          18.0
+        ],
+        [
+          "福建",
+          18.0
+        ],
+        [
+          "湖南",
+          17.0
+        ],
+        [
+          "北京",
+          14.0
+        ],
+        [
+          "江苏",
+          14.0
+        ],
+        [
+          "浙江",
+          13.0
+        ],
+        [
+          "辽宁",
+          10.0
+        ]
+      ],
+      "row_count": 17
+    },
+    "ai_executed_at": 1778319954.0449095,
+    "result_match": "matched",
+    "result_match_manual": true,
+    "sql_match_manual": true
+  },
+  "2": {
+    "correct_sql_result": {
+      "columns": [
+        "multi_addr_users"
+      ],
+      "rows": [
+        [
+          98.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778320001.9287648,
+    "updated_at": 1778320028.1394014,
+    "ai_generated_sql": "SELECT COUNT(*) AS `用户数量` FROM (SELECT `user_id` FROM `user_addresses` GROUP BY `user_id` HAVING COUNT(*) > 1) AS `subquery`",
+    "ai_explanation": "通过子查询统计user_addresses表中地址数量大于1的用户ID，外层查询计算这些用户的数量，符合'用户数量'指标和'地址数量'维度的筛选条件",
+    "ai_error": null,
+    "ai_elapsed": 26.20328140258789,
+    "ai_generated_at": 1778320028.1350336,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户数量"
+      ],
+      "rows": [
+        [
+          98.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778320028.1382804,
+    "result_match": "matched"
+  },
+  "3": {
+    "correct_sql_result": {
+      "columns": [
+        "multi_addr_users"
+      ],
+      "rows": [
+        [
+          98.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "correct_executed_at": 1778320058.1426227,
+    "updated_at": 1778320072.0478268,
+    "ai_generated_sql": "SELECT COUNT(DISTINCT `users`.`user_id`) AS `用户数量` FROM `users` INNER JOIN `user_addresses` ON `users`.`user_id` = `user_addresses`.`user_id` GROUP BY `users`.`user_id` HAVING COUNT(`user_addresses`.`address_id`) > 1",
+    "ai_explanation": "通过关联用户表和地址表，按用户分组后筛选地址数量大于1的用户，统计符合条件的用户总数",
+    "ai_error": null,
+    "ai_elapsed": 13.895987510681152,
+    "ai_generated_at": 1778320072.0418394,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [
+        "用户数量"
+      ],
+      "rows": [
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          1.0
+        ]
+      ],
+      "row_count": 98
+    },
+    "ai_executed_at": 1778320072.046803,
+    "result_match": "not_matched"
+  },
+  "4": {
+    "correct_sql_result": {
+      "columns": [
+        "user_id",
+        "username"
+      ],
+      "rows": [
+        [
+          199.0,
+          "u_12009"
+        ],
+        [
+          179.0,
+          "u_14910"
+        ],
+        [
+          187.0,
+          "u_17292"
+        ],
+        [
+          155.0,
+          "u_19720"
+        ],
+        [
+          175.0,
+          "u_29198"
+        ],
+        [
+          195.0,
+          "u_32955"
+        ],
+        [
+          181.0,
+          "u_33002"
+        ],
+        [
+          185.0,
+          "u_42435"
+        ],
+        [
+          189.0,
+          "u_47629"
+        ],
+        [
+          168.0,
+          "u_49221"
+        ],
+        [
+          194.0,
+          "u_51799"
+        ],
+        [
+          190.0,
+          "u_55582"
+        ],
+        [
+          171.0,
+          "u_64890"
+        ],
+        [
+          160.0,
+          "u_70875"
+        ],
+        [
+          156.0,
+          "u_77908"
+        ],
+        [
+          154.0,
+          "u_82305"
+        ],
+        [
+          161.0,
+          "u_83616"
+        ],
+        [
+          165.0,
+          "u_83638"
+        ],
+        [
+          186.0,
+          "u_85065"
+        ],
+        [
+          173.0,
+          "u_94319"
+        ],
+        [
+          3.0,
+          "user_0003"
+        ],
+        [
+          5.0,
+          "user_0005"
+        ],
+        [
+          6.0,
+          "user_0006"
+        ],
+        [
+          7.0,
+          "user_0007"
+        ],
+        [
+          8.0,
+          "user_0008"
+        ],
+        [
+          9.0,
+          "user_0009"
+        ],
+        [
+          14.0,
+          "user_0014"
+        ],
+        [
+          17.0,
+          "user_0017"
+        ],
+        [
+          18.0,
+          "user_0018"
+        ],
+        [
+          23.0,
+          "user_0023"
+        ],
+        [
+          24.0,
+          "user_0024"
+        ],
+        [
+          26.0,
+          "user_0026"
+        ],
+        [
+          31.0,
+          "user_0031"
+        ],
+        [
+          32.0,
+          "user_0032"
+        ],
+        [
+          33.0,
+          "user_0033"
+        ],
+        [
+          34.0,
+          "user_0034"
+        ],
+        [
+          35.0,
+          "user_0035"
+        ],
+        [
+          38.0,
+          "user_0038"
+        ],
+        [
+          39.0,
+          "user_0039"
+        ],
+        [
+          40.0,
+          "user_0040"
+        ],
+        [
+          42.0,
+          "user_0042"
+        ],
+        [
+          43.0,
+          "user_0043"
+        ],
+        [
+          44.0,
+          "user_0044"
+        ],
+        [
+          49.0,
+          "user_0049"
+        ],
+        [
+          50.0,
+          "user_0050"
+        ],
+        [
+          52.0,
+          "user_0052"
+        ],
+        [
+          55.0,
+          "user_0055"
+        ],
+        [
+          59.0,
+          "user_0059"
+        ],
+        [
+          62.0,
+          "user_0062"
+        ],
+        [
+          63.0,
+          "user_0063"
+        ],
+        [
+          72.0,
+          "user_0072"
+        ],
+        [
+          73.0,
+          "user_0073"
+        ],
+        [
+          75.0,
+          "user_0075"
+        ],
+        [
+          80.0,
+          "user_0080"
+        ],
+        [
+          86.0,
+          "user_0086"
+        ],
+        [
+          87.0,
+          "user_0087"
+        ],
+        [
+          88.0,
+          "user_0088"
+        ],
+        [
+          90.0,
+          "user_0090"
+        ],
+        [
+          94.0,
+          "user_0094"
+        ],
+        [
+          114.0,
+          "user_0114"
+        ],
+        [
+          115.0,
+          "user_0115"
+        ],
+        [
+          119.0,
+          "user_0119"
+        ],
+        [
+          120.0,
+          "user_0120"
+        ],
+        [
+          122.0,
+          "user_0122"
+        ],
+        [
+          126.0,
+          "user_0126"
+        ],
+        [
+          127.0,
+          "user_0127"
+        ],
+        [
+          129.0,
+          "user_0129"
+        ],
+        [
+          130.0,
+          "user_0130"
+        ],
+        [
+          136.0,
+          "user_0136"
+        ],
+        [
+          140.0,
+          "user_0140"
+        ],
+        [
+          143.0,
+          "user_0143"
+        ],
+        [
+          144.0,
+          "user_0144"
+        ],
+        [
+          149.0,
+          "user_0149"
+        ]
+      ],
+      "row_count": 73
+    },
+    "correct_executed_at": 1778320102.0574152,
+    "updated_at": 1778320709.1588256,
+    "ai_generated_sql": "SELECT COUNT(*) AS `用户数量` FROM `users` WHERE `users`.`user_id` NOT IN (SELECT `user_id` FROM `user_coupons` WHERE `user_coupons`.`status` = 'unused')",
+    "ai_explanation": "统计没有设置默认地址的用户数量。这里假设未使用优惠券的用户视为未设置默认地址。",
+    "ai_error": null,
+    "ai_elapsed": 18.116968870162964,
+    "ai_generated_at": 1778320706.7185636,
+    "sql_match": "not_matched",
+    "ai_tables_used": [
+      "users"
+    ],
+    "ai_sql_result": {
+      "columns": [
+        "用户数量"
+      ],
+      "rows": [
+        [
+          71.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778320709.1573825,
+    "result_match": "not_matched"
+  },
+  "5": {
+    "correct_sql_result": {
+      "columns": [
+        "user_id",
+        "username"
+      ],
+      "rows": [
+        [
+          199.0,
+          "u_12009"
+        ],
+        [
+          179.0,
+          "u_14910"
+        ],
+        [
+          187.0,
+          "u_17292"
+        ],
+        [
+          155.0,
+          "u_19720"
+        ],
+        [
+          175.0,
+          "u_29198"
+        ],
+        [
+          195.0,
+          "u_32955"
+        ],
+        [
+          181.0,
+          "u_33002"
+        ],
+        [
+          185.0,
+          "u_42435"
+        ],
+        [
+          189.0,
+          "u_47629"
+        ],
+        [
+          168.0,
+          "u_49221"
+        ],
+        [
+          194.0,
+          "u_51799"
+        ],
+        [
+          190.0,
+          "u_55582"
+        ],
+        [
+          171.0,
+          "u_64890"
+        ],
+        [
+          160.0,
+          "u_70875"
+        ],
+        [
+          156.0,
+          "u_77908"
+        ],
+        [
+          154.0,
+          "u_82305"
+        ],
+        [
+          161.0,
+          "u_83616"
+        ],
+        [
+          165.0,
+          "u_83638"
+        ],
+        [
+          186.0,
+          "u_85065"
+        ],
+        [
+          173.0,
+          "u_94319"
+        ],
+        [
+          3.0,
+          "user_0003"
+        ],
+        [
+          5.0,
+          "user_0005"
+        ],
+        [
+          6.0,
+          "user_0006"
+        ],
+        [
+          7.0,
+          "user_0007"
+        ],
+        [
+          8.0,
+          "user_0008"
+        ],
+        [
+          9.0,
+          "user_0009"
+        ],
+        [
+          14.0,
+          "user_0014"
+        ],
+        [
+          17.0,
+          "user_0017"
+        ],
+        [
+          18.0,
+          "user_0018"
+        ],
+        [
+          23.0,
+          "user_0023"
+        ],
+        [
+          24.0,
+          "user_0024"
+        ],
+        [
+          26.0,
+          "user_0026"
+        ],
+        [
+          31.0,
+          "user_0031"
+        ],
+        [
+          32.0,
+          "user_0032"
+        ],
+        [
+          33.0,
+          "user_0033"
+        ],
+        [
+          34.0,
+          "user_0034"
+        ],
+        [
+          35.0,
+          "user_0035"
+        ],
+        [
+          38.0,
+          "user_0038"
+        ],
+        [
+          39.0,
+          "user_0039"
+        ],
+        [
+          40.0,
+          "user_0040"
+        ],
+        [
+          42.0,
+          "user_0042"
+        ],
+        [
+          43.0,
+          "user_0043"
+        ],
+        [
+          44.0,
+          "user_0044"
+        ],
+        [
+          49.0,
+          "user_0049"
+        ],
+        [
+          50.0,
+          "user_0050"
+        ],
+        [
+          52.0,
+          "user_0052"
+        ],
+        [
+          55.0,
+          "user_0055"
+        ],
+        [
+          59.0,
+          "user_0059"
+        ],
+        [
+          62.0,
+          "user_0062"
+        ],
+        [
+          63.0,
+          "user_0063"
+        ],
+        [
+          72.0,
+          "user_0072"
+        ],
+        [
+          73.0,
+          "user_0073"
+        ],
+        [
+          75.0,
+          "user_0075"
+        ],
+        [
+          80.0,
+          "user_0080"
+        ],
+        [
+          86.0,
+          "user_0086"
+        ],
+        [
+          87.0,
+          "user_0087"
+        ],
+        [
+          88.0,
+          "user_0088"
+        ],
+        [
+          90.0,
+          "user_0090"
+        ],
+        [
+          94.0,
+          "user_0094"
+        ],
+        [
+          114.0,
+          "user_0114"
+        ],
+        [
+          115.0,
+          "user_0115"
+        ],
+        [
+          119.0,
+          "user_0119"
+        ],
+        [
+          120.0,
+          "user_0120"
+        ],
+        [
+          122.0,
+          "user_0122"
+        ],
+        [
+          126.0,
+          "user_0126"
+        ],
+        [
+          127.0,
+          "user_0127"
+        ],
+        [
+          129.0,
+          "user_0129"
+        ],
+        [
+          130.0,
+          "user_0130"
+        ],
+        [
+          136.0,
+          "user_0136"
+        ],
+        [
+          140.0,
+          "user_0140"
+        ],
+        [
+          143.0,
+          "user_0143"
+        ],
+        [
+          144.0,
+          "user_0144"
+        ],
+        [
+          149.0,
+          "user_0149"
+        ]
+      ],
+      "row_count": 73
+    },
+    "correct_executed_at": 1778320156.6222951,
+    "updated_at": 1778320738.0907583,
+    "ai_generated_sql": "SELECT COUNT(DISTINCT `users`.`user_id`) AS 用户数量, COUNT(`user_addresses`.`address_id`) AS 地址数量 FROM `users` LEFT JOIN `user_addresses` ON `users`.`user_id` = `user_addresses`.`user_id` WHERE `users`.`user_id` NOT IN (SELECT `user_id` FROM `user_addresses` WHERE `is_default` = '1')",
+    "ai_explanation": "统计未设置默认地址的用户数量，以及这些用户的地址总数。通过user_addresses表判断是否设置默认地址，使用users表获取用户信息。",
+    "ai_error": null,
+    "ai_elapsed": 11.381463527679443,
+    "ai_generated_at": 1778320736.4445472,
+    "sql_match": "not_matched",
+    "ai_tables_used": [
+      "user_addresses",
+      "users"
+    ],
+    "ai_sql_result": {
+      "columns": [
+        "用户数量",
+        "地址数量"
+      ],
+      "rows": [
+        [
+          73.0,
+          28.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778320738.0893266,
+    "result_match": "not_matched"
+  },
+  "6": {
+    "correct_sql_result": {
+      "columns": [
+        "parent_category",
+        "child_category"
+      ],
+      "rows": [
+        [
+          "家用电器",
+          "厨房电器"
+        ],
+        [
+          "家用电器",
+          "大家电"
+        ],
+        [
+          "家用电器",
+          "生活电器"
+        ],
+        [
+          "数码产品",
+          "影音设备"
+        ],
+        [
+          "数码产品",
+          "手机通讯"
+        ],
+        [
+          "数码产品",
+          "智能穿戴"
+        ],
+        [
+          "数码产品",
+          "电脑办公"
+        ],
+        [
+          "服装鞋包",
+          "女装"
+        ],
+        [
+          "服装鞋包",
+          "男装"
+        ],
+        [
+          "服装鞋包",
+          "箱包"
+        ],
+        [
+          "服装鞋包",
+          "鞋靴"
+        ],
+        [
+          "美妆个护",
+          "个人清洁"
+        ],
+        [
+          "美妆个护",
+          "彩妆"
+        ],
+        [
+          "美妆个护",
+          "护肤"
+        ],
+        [
+          "食品饮料",
+          "零食"
+        ],
+        [
+          "食品饮料",
+          "饮料"
+        ]
+      ],
+      "row_count": 16
+    },
+    "correct_executed_at": 1778320210.3008814,
+    "updated_at": 1778320776.9854295,
+    "ai_generated_sql": "SELECT COUNT(*) AS `类目数量` FROM `categories` WHERE `level` = 1 OR `level` = 2",
+    "ai_explanation": "统计一级分类和二级分类的总数量",
+    "ai_error": null,
+    "ai_elapsed": 7.964024305343628,
+    "ai_generated_at": 1778320774.1110148,
+    "sql_match": "not_matched",
+    "ai_tables_used": [
+      "categories"
+    ],
+    "ai_sql_result": {
+      "columns": [
+        "类目数量"
+      ],
+      "rows": [
+        [
+          24.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778320776.9839227,
+    "result_match": "not_matched"
+  },
+  "7": {
+    "correct_sql_result": {
+      "columns": [
+        "parent_category",
+        "child_category"
+      ],
+      "rows": [
+        [
+          "家用电器",
+          "厨房电器"
+        ],
+        [
+          "家用电器",
+          "大家电"
+        ],
+        [
+          "家用电器",
+          "生活电器"
+        ],
+        [
+          "数码产品",
+          "影音设备"
+        ],
+        [
+          "数码产品",
+          "手机通讯"
+        ],
+        [
+          "数码产品",
+          "智能穿戴"
+        ],
+        [
+          "数码产品",
+          "电脑办公"
+        ],
+        [
+          "服装鞋包",
+          "女装"
+        ],
+        [
+          "服装鞋包",
+          "男装"
+        ],
+        [
+          "服装鞋包",
+          "箱包"
+        ],
+        [
+          "服装鞋包",
+          "鞋靴"
+        ],
+        [
+          "美妆个护",
+          "个人清洁"
+        ],
+        [
+          "美妆个护",
+          "彩妆"
+        ],
+        [
+          "美妆个护",
+          "护肤"
+        ],
+        [
+          "食品饮料",
+          "零食"
+        ],
+        [
+          "食品饮料",
+          "饮料"
+        ]
+      ],
+      "row_count": 16
+    },
+    "correct_executed_at": 1778320314.1851382,
+    "updated_at": 1778320785.1920557,
+    "ai_generated_sql": "",
+    "ai_explanation": "",
+    "ai_error": "未找到相关的业务表",
+    "ai_elapsed": 3.605808734893799,
+    "ai_generated_at": 1778320785.191396,
+    "sql_match": "not_matched",
+    "ai_tables_used": []
+  },
+  "8": {
+    "correct_sql_result": {
+      "columns": [
+        "parent_category",
+        "child_count"
+      ],
+      "rows": [
+        [
+          "数码产品",
+          4.0
+        ],
+        [
+          "服装鞋包",
+          4.0
+        ],
+        [
+          "家用电器",
+          3.0
+        ],
+        [
+          "美妆个护",
+          3.0
+        ],
+        [
+          "食品饮料",
+          2.0
+        ],
+        [
+          "家居家装",
+          0.0
+        ],
+        [
+          "母婴用品",
+          0.0
+        ],
+        [
+          "运动户外",
+          0.0
+        ]
+      ],
+      "row_count": 8
+    },
+    "correct_executed_at": 1778320357.126612,
+    "updated_at": 1778320759.9372485,
+    "ai_generated_sql": "SELECT `categories`.`is_visible` AS `商品状态`, COUNT(*) AS `类目数量` FROM `categories` GROUP BY `categories`.`is_visible`",
+    "ai_explanation": "根据商品状态（是否可见）统计分类总数",
+    "ai_error": null,
+    "ai_elapsed": 7.673391103744507,
+    "ai_generated_at": 1778320754.7561972,
+    "sql_match": "not_matched",
+    "ai_tables_used": [
+      "categories"
+    ],
+    "ai_sql_result": {
+      "columns": [
+        "商品状态",
+        "类目数量"
+      ],
+      "rows": [
+        [
+          1.0,
+          40.0
+        ]
+      ],
+      "row_count": 1
+    },
+    "ai_executed_at": 1778320759.9358099,
+    "result_match": "not_matched"
+  },
+  "9": {
+    "correct_sql_result": {
+      "columns": [
+        "parent_category",
+        "child_count"
+      ],
+      "rows": [
+        [
+          "数码产品",
+          4.0
+        ],
+        [
+          "服装鞋包",
+          4.0
+        ],
+        [
+          "家用电器",
+          3.0
+        ],
+        [
+          "美妆个护",
+          3.0
+        ],
+        [
+          "食品饮料",
+          2.0
+        ],
+        [
+          "家居家装",
+          0.0
+        ],
+        [
+          "母婴用品",
+          0.0
+        ],
+        [
+          "运动户外",
+          0.0
+        ]
+      ],
+      "row_count": 8
+    },
+    "correct_executed_at": 1778320793.9493117,
+    "updated_at": 1778320809.5837498,
+    "ai_generated_sql": "SELECT `categories`.`category_name` AS `类目`, COUNT(*) AS `类目数量` FROM `categories` WHERE `categories`.`parent_id` = 0 GROUP BY `categories`.`category_id`, `categories`.`category_name`",
+    "ai_explanation": "查询每个一级类目包含的二级分类数量，通过parent_id=0筛选一级类目，然后按一级类目分组统计",
+    "ai_error": null,
+    "ai_tables_used": [
+      "categories"
+    ],
+    "ai_elapsed": 10.152097225189209,
+    "ai_generated_at": 1778320803.6873436,
+    "sql_match": "not_matched",
+    "ai_sql_result": {
+      "columns": [],
+      "rows": [],
+      "row_count": 0
+    },
+    "ai_executed_at": 1778320809.58223,
+    "result_match": "not_matched"
+  }
+}
