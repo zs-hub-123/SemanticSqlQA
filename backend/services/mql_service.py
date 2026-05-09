@@ -78,11 +78,11 @@ class MQLService:
 
         granularity = self._infer_granularity(question, dimensions)
 
-        if not metrics:
-            raise ValueError("未识别到有效指标")
+        if not metrics and not dimensions:
+            raise ValueError("未识别到有效指标或维度")
 
         return MQLQuery(
-            metric=metrics[0],
+            metric=metrics[0] if metrics else None,
             dimensions=dimensions,
             filters=filters,
             time_range=time_range,
@@ -99,23 +99,28 @@ class MQLService:
         errors = []
         warnings = []
 
-        metric_info = self.semantic_layer.get_metric_by_name(mql.metric)
-        if not metric_info:
-            errors.append(f"指标 '{mql.metric}' 不存在")
+        if not mql.metric and not mql.dimensions:
+            errors.append("MQL缺少metric和dimensions")
             return {"valid": False, "errors": errors, "warnings": warnings}
 
-        if mql.granularity and metric_info.stat_period:
-            if mql.granularity not in metric_info.stat_period:
-                warnings.append(
-                    f"⚠️ 指标 '{mql.metric}' 推荐粒度: {metric_info.stat_period}，"
-                    f"当前请求: {mql.granularity}"
-                )
+        if mql.metric:
+            metric_info = self.semantic_layer.get_metric_by_name(mql.metric)
+            if not metric_info:
+                errors.append(f"指标 '{mql.metric}' 不存在")
+                return {"valid": False, "errors": errors, "warnings": warnings}
 
-        if metric_info.is_non_additive and mql.granularity:
-            warnings.append(
-                f"⚠️ '{mql.metric}' 是去重类指标(如UV/支付用户数)，"
-                f"跨粒度聚合可能导致数据失真"
-            )
+            if mql.granularity and metric_info.stat_period:
+                if mql.granularity not in metric_info.stat_period:
+                    warnings.append(
+                        f"⚠️ 指标 '{mql.metric}' 推荐粒度: {metric_info.stat_period}，"
+                        f"当前请求: {mql.granularity}"
+                    )
+
+            if metric_info.is_non_additive and mql.granularity:
+                warnings.append(
+                    f"⚠️ '{mql.metric}' 是去重类指标(如UV/支付用户数)，"
+                    f"跨粒度聚合可能导致数据失真"
+                )
 
         return {"valid": len(errors) == 0, "errors": errors, "warnings": warnings}
 
@@ -129,26 +134,27 @@ class MQLService:
         Returns:
             应用规则后的MQL
         """
-        default_filters = self.semantic_layer.apply_default_filters([mql.metric])
+        if mql.metric:
+            default_filters = self.semantic_layer.apply_default_filters([mql.metric])
 
-        for f in default_filters:
-            if f and '=' in f:
-                field = f.split('=')[0].strip()
-                value = f.split('=')[1].strip().strip("'\"")
-                if field not in mql.filters:
-                    mql.filters[field] = value
+            for f in default_filters:
+                if f and '=' in f:
+                    field = f.split('=')[0].strip()
+                    value = f.split('=')[1].strip().strip("'\"")
+                    if field not in mql.filters:
+                        mql.filters[field] = value
 
-        rules = self.semantic_layer.get_business_rules(
-            rule_type='filter',
-            target_metric=mql.metric
-        )
+            rules = self.semantic_layer.get_business_rules(
+                rule_type='filter',
+                target_metric=mql.metric
+            )
 
-        for rule in rules:
-            if rule.rule_content and '=' in rule.rule_content:
-                field = rule.rule_content.split('=')[0].strip()
-                value = rule.rule_content.split('=')[1].strip().strip("'\"")
-                if field not in mql.filters:
-                    mql.filters[field] = value
+            for rule in rules:
+                if rule.rule_content and '=' in rule.rule_content:
+                    field = rule.rule_content.split('=')[0].strip()
+                    value = rule.rule_content.split('=')[1].strip().strip("'\"")
+                    if field not in mql.filters:
+                        mql.filters[field] = value
 
         return mql
 
@@ -163,26 +169,30 @@ class MQLService:
         Returns:
             血缘信息字典
         """
-        metric_info = self.semantic_layer.get_metric_by_name(mql.metric)
-
-        if not metric_info:
-            return {}
-
         lineage = {
-            "metric": {
-                "name": metric_info.name,
-                "business_desc": metric_info.business_desc,
-                "aggregation": metric_info.aggregation_type,
-                "physical_table": metric_info.physical_table,
-                "physical_field": metric_info.physical_field,
-                "is_non_additive": metric_info.is_non_additive,
-                "version": metric_info.metric_version
-            },
+            "metric": None,
             "dimensions": [],
             "filters": [],
             "calculation": "",
             "sql": sql
         }
+
+        if mql.metric:
+            metric_info = self.semantic_layer.get_metric_by_name(mql.metric)
+            if metric_info:
+                lineage["metric"] = {
+                    "name": metric_info.name,
+                    "business_desc": metric_info.business_desc,
+                    "aggregation": metric_info.aggregation_type,
+                    "physical_table": metric_info.physical_table,
+                    "physical_field": metric_info.physical_field,
+                    "is_non_additive": metric_info.is_non_additive,
+                    "version": metric_info.metric_version
+                }
+                if metric_info.default_filter:
+                    lineage["default_filter"] = metric_info.default_filter
+                if metric_info.calculation_formula:
+                    lineage["calculation"] = metric_info.calculation_formula
 
         for dim in mql.dimensions:
             dim_info = self.semantic_layer.get_metric_by_name(dim)
@@ -198,12 +208,6 @@ class MQLService:
                 "field": field,
                 "value": value
             })
-
-        if metric_info.default_filter:
-            lineage["default_filter"] = metric_info.default_filter
-
-        if metric_info.calculation_formula:
-            lineage["calculation"] = metric_info.calculation_formula
 
         return lineage
 

@@ -225,6 +225,10 @@ function openDetail(index) {
 }
 
 async function startAutoTest() {
+  if (autoTestRunning.value && autoTestTaskId.value) {
+    alert('已有测试任务正在运行，请先停止')
+    return
+  }
   autoTestStarting.value = true
   try {
     const res = await apiStartAutoTest(props.datasetName, autoTestInterval.value, skipExisting.value)
@@ -353,7 +357,15 @@ const labels = {
 
 watch(() => props.datasetName, async (name) => {
   if (!name) return
+  if (autoTestRunning.value && autoTestTaskId.value) {
+    try {
+      await apiStopAutoTest(autoTestTaskId.value)
+    } catch (e) {
+      console.error('停止旧任务失败:', e)
+    }
+  }
   autoTestRunning.value = false
+  autoTestTaskId.value = ''
   clearStatusPolling()
   currentPage.value = props.initialPage
   datasetLabel.value = labels[name] || name

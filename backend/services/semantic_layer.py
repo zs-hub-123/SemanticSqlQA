@@ -67,7 +67,9 @@ class BusinessRule:
     rule_desc: Optional[str]
     priority: int
     error_message: Optional[str]
-    is_active: int = 1  # V5.2: 添加缺失字段
+    is_active: int = 1
+    created_at: Optional[str] = None
+    updated_at: Optional[str] = None
 
 
 @dataclass

@@ -246,45 +246,49 @@ class QAPipeline:
     def _build_mql_constraints(self, mql, validation_result) -> str:
         """构建MQL约束文本，注入到SQL生成提示词"""
         constraints = []
-        
-        constraints.append(f"- **目标指标**: {mql.metric}")
-        
+
+        if mql.metric:
+            constraints.append(f"- **目标指标**: {mql.metric}")
+
         if mql.dimensions:
             constraints.append(f"- **分析维度**: {', '.join(mql.dimensions)}")
-        
+
         if mql.granularity:
             constraints.append(f"- **时间粒度**: {mql.granularity}（必须按此粒度聚合）")
-        
+
         if mql.filters:
             filter_strs = [f"{k}={v}" for k, v in mql.filters.items()]
             constraints.append(f"- **强制过滤条件**: {' AND '.join(filter_strs)}（必须在WHERE中应用）")
-        
+
         # 非累加指标警告
         warnings = validation_result.get('warnings', [])
         if warnings:
             constraints.append("- ⚠️ **重要警告**:")
             for w in warnings:
                 constraints.append(f"  - {w}")
-        
+
         return '\n'.join(constraints) if constraints else "- 无特殊MQL约束"
 
     def _build_business_rules_text(self, metric_name: str) -> List[str]:
         """构建业务规则文本列表"""
+        if not metric_name:
+            return None
+
         rules = []
-        
+
         # 获取默认过滤条件
         default_filter = self.semantic_layer.get_default_filter(metric_name)
         if default_filter:
             rules.append(f"指标'{metric_name}'默认过滤: {default_filter}（必须包含在WHERE中）")
-        
+
         # 获取业务规则
         biz_rules = self.semantic_layer.get_business_rules(
             rule_type='filter',
             target_metric=metric_name
         )
-        
+
         for rule in biz_rules:
             if rule.rule_content:
                 rules.append(f"[{rule.rule_name}] {rule.rule_desc or ''}: {rule.rule_content}")
-        
+
         return rules if rules else None
