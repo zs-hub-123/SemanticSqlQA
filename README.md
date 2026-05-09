@@ -106,7 +106,7 @@
 ## 📁 项目目录结构
 
 ```
-sql-qa-system/
+SemanticSqlQA/
 ├── start.py                    # 后端启动脚本
 ├── init_semantic_db.py        # 语义层数据库初始化(V5.0)
 ├── init_test_results.py       # 测试结果文件初始化
@@ -184,7 +184,7 @@ sql-qa-system/
 ### 1. 安装依赖
 
 ```bash
-cd sql-qa-system
+cd SemanticSqlQA
 pip install -r requirements.txt
 cd frontend && npm install
 ```
