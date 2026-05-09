@@ -20,7 +20,7 @@
 ## 二、目录结构
 
 ```
-sql-qa-system/
+SemanticSqlQA/
 ├── test_suite/
 │   ├── backend/
 │   │   ├── __init__.py
@@ -345,7 +345,7 @@ def _compare_results(result1, result2) -> bool:
 ### 分析脚本使用
 
 ```bash
-cd sql-qa-system
+cd SemanticSqlQA
 python tests/analyze_test_results.py
 ```
 
