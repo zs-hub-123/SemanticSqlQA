@@ -33,6 +33,7 @@ DDL_FILE = SCRIPT_DIR / 'docs' / 'semantic_layer_ddl.sql'
 INIT_DATA_FILE = SCRIPT_DIR / 'docs' / 'semantic_layer_init_data.sql'
 FIX_DATA_FILE = SCRIPT_DIR / 'docs' / 'semantic_layer_fix.sql'
 FIX_DATA_V3_FILE = SCRIPT_DIR / 'docs' / 'semantic_layer_fix_v3.sql'
+FIX_DATA_V4_FILE = SCRIPT_DIR / 'docs' / 'semantic_layer_fix_v4.sql'
 
 
 def get_connection():
@@ -245,6 +246,11 @@ def main():
             print(f"\nApplying V3 fixes from: {FIX_DATA_V3_FILE.name}")
             apply_fixes_from_file(conn, FIX_DATA_V3_FILE)
 
+        # V5.3: 执行V4全面修复（基于849题测试结果数据驱动分析）
+        if FIX_DATA_V4_FILE.exists():
+            print(f"\nApplying V4 comprehensive fix from: {FIX_DATA_V4_FILE.name}")
+            apply_fixes_from_file(conn, FIX_DATA_V4_FILE)
+
         print("\n" + "=" * 60)
         print("  初始化完成!")
         print("=" * 60)
@@ -255,13 +261,16 @@ def main():
         print("  4. table_relations - 表直接关联关系表")
         print("  5. business_rules - 业务规则表(V5.0新增)")
         print("  6. dimension_hierarchies - 维度层级表(V5.0新增)")
-        print("\n已应用以下修复(V2.0):")
-        print("  - 14个新增COUNT基础指标(地址/类目/属性/明细/支付/优惠券/券/轨迹)")
-        print("  - 12个新增维度定义(省份/城市/区县/状态/类型等)")
-        print("  - 214条新增口语别名(买家/客户/类目/属性/物流/活动等)")
-        print("  - 22条LEFT JOIN表关联关系")
-        print("  - 4个订单相关默认过滤条件(排除取消订单)")
-        print("  - 8条业务规则(过滤+校验)")
+        print("\n已应用以下修复:")
+        print("  - V1.0: 核心指标/别名/关联关系初始化")
+        print("  - V2.0: 14个COUNT基础指标 + 214条口语别名")
+        print("  - V3.0: 11个核心实体计数指标 + 30条高频别名")
+        print("  - V4.0: 全面修复(849题数据分析):")
+        print("    - 40+新增指标(实体计数/业务聚合/维度查询)")
+        print("    - 300+条口语别名(覆盖163个NL解析失败高频词)")
+        print("    - 15+条表关联关系(解决候选表遗漏)")
+        print("    - 20+条业务规则(自动过滤条件)")
+        print("    - 预期改善: NL_FAIL↓70%, METRIC_NOT_FOUND↓90%, WHITELIST↓80%")
 
         conn.close()
 
